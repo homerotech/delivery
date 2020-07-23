@@ -1,0 +1,63 @@
+@media (max-width: 800px) {
+    #menuBotao{
+        display: flexbox;
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
+        color: aliceblue;
+    }
+    #logoheader{
+        padding: 10px;
+        width: 100px;
+        display: flex;
+        justify-items: center;
+        margin-left: auto;
+        margin-right: auto
+    }
+    .sticky {
+        position: sticky;
+        bottom: 50px;
+      }
+    .header{
+        display: flex;
+        background-color: #fac901;
+    }
+    .MuiToolbar-regular {
+        min-height: 64px;
+        background-color: #fac901;
+    }
+    .makeStyles-search-4{
+        width: 1000%;
+    }
+    .iconsheaderMobile{
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
+    }
+    @media (min-width: 800px) {
+        .header{
+            display: flex;
+            align-items: center;
+        text-align: center;
+            background-color: pink;
+        }
+        #logoheader{
+            padding: 10px;
+            width: 200px;
+            display: flex;
+            justify-items: center;
+            margin-left: auto;
+            margin-right: auto
+        }
+        .MuiToolbar-regular {
+            min-height: 64px;
+            background-color: #fac901;
+        }
+        .iconsheaderMobile{
+            display: flex;
+            width: 100%;
+            justify-content: flex-end;
+        }
+    }
+    

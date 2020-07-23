@@ -1,0 +1,38 @@
+.scrolling-wrapper{
+	overflow-x: auto;
+}
+
+body{
+	color: #fff;
+	font-family: 'system-ui';
+}
+
+h1{
+	font-weight: 800;
+	font-size: 3em;
+}
+
+.subtitle{
+	font-size: 1.25em;
+	opacity: 0.65;
+}
+
+.card-block{
+	height: 200px;
+	background-color: #fff;
+  border: none;
+  border-radius: 0;
+	background: 	#225095;
+	background-position: center;
+	background-size: cover;
+  transition: all 0.2s ease-in-out !important;
+  vertical-align: middle;
+	
+}
+.card-block strong{
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
