@@ -9,14 +9,13 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 function Copyright() {
@@ -33,7 +32,8 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
+    
+    paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(11),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -56,19 +56,22 @@ export default function SignUp() {
   const classes = useStyles();
 
   return (
+    
+    
     <Container component="main" maxWidth="xs">
+    
+
+    <div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Que bom que estão cadastrando seu restaurante!</h4>
+  <p>Todos seus dados serão avaliados e em breve entraremos em contato com vocês, e enviaremos um link com os dados de pagamento e termos!</p>
+  
+</div>
+
       <CssBaseline />
       <div className={classes.paper}>
-      <h1>Cadastre-se</h1>
+      <h1>Cadastre sua loja!</h1>
         <form className={classes.form} noValidate>
-        <FormControl component="fieldset">
-  <FormLabel component="legend">Tipo de cadastro</FormLabel>
-  <RadioGroup aria-label="gender" name="gender1" >
-    <FormControlLabel value="Empreendimento" control={<Radio />} label="Empreendimento" />
-    <FormControlLabel value="Consumidor" control={<Radio />} label="Consumidor" />
-    
-  </RadioGroup>
-</FormControl>
+        
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -78,7 +81,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="firstName"
-                label="Nome"
+                label="Empreendimento"
                 autoFocus
               />
             </Grid>
@@ -87,46 +90,37 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
-                label="Sobrenome"
+                id="tipoDoEmpredimento"
+                label="Tipo"
                 name="lastName"
                 autoComplete="lname"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
+                
                 variant="outlined"
                 required
                 fullWidth
-                id="CPF"
-                label="CPF"
+                id="CNPJ"
+                label="CNPJ"
                 autoFocus
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoComplete="email"
-              />
+            <div class="input-group">
+  <select class="custom-select" id="inputGroupSelect04">
+    <label>forma de pagamento</label>
+    <option value="1">Pic-pay</option>
+    <option value="2">PagSeguro</option>
+    <option value="3">Mercado Pago</option>
+    <option value="3">Pagamento em dinheiro</option>
+  </select>
+  
+</div>
             </Grid>
             <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="Senha"
-                id="password"
-                autoComplete="current-password"
-              />
+              
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
@@ -141,7 +135,6 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            // alterar
             href="/cadastroRestaurante"
           >
             Cadastre-se
