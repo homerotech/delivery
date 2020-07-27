@@ -5,6 +5,7 @@ import login from './pages/login/login'
 import cadastro from './pages/login/cadastro'
 import contato from './pages/contato/contato'
 import restaurantecadastro from './pages/login/cadastroRestaurantes'
+import pgempresas from './pages/catalogosEEmpresas/pgEmpresas'
 function Routes(){
     return(
  <BrowserRouter>
@@ -14,7 +15,8 @@ function Routes(){
         <Route path="/login" component={login}/>   
         <Route path="/cadastro" component={cadastro}/>     
         <Route path="/contato" component={contato}/>   
-        <Route path="/cadastroRestaurante" component={restaurantecadastro}/>     
+        <Route path="/cadastroRestaurante" component={restaurantecadastro}/> 
+        <Route path="/pgempresas" component={pgempresas}/>     
      </Switch>
  </BrowserRouter>);
 };

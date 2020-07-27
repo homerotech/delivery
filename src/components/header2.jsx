@@ -73,7 +73,7 @@ export default function TemporaryDrawer() {
       </List>
       <Divider />
       <List>
-      <a href="/produtos">
+      <a href="/pgempresas">
         
         <ListItem button >
       <ListItemIcon> </ListItemIcon>
@@ -134,11 +134,7 @@ export default function TemporaryDrawer() {
           </div><SearchIcon type="submit"/>
           <div className={classes.grow} />
           <div className="iconsheaderMobile">
-          <a href="/carrinho" style={{color: "#fff"}}>  <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton></a>
+          
             
             <a href="/login" style={{color: "#fff"}}><IconButton
               edge="end"
