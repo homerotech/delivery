@@ -7,6 +7,10 @@ import contato from './pages/contato/contato'
 import restaurantecadastro from './pages/login/cadastroRestaurantes'
 import pgempresas from './pages/catalogosEEmpresas/pgEmpresas'
 import catalogo from './pages/catalogosEEmpresas/catalogo';
+import loginPag from './pages/pagamento/loginPag'
+import cadastropag from './pages/pagamento/cadastropag';
+import Checkout from './pages/pagamento/checkoutPagamento.jsx/Checkout'
+
 function Routes(){
     return(
  <BrowserRouter>
@@ -18,7 +22,10 @@ function Routes(){
         <Route path="/contato" component={contato}/>   
         <Route path="/cadastroRestaurante" component={restaurantecadastro}/> 
         <Route path="/pgempresas" component={pgempresas}/>     
-        <Route path="/cardapio" component={catalogo}/>     
+        <Route path="/cardapio" component={catalogo}/>  
+        <Route path="/loginpag" component={loginPag}/>   
+        <Route path="/cadastropag" component={cadastropag}/>
+        <Route path="/Checkout" component={Checkout}/>
         
      </Switch>
  </BrowserRouter>);

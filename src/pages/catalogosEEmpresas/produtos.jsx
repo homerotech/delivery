@@ -10,14 +10,14 @@ export default (props)=>{
 
     
         <li class="media">
-            <img class="mr-3 mainimage" src={props.img} alt="Generic placeholder image"/>
+            <img class="mr-3 mainimage imagemproduto" src={props.img} alt="Generic placeholder image"/>
             <div class="media-body">
     <h5 class="mt-0 mb-1">{props.title}</h5>
             Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. 
             </div>
     <hr style={{color: "green"}}/>
         </li>
-        <div style={{color: "black", marginTop: "20px"}} class="card-footer"><a id="shopicon" href="#">Acrescentar pedido</a></div>
+    <div style={{color: "black", marginTop: "20px"}} class="card-footer"><h5 className="preco">R${props.preco}</h5><small>N {props.codigo}</small><a id="shopicon" href="#">Acrescentar pedido</a></div>
   <hr style={{color: "green"}}/>
 </div>
     )

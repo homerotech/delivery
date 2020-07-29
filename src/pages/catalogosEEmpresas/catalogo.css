@@ -9,3 +9,16 @@
     border: none;
     background-color: transparent;
 }
+.imagemproduto{
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+    border-radius: 0;
+}
+.preco{
+    position: absolute;
+}
+@media(min-width: 900px){
+.logoRestaurante{
+    max-width: 800px;
+}}

@@ -10,7 +10,8 @@ import logo1 from '../../img/download.jpeg';
 import logo2 from '../../img/download (1).jpeg';
 import logo3 from '../../img/download (2).jpeg';
 
-import Empresas from './empresas'
+
+import RoomIcon from '@material-ui/icons/Room';
 export default (props)=>{
   const alerta = function(){if(props.open === true){
       
@@ -25,12 +26,12 @@ return(
     return(
      
         <div>
-        <AlertOpen/>       
+        <AlertClose/>       
             <div class="jumbotron p-0">
 
 
 <div class="view overlay rounded-top">
-  <img src={logorestaurante} class="img-fluid" alt="Sample image"/>
+  <img src={logorestaurante} class="img-fluid logoRestaurante" alt="Sample image"/>
   
 </div>
 
@@ -41,27 +42,47 @@ return(
   <h3 class="card-title h3 my-4"><strong>Restaurante</strong></h3>
 
   <p class="card-text py-2">A melhor pizza de todo rio de janeiro, a experiência da itália no Brasil</p>
-
+    <small><RoomIcon/> Rio de Janeiro, Rua Nascimento Silva 107, Ipanema</small>
 </div>
 
 <div>
 <Button/>
 </div>
+<h1 style={{color: "#000b23"}}>Produtos</h1>
 <div>
-<Produto img={logo1} title="Macarrão Carbonara"  />
-            <Produto img={logo3} title="Pizza de catupiry" />
-            <Produto img={logo2} title="Pizza de chocolate" />
-            <Produto img={logo1} title="Churrasco" />
-            <Produto img={logo3} title="Torresmo" />
-            <Produto img={logo2} title="Sanduíches" />
-            <Produto img={logo3} title="rodizio" />
-            <Produto img={logo1} title="rodizio" />
-            <Produto img={logo2} title="rodizio" />
-            <Produto img={logo3} title="rodizio" />
-            <Produto img={logo1} title="rodizio" />
+            <Produto img={logo1} title="Macarrão Carbonara"  preco="50.00" codigo="55450"/>
+            <Produto img={logo3} title="Pizza de catupiry" preco="20.00"/>
+            <Produto img={logo2} title="Pizza de chocolate" preco="40.00"/>
+            <Produto img={logo1} title="Churrasco" preco="16.00"/>
+            <Produto img={logo3} title="Torresmo" preco="4.50"/>
+            <Produto img={logo2} title="Sanduíches" preco="60.50"/>
+            <Produto img={logo3} title="rodizio" preco=""/>
+            <Produto img={logo1} title="rodizio" preco=""/>
+            <Produto img={logo2} title="rodizio" preco=""/>
+            <Produto img={logo3} title="rodizio" preco=""/>
+            <Produto img={logo1} title="rodizio" preco=""/>
 </div>
 
 </div>
+<h5 style={{color: "#000b23"}}>Pedidos</h5>
+<ul class="list-group" style={{color: "#000b23"}}>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Pizza de peperoni
+    <span class="badge badge-primary badge-pill">R$14.00</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Vinho do porto
+    <span class="badge badge-primary badge-pill">R$2.00</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Chiclete
+    <span class="badge badge-primary badge-pill">R$1.00</span>
+  </li>
+</ul>
+<br/>
+<a href="/loginpag"><button type="button" class="btn btn-success btn-lg btn-block" href="/pagamento">Realizar pedido</button></a>
+
+<br/>
         </div>
     )
 }

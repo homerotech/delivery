@@ -61,12 +61,7 @@ export default function SignUp() {
       <h1>Cadastre-se</h1>
         <form className={classes.form} noValidate>
         <FormControl component="fieldset">
-  <FormLabel component="legend">Tipo de cadastro</FormLabel>
-  <RadioGroup aria-label="gender" name="gender1" >
-    <FormControlLabel value="Empreendimento" control={<Radio />} label="Empreendimento" />
-    <FormControlLabel value="Consumidor" control={<Radio />} label="Consumidor" />
-    
-  </RadioGroup>
+
 </FormControl>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
@@ -134,17 +129,19 @@ export default function SignUp() {
               />
             </Grid>
           </Grid>
-          <Button
+         <a href="/pagamento">
+         <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
             // alterar
-            href="/cadastropag"
+            href="/cadastroRestaurante"
           >
             Cadastre-se
           </Button>
+         </a>
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="#" variant="body2">
