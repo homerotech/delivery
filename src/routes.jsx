@@ -6,6 +6,7 @@ import cadastro from './pages/login/cadastro'
 import contato from './pages/contato/contato'
 import restaurantecadastro from './pages/login/cadastroRestaurantes'
 import pgempresas from './pages/catalogosEEmpresas/pgEmpresas'
+import catalogo from './pages/catalogosEEmpresas/catalogo';
 function Routes(){
     return(
  <BrowserRouter>
@@ -17,6 +18,8 @@ function Routes(){
         <Route path="/contato" component={contato}/>   
         <Route path="/cadastroRestaurante" component={restaurantecadastro}/> 
         <Route path="/pgempresas" component={pgempresas}/>     
+        <Route path="/cardapio" component={catalogo}/>     
+        
      </Switch>
  </BrowserRouter>);
 };

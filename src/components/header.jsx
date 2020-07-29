@@ -4,7 +4,7 @@ import './header.css';
 import logo from '../img/png.png'
 export default (props)=>{
     return(
-        <div>   
+        <div className="navigation-bar">   
                <a href="/"><img id="logoheader" src={logo}></img></a> 
                 <Header/>
                

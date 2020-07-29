@@ -1,11 +1,16 @@
 import React from 'react';
 
+import AlertOpen from './AlertOpen';
+import AlertClose from './AlertClose';
 
 
 export default (props)=>{
+    
+    
     return(
 <div style={{color: "green", marginTop: "20px"}}>
-    <a href="#" style={{color: "green", marginTop: "20px"}}>
+
+    <a href="/cardapio" style={{color: "green", marginTop: "20px"}}>
         <li class="media">
             <img class="mr-3 mainimage" src={props.img} alt="Generic placeholder image"/>
             <div class="media-body">

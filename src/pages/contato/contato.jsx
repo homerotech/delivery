@@ -1,12 +1,11 @@
 import React from 'react';
 
-import RoomIcon from '@material-ui/icons/Room';
-import PhoneForwardedIcon from '@material-ui/icons/PhoneForwarded';
-import ContactMailTwoToneIcon from '@material-ui/icons/ContactMailTwoTone';
+import Header from '../../components/header'
 
 export default (props)=>{
     return(
         <div>
+            <Header/>
              <div className="Contato container" style={{color: "green"}}>
             <section class="mb-4">
 

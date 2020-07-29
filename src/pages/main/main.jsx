@@ -5,10 +5,11 @@ import logo1 from '../../img/download.jpeg';
 import logo2 from '../../img/download (1).jpeg';
 import logo3 from '../../img/download (2).jpeg';
 import './main.css'
-
+import Header from '../../components/header'
 export default (props)=>{
     return(
         <div>
+          <Header/>
             <h3 style={{color: "black"}}>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</h3>
             <Scroll/>
             {/* barra vermelha */}
