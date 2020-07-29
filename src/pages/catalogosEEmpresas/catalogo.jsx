@@ -2,9 +2,15 @@ import React from 'react'
 import logorestaurante from '../../img/logo-restaurante.png';
 import '../../components/header'
 import './catalogo.css'
+import Produto from './produtos'
 import AlertOpen from './AlertOpen';
 import AlertClose from './AlertClose';
+import Button from './buttonclasses'
+import logo1 from '../../img/download.jpeg';
+import logo2 from '../../img/download (1).jpeg';
+import logo3 from '../../img/download (2).jpeg';
 
+import Empresas from './empresas'
 export default (props)=>{
   const alerta = function(){if(props.open === true){
       
@@ -38,8 +44,22 @@ return(
 
 </div>
 
-
-
+<div>
+<Button/>
+</div>
+<div>
+<Produto img={logo1} title="Macarrão Carbonara"  />
+            <Produto img={logo3} title="Pizza de catupiry" />
+            <Produto img={logo2} title="Pizza de chocolate" />
+            <Produto img={logo1} title="Churrasco" />
+            <Produto img={logo3} title="Torresmo" />
+            <Produto img={logo2} title="Sanduíches" />
+            <Produto img={logo3} title="rodizio" />
+            <Produto img={logo1} title="rodizio" />
+            <Produto img={logo2} title="rodizio" />
+            <Produto img={logo3} title="rodizio" />
+            <Produto img={logo1} title="rodizio" />
+</div>
 
 </div>
         </div>

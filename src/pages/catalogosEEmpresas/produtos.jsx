@@ -1,14 +1,14 @@
 import React from 'react';
-
+import ShopTwoIcon from '@material-ui/icons/ShopTwo';
 
 
 export default (props)=>{
     
     
     return(
-<div style={{color: "green", marginTop: "20px"}}>
+<div style={{color: "black", marginTop: "20px"}}>
 
-    <a href="/cardapio" style={{color: "green", marginTop: "20px"}}>
+    
         <li class="media">
             <img class="mr-3 mainimage" src={props.img} alt="Generic placeholder image"/>
             <div class="media-body">
@@ -17,7 +17,7 @@ export default (props)=>{
             </div>
     <hr style={{color: "green"}}/>
         </li>
-  </a>
+        <div style={{color: "black", marginTop: "20px"}} class="card-footer"><a id="shopicon" href="#">Acrescentar pedido</a></div>
   <hr style={{color: "green"}}/>
 </div>
     )
