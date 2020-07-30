@@ -53,11 +53,11 @@ return(
 <h1 style={{color: "#000b23"}}>Produtos</h1>
 <div>
             <Produto img={logo1} title="Macarrão Carbonara"  preco="50.00" codigo="55450"/>
-            <Produto img={logo3} title="Pizza de catupiry" preco="20.00"/>
-            <Produto img={logo2} title="Pizza de chocolate" preco="40.00"/>
-            <Produto img={logo1} title="Churrasco" preco="16.00"/>
-            <Produto img={logo3} title="Torresmo" preco="4.50"/>
-            <Produto img={logo2} title="Sanduíches" preco="60.50"/>
+            <Produto img={logo3} title="Pizza de catupiry" preco="20.00"codigo="55451"/>
+            <Produto img={logo2} title="Pizza de chocolate" preco="40.00"codigo="55452"/>
+            <Produto img={logo1} title="Churrasco" preco="16.00"codigo="55454"/>
+            <Produto img={logo3} title="Torresmo" preco="4.50"codigo="55455"/>
+            <Produto img={logo2} title="Sanduíches" preco="60.50"codigo="55456"/>
             <Produto img={logo3} title="rodizio" preco=""/>
             <Produto img={logo1} title="rodizio" preco=""/>
             <Produto img={logo2} title="rodizio" preco=""/>
