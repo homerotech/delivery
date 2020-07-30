@@ -11,6 +11,8 @@ import loginPag from './pages/pagamento/loginPag'
 import cadastropag from './pages/pagamento/cadastropag';
 import Checkout from './pages/pagamento/checkoutPagamento.jsx/Checkout'
 
+
+
 function Routes(){
     return(
  <BrowserRouter>

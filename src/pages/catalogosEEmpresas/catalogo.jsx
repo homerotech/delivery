@@ -13,20 +13,22 @@ import logo3 from '../../img/download (2).jpeg';
 
 import RoomIcon from '@material-ui/icons/Room';
 export default (props)=>{
-  const alerta = function(){if(props.open === true){
+  var d = new Date();
+  var now = d.getHours() + "." + d.getMinutes();
+  function aberto(){if(now>=22.00 || now<=11.00){
       
     return(
-        <AlertOpen/>
+        <AlertClose/>
     )
 
 }else {
 return(
-    <AlertClose/>
+    <AlertOpen/>
 )}}
     return(
      
         <div>
-        <AlertClose/>       
+        {aberto()}      
             <div class="jumbotron p-0">
 
 

@@ -1,10 +1,10 @@
-import React from 'react';
-import ShopTwoIcon from '@material-ui/icons/ShopTwo';
-
+import React, { useRef } from 'react';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+const scrollToRef = (ref) => window.scrollTo(0, document.body.scrollHeight)
 
 export default (props)=>{
-    
-    
+    const myRef = useRef(null)
+    const executeScroll = () => scrollToRef(myRef)
     return(
 <div style={{color: "black", marginTop: "20px"}}>
 
@@ -17,7 +17,7 @@ export default (props)=>{
             </div>
     <hr style={{color: "green"}}/>
         </li>
-    <div style={{color: "black", marginTop: "20px"}} class="card-footer"><h5 className="preco">R${props.preco}</h5><small>N {props.codigo}</small><a id="shopicon" href="#">Acrescentar pedido</a></div>
+    <div style={{color: "black", marginTop: "20px"}} class="card-footer"><h5 className="preco">R${props.preco}</h5><small>N {props.codigo}</small><button id="shopicon" className="btn btn-outline-success" onClick={executeScroll} ><AddShoppingCartIcon/></button></div>
   <hr style={{color: "green"}}/>
 </div>
     )
