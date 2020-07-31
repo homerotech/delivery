@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import logorestaurante from '../../img/logo-restaurante.png';
 import '../../components/header'
 import './catalogo.css'
@@ -9,14 +9,26 @@ import Button from './buttonclasses'
 import logo1 from '../../img/download.jpeg';
 import logo2 from '../../img/download (1).jpeg';
 import logo3 from '../../img/download (2).jpeg';
-
+import date from './datacatalog'
 
 import RoomIcon from '@material-ui/icons/Room';
+
+
+
 export default (props)=>{
+  //pegando dados
+  const lis = date.map((date)=>{
+    return(
+      //Concertando codigos, tem de colocar a imagem no objeto
+      <Produto img={logo3} title={date.title} preco={date.preco} codigo={date.codigo}/>
+    );
+  })
+  const [count, setCount]=useState(0)
+  
+  //aberto ou fechado component
   var d = new Date();
   var now = d.getHours() + "." + d.getMinutes();
-  function aberto(){if(now>=22.00 || now<=11.00){
-      
+  function aberto(){if(now <= 8.00 || now >= 13.18 ){
     return(
         <AlertClose/>
     )
@@ -50,19 +62,9 @@ return(
 <div>
 <Button/>
 </div>
-<h1 style={{color: "#000b23"}}>Produtos</h1>
+<hr/>
 <div>
-            <Produto img={logo1} title="Macarrão Carbonara"  preco="50.00" codigo="55450"/>
-            <Produto img={logo3} title="Pizza de catupiry" preco="20.00"codigo="55451"/>
-            <Produto img={logo2} title="Pizza de chocolate" preco="40.00"codigo="55452"/>
-            <Produto img={logo1} title="Churrasco" preco="16.00"codigo="55454"/>
-            <Produto img={logo3} title="Torresmo" preco="4.50"codigo="55455"/>
-            <Produto img={logo2} title="Sanduíches" preco="60.50"codigo="55456"/>
-            <Produto img={logo3} title="rodizio" preco=""/>
-            <Produto img={logo1} title="rodizio" preco=""/>
-            <Produto img={logo2} title="rodizio" preco=""/>
-            <Produto img={logo3} title="rodizio" preco=""/>
-            <Produto img={logo1} title="rodizio" preco=""/>
+  {lis}         
 </div>
 
 </div>

@@ -10,7 +10,7 @@ export default (props)=>{
 
     
         <li class="media">
-            <img class="mr-3 mainimage imagemproduto" src={props.img} alt="Generic placeholder image"/>
+            <div className="container-image"><img class="mr-3 imagemdoproduto" src={props.img} alt="Generic placeholder image"/></div>
             <div class="media-body">
     <h5 class="mt-0 mb-1">{props.title}</h5>
             Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. 

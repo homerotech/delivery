@@ -17,7 +17,7 @@ export default function SimpleAlerts() {
   return (
     <div className={classes.root}>
       <Alert variant="filled" severity="error">
-       Restaurante fechado nesse momento
+       Loja fechada nesse momento
       </Alert>
       
     </div>
