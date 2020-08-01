@@ -11,7 +11,8 @@ import loginPag from './pages/pagamento/loginPag'
 import cadastropag from './pages/pagamento/cadastropag';
 import Checkout from './pages/pagamento/checkoutPagamento.jsx/Checkout'
 
-
+import cadastroDeCardapio from './pages/login/cadastroDeCardapio'
+import cadastrodeprodutos from './pages/login/cadastrodeprodutos';
 
 function Routes(){
     return(
@@ -28,7 +29,8 @@ function Routes(){
         <Route path="/loginpag" component={loginPag}/>   
         <Route path="/cadastropag" component={cadastropag}/>
         <Route path="/Checkout" component={Checkout}/>
-        
+        <Route path="/cadastroDeCardapio" component={cadastroDeCardapio}/> 
+        <Route path="/cadastroDeProdutos" component={cadastrodeprodutos}/>  
      </Switch>
  </BrowserRouter>);
 };

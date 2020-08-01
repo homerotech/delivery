@@ -9,10 +9,14 @@ import Button from './buttonclasses'
 import logo1 from '../../img/download.jpeg';
 import logo2 from '../../img/download (1).jpeg';
 import logo3 from '../../img/download (2).jpeg';
+
+import dateStore from './dataStore'
 import date from './datacatalog'
 
 import RoomIcon from '@material-ui/icons/Room';
-
+import Pagamento from './pagamentosNaHora';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import dataStore from './dataStore';
 
 
 export default (props)=>{
@@ -25,10 +29,24 @@ export default (props)=>{
   })
   const [count, setCount]=useState(0)
   
+//pagamento na hora
+
+const pag = dateStore.map((dateStore)=>{
+   
+ 
+
+    if(dateStore.ticket == true){
+     
+      return(
+        
+        <Pagamento/>
+      )
+    }
+  })
   //aberto ou fechado component
   var d = new Date();
   var now = d.getHours() + "." + d.getMinutes();
-  function aberto(){if(now <= 8.00 || now >= 13.18 ){
+  const aberto = dateStore.map((dateStore)=>{if(now <= dateStore.abertura || now >= dateStore.fechamento ){
     return(
         <AlertClose/>
     )
@@ -36,11 +54,19 @@ export default (props)=>{
 }else {
 return(
     <AlertOpen/>
-)}}
+)}})
+//botao do zap
+
+
+
+
+
+
+
     return(
      
         <div>
-        {aberto()}      
+        {aberto}      
             <div class="jumbotron p-0">
 
 
@@ -66,7 +92,7 @@ return(
 <div>
   {lis}         
 </div>
-
+{pag}
 </div>
 <h5 style={{color: "#000b23"}}>Pedidos</h5>
 <ul class="list-group" style={{color: "#000b23"}}>
@@ -85,7 +111,8 @@ return(
 </ul>
 <br/>
 <a href="/loginpag"><button type="button" class="btn btn-success btn-lg btn-block" href="/pagamento">Realizar pedido</button></a>
-
+<br/>
+<div className><p style={{color:"black"}}>Qualquer alteração no pedido consultar o WhatsApp do fornecedor.</p><a href=""><button className="btn btn-outline-success botaozap"><WhatsAppIcon /></button></a></div>
 <br/>
         </div>
     )
