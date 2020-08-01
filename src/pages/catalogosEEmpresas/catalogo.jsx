@@ -17,8 +17,8 @@ import RoomIcon from '@material-ui/icons/Room';
 import Pagamento from './pagamentosNaHora';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import dataStore from './dataStore';
-
-
+import {Link} from 'react-router-dom'
+ 
 export default (props)=>{
   //pegando dados
   const lis = date.map((date)=>{
@@ -33,7 +33,7 @@ export default (props)=>{
 
 const pag = dateStore.map((dateStore)=>{
    
- 
+  
 
     if(dateStore.ticket == true){
      
@@ -46,7 +46,9 @@ const pag = dateStore.map((dateStore)=>{
   //aberto ou fechado component
   var d = new Date();
   var now = d.getHours() + "." + d.getMinutes();
-  const aberto = dateStore.map((dateStore)=>{if(now <= dateStore.abertura || now >= dateStore.fechamento ){
+  const aberto = dateStore.map((dateStore)=>{
+    
+    if(now <= dateStore.abertura || now >= dateStore.fechamento ){
     return(
         <AlertClose/>
     )
@@ -112,7 +114,7 @@ return(
 <br/>
 <a href="/loginpag"><button type="button" class="btn btn-success btn-lg btn-block" href="/pagamento">Realizar pedido</button></a>
 <br/>
-<div className><p style={{color:"black"}}>Qualquer alteração no pedido consultar o WhatsApp do fornecedor.</p><a href=""><button className="btn btn-outline-success botaozap"><WhatsAppIcon /></button></a></div>
+<div className><p style={{color:"black"}}>Qualquer alteração no pedido consultar o WhatsApp do fornecedor.</p><a href=""><button className="btn btn-outline-success botaozap" tag = {Link}  to ={"https://wa.me/"+dataStore.zap}><WhatsAppIcon /></button></a></div>
 <br/>
         </div>
     )
