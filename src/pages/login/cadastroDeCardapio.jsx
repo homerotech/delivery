@@ -7,6 +7,7 @@ export default (props)=>{
         <div style={{color:"black"}} >
             <Header/>
             <br/>
+            <h3>Cadastrar ou alterar cardapio</h3>
             <form className="container">
             <div class="form-row">
     <div class="form-group col-md-6">
@@ -78,7 +79,7 @@ export default (props)=>{
   <div class="form-group">
     
   </div>
-  <a href="/cadastroDeProdutos" class="btn btn-primary">Próximo</a>
+  <a href="/cadastroDeProdutos" class="btn btn-primary">Finalizar</a>
             </form>
         </div>
     )

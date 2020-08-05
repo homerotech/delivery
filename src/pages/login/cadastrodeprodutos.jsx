@@ -1,13 +1,43 @@
 import React from 'react';
 import Header from '../../components/header'
+import './cadastro.css'
 
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 export default (props)=>{
+    const [value, setValue] = React.useState('cadastro');
+
+    const handleChange = (event) => {
+      setValue(event.target.value);
+      
+    };
+    function CadastroOuAlteracao(value){
+        if (props.state.value==="alterar"){
+            return(
+                <div class="form-group">
+                <label for="inputAddress"><strong>id do produto que deseja alterar</strong></label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="Ex.: Calça jeans"/>
+                </div>
+            )
+        }
+    }
     return(
         <div>
             <Header/>
             <h2 style={{color:"black"}}><strong>Cadastro de produtos</strong></h2>
+            <FormControl component="fieldset" style={{color:"black"}}>
+            
+            <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+            <FormControlLabel value="cadastro" control={<Radio />} label="Cadastrar produto" />
+            <FormControlLabel value="alterar" control={<Radio />} label="Alterar produto" />
+            </RadioGroup>
+            </FormControl>
             <form style={{color:"black"}} className="container">
+                {CadastroOuAlteracao}
                 <div class="form-group">
                 <label for="inputAddress"><strong>Nome do produto</strong></label>
                 <input type="text" class="form-control" id="inputAddress" placeholder="Ex.: Calça jeans"/>
@@ -23,6 +53,10 @@ export default (props)=>{
                 <div class="form-group">
                 <label for="inputAddress"><strong>Preço</strong></label>
                 <input type="number" class="form-control" id="inputAddress" placeholder="2.55"/>
+                <div className="botoesfinais">
+                <a href="/cadastroDeProdutos" class="btn btn-primary">Cadastrar outro produto</a>
+                <a href="/cardapio" class="btn btn-primary">Finalizar</a>
+                </div>
                 </div>
                 
 </form>
