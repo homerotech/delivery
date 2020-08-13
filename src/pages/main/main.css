@@ -1,4 +1,4 @@
-@media(max-width: 800px){
+@media(max-width: 640px){
     .mainimage{
         border-radius: 50%;
         width: 100px;
@@ -9,8 +9,56 @@
     .carousel{
         height: 200px;
     }
+    .scroll{
+        
+            max-height: 500px;
+            overflow-y: auto;
+    }
+    .sobreprecos{
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-top: 30px;
+    }
 }
+
+
+@media(min-width: 640px){
+    .scroll::-webkit-scrollbar {
+        display: none;
+      }
+      .sobreprecos{
+        margin-top: 30px;
+    
+        width: 75%;
+    }
+    .scroll{
+        
+        margin-bottom: 50px;
+        min-width: 500px;
+        max-height: 500px;
+        overflow-y: auto;
+}
+    .emlinha{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+}
+
+
+
 @media(min-width: 800px){
+   #error404{
+    
+    width: 50%;
+    height: 400px;
+    
+   }
+    .sobreprecos{
+        margin-top: 30px;
+    
+        width: 75%;
+    }
     .mainimage{
         border-radius: 50%;
         width: 100px;
@@ -19,4 +67,29 @@
     .carousel{
         height: 400px;
     }
+    .scroll::-webkit-scrollbar {
+        display: none;
+      }
+    .scroll{
+        
+       
+        min-width: 300px;
+        max-height: 400px;
+        overflow-y: auto;
+}
+.scroll img{
+    width: 290px;
+}
+.emlinha{
+    display: flex;
+
+}
+.emlinha {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    margin-left: 20px;
+    flex-direction: row;
+    
+}
 }

@@ -1,8 +1,11 @@
 .scrolling-wrapper{
 	overflow-x: auto;
 }
-
+.body::-webkit-scrollbar {
+	display: none;
+  }
 body{
+	
 	color: #fff;
 	font-family: 'system-ui';
 }
@@ -22,7 +25,7 @@ h1{
 	background-color: #fff;
   border: none;
   border-radius: 0;
-	background: 	#225095;
+	background: 	#eedd82;
 	background-position: center;
 	background-size: cover;
   transition: all 0.2s ease-in-out !important;
