@@ -1,9 +1,7 @@
 import React from 'react';
 import Scroll from './scrollview'
 import Slide from './slider'
-import logo1 from '../../img/download.jpeg';
-import logo2 from '../../img/download (1).jpeg';
-import logo3 from '../../img/download (2).jpeg';
+
 import './main.css'
 import Header from '../../components/header'
 import Catalogo from '../catalogosEEmpresas/catalogo'
@@ -18,17 +16,18 @@ export default (props)=>{
   return(
         <div>
           <Header/>
-          <br/>
-            <h3 style={{color: "#08284d", fontFamily: "'Anton', sans-serif"}}>Seu Catálogo de produtos com pedidos via WhatsApp e plataforma de pagamentos!</h3>
+        <div style={{background: "#fff5c4" }}> <h3 style={{color: "#08284d", fontFamily: "'Anton', sans-serif" }}><br/>Seu Catálogo de produtos com pedidos via WhatsApp e plataforma de pagamentos!</h3><br style={{background: "#f7d7b2" }}/></div>
+           
             
             {/* barra vermelha */}
-            <br/>
+          
             <Slide data-aos="fade-zoom-in"/>
-<br/>
-<a href="#" style={{color: "white"}}><li class="media"  data-aos="fade-left">
+
+<a href="#" style={{color: "white", marginTop: "-500px"}}><li class="media"  data-aos="fade-left">
     
     <div class="card-body card" style={{backgroundColor: "#1672d7"}} data-aos="fade-zoom-in">
       <h3 class="mt-0 mb-1">Começe a vender pela internet hoje mesmo</h3>
+      <br/>
       Um catálogo digital para você cadastrar seus produtos e seus clientes poderem pedir o que quiserem, quando quiserem de onde estiverem sem intermediários
     </div>
   
@@ -48,9 +47,9 @@ export default (props)=>{
     <Lottie/>
         </div>  <br/>
         <div data-aos="fade-right"><Scroll/></div><br/>
-            <ul class="list-unstyled " style={{backgroundColor: "green"}} >
+            <ul class="list-unstyled " style={{backgroundColor: "green"}} data-aos="fade-left" >
             
-  <a href="#" style={{color: "green"}}><li class="media"  data-aos="fade-left">
+  <a href="#" style={{color: "green"}}><li class="media"  >
     
     <div class="card-body card container sobreprecos" style={{backgroundColor: "white"}} data-aos="fade-zoom-in">
       <small>70 produtos</small>
@@ -61,9 +60,9 @@ export default (props)=>{
       
   </li></a>
 
-  <a href="#" style={{color: "green"}}><li class="media"  data-aos="fade-right">
+  <a href="#" style={{color: "green"}}><li class="media" >
     
-    <div class="card-body card container sobreprecos" style={{backgroundColor: "white"}} data-aos="fade-zoom-in">
+    <div class="card-body card container sobreprecos" style={{backgroundColor: "white"}} >
       <small>120 produtos</small>
       <h2 class="mt-0 mb-1">R$89,90</h2>
       Pago semestralmente
@@ -74,9 +73,9 @@ export default (props)=>{
 
     
  
-  <a href="#" style={{color: "green"}}><li class="media"  data-aos="fade-left">
+  <a href="#" style={{color: "green"}}><li class="media" >
     
-    <div class="card-body card container sobreprecos" style={{backgroundColor: "white"}} data-aos="fade-zoom-in">
+    <div class="card-body card container sobreprecos" style={{backgroundColor: "white"}} >
       <small>250 produtos</small>
       <h2 class="mt-0 mb-1" >R$169,90</h2>
       Pago anualmente
@@ -87,7 +86,7 @@ export default (props)=>{
 
   <br/>  <br/>
 </ul>
-<p  style={{color: "#00b300"}}><br/>Garantia de 10 dias de reembolso. <br/>Integração com WhatsApp e plataforma de pagamento<br/> Pedidos ilimitados<br/> Opções de pagamento<br/>Opções de entrega<br/>Link de compartilhamento<br/></p>
+<p  style={{color: "#35CC3A"}}><br/>Garantia de 10 dias de reembolso. <br/>Integração com WhatsApp e plataforma de pagamento<br/> Pedidos ilimitados<br/> Opções de pagamento<br/>Opções de entrega<br/>Link de compartilhamento<br/></p>
 
         </div>
     )

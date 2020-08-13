@@ -61,7 +61,7 @@ return(
 
 var WhatsApp = dateStore.map((dateStore)=>{
   return(
-   <button className="btn btn-outline-success botao zap" tag = {Link}  to ={"https://wa.me/"+dataStore.num}><WhatsAppIcon /></button>
+   <button className="btn btn-outline-success botaozap" tag = {Link}  to ={"https://wa.me/"+dataStore.num}><WhatsAppIcon /></button>
    
   )
 });
@@ -117,9 +117,9 @@ var WhatsApp = dateStore.map((dateStore)=>{
   </li>
 </ul>
 <br/>
-<a href="/loginpag"><button type="button" class="btn btn-success btn-lg btn-block" href="/pagamento">Realizar pedido</button></a>
+<a href="/loginpag"><button type="button" class="btn btn-success btn-lg btn-block " href="/pagamento">Realizar pedido</button></a>
 <br/>
-    <div className><p style={{color:"black"}}>Qualquer alteração no pedido consultar o WhatsApp do fornecedor.</p>{WhatsApp}</div>
+    <div className><p style={{color:"black"}}>Qualquer alteração fale direto com o WhatsApp do fornecedor.</p>{WhatsApp}</div>
 <br/>
         </div>
     )
