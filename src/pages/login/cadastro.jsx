@@ -15,8 +15,17 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+
 import Header from '../../components/header'
+
+
+
 function Copyright() {
+
+
+  
+
+
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -92,7 +101,7 @@ export default function SignUp() {
                 autoComplete="lname"
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} >
               <TextField
                 autoComplete="fname"
                 name="firstName"
@@ -132,6 +141,8 @@ export default function SignUp() {
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
                 label="Eu aceito os termos e permissões do site"
               />
+              <br/>
+              <a href="../../../public/termos-lojas-facil-01-_1_.html" > Confira os termos e permissões</a>
             </Grid>
           </Grid>
           <Button

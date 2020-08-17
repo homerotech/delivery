@@ -11,6 +11,8 @@ import loginPag from './pages/pagamento/loginPag'
 import cadastropag from './pages/pagamento/cadastropag';
 import Checkout from './pages/pagamento/checkoutPagamento.jsx/Checkout'
 
+import Termo from './pdf/pdf'
+
 import cadastroDeCardapio from './pages/login/cadastroDeCardapio'
 import cadastrodeprodutos from './pages/login/cadastrodeprodutos';
 
@@ -31,6 +33,7 @@ function Routes(){
         <Route path="/Checkout" component={Checkout}/>
         <Route path="/cadastroDeCardapio" component={cadastroDeCardapio}/> 
         <Route path="/cadastroDeProdutos" component={cadastrodeprodutos}/>  
+        <Route path="/termos" component={Termo}/>
      </Switch>
  </BrowserRouter>);
 };
