@@ -1,19 +1,36 @@
-"scripts": {
-    "client": "cd dashboard && npm start",
-    "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
-  },
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "formidable": "^1.2.2",
-    "fs": "0.0.1-security",
-    "mongoose": "^5.9.19",
-    "multer": "^1.4.2",
-    "nodemon": "^2.0.4"
-  },
-  "devDependencies": {
-    "concurrently": "^4.1.2",
-    "cors": "^2.8.5"
-  }
-}
+const dbConfig = require('./backend/config/dbConfig')
+const mongoose = require('mongoose')
+
+mongoose.Promise = global.Promise;
+
+mongoose.connect(dbConfig.url,{
+  useNewUrlParser: true,
+  useUnifiedTopology: true 
+}).then( () => {
+  console.log("Conectado ao banco de dados")
+}).catch(err =>{
+  console.log("Erro ao conectar com o banco de dados")
+  process.exit();
+});
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors')
+const app = express();
+const port = process.env.PORT || 5000;
+
+
+app.use(cors())
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+require('./backend/routes/produtoRoute')(app);
+require('./backend/routes/restauranteRoute')(app);
+// require('./api/routes/clienteRoutes.js')(app);
+// require('./api/routes/counterRoutes.js')(app);
+// require('./api/routes/pedidoRoutes.js')(app);
+// require('./api/routes/uploadRoute.js')(app);
+
+app.listen(5000, () => console.log(`Listening on port ${port}`));
