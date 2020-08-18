@@ -1,9 +1,4 @@
-{
-  "name": "delivery",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
+"scripts": {
     "client": "cd dashboard && npm start",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
