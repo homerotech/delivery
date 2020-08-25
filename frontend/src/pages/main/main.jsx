@@ -5,7 +5,7 @@ import Slide from './slider'
 import './main.css'
 import Header from '../../components/header'
 import Catalogo from '../catalogosEEmpresas/catalogo'
-import Lottie from './lottie'
+import InfoCards from './infocards'
 import AOS from 'aos'
 
 
@@ -14,7 +14,7 @@ export default (props)=>{
     duration : 1000
   }) 
   return(
-        <div>
+        <div className="aplicativo">
           <Header/>
         <div style={{background: "#fff5c4" }}> <h3 style={{color: "#08284d", fontFamily: "'Anton', sans-serif" }}><br/>Seu Catálogo de produtos com pedidos via WhatsApp e plataforma de pagamentos!</h3><br style={{background: "#f7d7b2" }}/></div>
            
@@ -44,12 +44,28 @@ export default (props)=>{
       
     </div>
     <br/>
-    <Lottie/>
-        </div>  <br/>
-        <div data-aos="fade-right"><Scroll/></div><br/>
+   
+        </div> 
+        
+        <div className="emlinha">
+        <InfoCards
+        subtitle="Crie seu catálogo e receba ppedidos pela internet direto no seu WhatsApp"
+        text="Cadastre seus produtos, descrições. Insira fotos e muito mais. Personalize seu catálogo e ofereça muito mais. Personalize seu catálogo e ofereça opções de pagamento e entrega"
+        />
+        <InfoCards
+        subtitle="Gerencie tudo pelo celular"
+        text="Altere seu perfil, opções para pagamento, altere preços e interaja com seu cliente pelo WhatsApp"
+        />
+      
+        </div>
+        
+        
+         <br/>
+
+
             <ul class="list-unstyled " style={{backgroundColor: "green"}} data-aos="fade-left" >
             
-  <a href="#" style={{color: "green"}}><li class="media"  >
+  <a style={{color: "green"}}><li class="media"  >
     
     <div class="card-body card container sobreprecos" style={{backgroundColor: "white"}} data-aos="fade-zoom-in">
       <small>70 produtos</small>
@@ -60,7 +76,7 @@ export default (props)=>{
       
   </li></a>
 
-  <a href="#" style={{color: "green"}}><li class="media" >
+  <a style={{color: "green"}}><li class="media" >
     
     <div class="card-body card container sobreprecos" style={{backgroundColor: "white"}} >
       <small>120 produtos</small>
@@ -73,7 +89,7 @@ export default (props)=>{
 
     
  
-  <a href="#" style={{color: "green"}}><li class="media" >
+  <a style={{color: "green"}}><li class="media" >
     
     <div class="card-body card container sobreprecos" style={{backgroundColor: "white"}} >
       <small>250 produtos</small>
@@ -87,7 +103,7 @@ export default (props)=>{
   <br/>  <br/>
 </ul>
 <p  style={{color: "#35CC3A"}}><br/>Garantia de 10 dias de reembolso. <br/>Integração com WhatsApp e plataforma de pagamento<br/> Pedidos ilimitados<br/> Opções de pagamento<br/>Opções de entrega<br/>Link de compartilhamento<br/></p>
-
+<div data-aos="fade-left"><Scroll/></div><br/>
         </div>
     )
 }
