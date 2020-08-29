@@ -6,21 +6,43 @@ import logo3 from '../../img/download (2).jpeg';
 
 import Empresas from './empresas'
 import Header from '../../components/header'
-export default (props)=>{
-    return(
-        <div>
-            <Header/>
-            <Empresas img={logo1} title="rodizio"  />
-            <Empresas img={logo3} title="tapiocaria" />
-            <Empresas img={logo2} title="pizzaria" />
-            <Empresas img={logo1} title="hamburgueria" />
-            <Empresas img={logo3} title="Pastel top 10" />
-            <Empresas img={logo2} title="rodizio" />
-            <Empresas img={logo3} title="rodizio" />
-            <Empresas img={logo1} title="rodizio" />
-            <Empresas img={logo2} title="rodizio" />
-            <Empresas img={logo3} title="rodizio" />
-            <Empresas img={logo1} title="rodizio" />
-        </div>
-    )
-}
+import empresas from './empresas';
+
+class pgEmpresas extends React.Component {
+
+    constructor(){
+        super()
+        this.state= {
+            isLoading: true,
+            Empresas: []
+        }
+    }
+
+    componentDidMount(){
+        fetch("http://localhost:5000/api/restaurante").then(
+            produtos => produtos.json()
+            )
+        .then(data => {
+            this.setState({
+                Empresas: data,
+                isLoading: false
+            })
+        })
+        .catch(err => console.log(err))
+
+    }
+
+    render(){
+        const empresaComponents = (this.state.Empresas && this.state.Empresas.length) ? this.state.Empresas.map(empresa => <Empresas title={empresas.name} />) : <h2 style={{textAlign:"center", color:'black'}}>Nenhum Restaurante Cadastrado</h2>;
+        const loading = this.state.isLoading ? <h5 style={{color:'black'}}>Carregando...</h5> : empresaComponents 
+        return(
+            <div>
+                <Header/>   
+                {loading}
+            </div>
+        )
+        }
+
+    }
+
+export default pgEmpresas
