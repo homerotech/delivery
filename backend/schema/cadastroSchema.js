@@ -9,6 +9,7 @@ const cadastroSchema = mongoose.Schema({
     senha: String,
     cpf: Number
     
+    
 }, {
     timestamps: true
 });

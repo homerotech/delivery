@@ -1,8 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -13,6 +11,10 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+
 
 function Copyright() {
   return (
@@ -64,10 +66,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Endereço de entrega', 'Dados do pagamento', 'Review your order'];
+const steps = ['Dados do Cliente', 'Dados do pagamento', 'Revisão do pedido'];
 
 function getStepContent(step) {
-  switch (step) {
+  switch (step) { 
     case 0:
       return <AddressForm />;
     case 1:
@@ -76,20 +78,32 @@ function getStepContent(step) {
       return <Review />;
     default:
       throw new Error('Unknown step');
-  }
+    }
 }
 
 export default function Checkout() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
   const [activeStep, setActiveStep] = React.useState(0);
+  
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
+    setOpen(true);
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+  
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+
+  
 
   return (
     <React.Fragment>
@@ -111,14 +125,14 @@ export default function Checkout() {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h1" gutterBottom>
-                  Thank you for your order.
+                  Obrigado por Comprar com Lojas Fácil.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order confirmation, and will
-                  send you an update when your order has shipped.
+                  O número do seu pedido é #2001539. Enviamos um email para confirmação do seu pedido, voltaremos 
+                  com qualquer atualização do seu pedido.
                 </Typography>
               </React.Fragment>
-            ) : (
+            ):(
               <React.Fragment>
                 {getStepContent(activeStep)}
                 <div className={classes.buttons}>
@@ -133,14 +147,33 @@ export default function Checkout() {
                     onClick={handleNext}
                     className={classes.button}
                   >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Próximo'}
+                    {activeStep == steps.length - 1 ? 'Realizar pedido' : 'Próximo'}
                   </Button>
                 </div>
               </React.Fragment>
             )}
           </React.Fragment>
         </Paper>
-        
+        <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Note archived"
+        action={
+          <React.Fragment>
+            <Button color="secondary" size="small" onClick={handleClose}>
+              UNDO
+            </Button>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
       </main>
     </React.Fragment>
   );}
