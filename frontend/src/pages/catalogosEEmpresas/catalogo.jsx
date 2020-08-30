@@ -16,26 +16,42 @@ import date from './datacatalog'
 import RoomIcon from '@material-ui/icons/Room';
 import Pagamento from './pagamentosNaHora';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
-import dataStore from './dataStore';
-import {Link} from 'react-router-dom'
+
+
  
 export default (props)=>{
-  //pegando dados
+  
+
+
+
+var produtos = [];
+ 
+const pago = produtos.map((j)=>{
+    return(
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+      {j}
+      <span class="badge badge-primary badge-pill">R$14.00</span></li>
+    )
+})
+
   const lis = date.map((date)=>{
     return(
       //Concertando codigos, tem de colocar a imagem no objeto
-      <Produto img={logo3} title={date.title} preco={date.preco} codigo={date.codigo}/>
+      <Produto img={logo3} title={date.title} preco={date.preco} codigo={date.codigo} click={()=>{
+       produtos.push(date.codigo)
+      }}/>
     );
   })
-  const [count, setCount]=useState(0)
-  
+
+console.log(produtos)
+   
 //pagamento na hora
 
 const pag = dateStore.map((dateStore)=>{
    
   
 
-    if(dateStore.ticket == true){
+    if(dateStore.ticket === true){
      
       return(
         
@@ -59,9 +75,9 @@ return(
 )}})
 //botao do zap
 
-var WhatsApp = dateStore.map((dateStore)=>{
+var WhatsApp = dateStore.map((zap)=>{
   return(
-   <button className="btn btn-outline-success botaozap" tag = {Link}  to ={"https://wa.me/"+dataStore.num}><WhatsAppIcon /></button>
+   <a className="btn btn-outline-success botaozap"   href={"https://wa.me/"+ zap.num}><WhatsAppIcon /></a>
    
   )
 });
@@ -103,18 +119,7 @@ var WhatsApp = dateStore.map((dateStore)=>{
 </div>
 <h5 style={{color: "#000b23"}}>Pedidos</h5>
 <ul class="list-group" style={{color: "#000b23"}}>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Pizza de peperoni
-    <span class="badge badge-primary badge-pill">R$14.00</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Vinho do porto
-    <span class="badge badge-primary badge-pill">R$2.00</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Chiclete
-    <span class="badge badge-primary badge-pill">R$1.00</span>
-  </li>
+ {pago}
 </ul>
 <br/>
 <a href="/loginpag"><button type="button" class="btn btn-success btn-lg btn-block " href="/pagamento">Realizar pedido</button></a>

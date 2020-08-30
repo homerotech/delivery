@@ -1,4 +1,4 @@
-import SimpleAlerts from "./AlertOpen";
+
 
 export default[
     {title:"Macarrão Carbonara",  preco:"50.00", codigo:"55450"},

@@ -98,22 +98,7 @@ export default function TemporaryDrawer() {
               <MenuIcon />
             </IconButton>
           
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              
-            </div>
-            <InputBase
-              placeholder="&nbsp;&nbsp;Pesquisar"
-              style={{backgroundColor: "white", borderRadius: "20px",fontColor: "#022235", opacity: "0.4"}}
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              
-              inputProps={{ 'aria-label': 'search' }}
-              id="input"
-            />
-          </div><SearchIcon type="submit"/>
+        
           <div className={classes.grow} />
           <div className="iconsheaderMobile">
           
