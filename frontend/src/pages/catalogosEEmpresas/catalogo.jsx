@@ -1,17 +1,16 @@
-import React,{useState} from 'react'
+import React, {useState} from 'react';
 import logorestaurante from '../../img/logo-restaurante.png';
-import '../../components/header'
-import './catalogo.css'
+
+import './catalogo.css';
 import Produto from './produtos'
 import AlertOpen from './AlertOpen';
 import AlertClose from './AlertClose';
 import Button from './buttonclasses'
-import logo1 from '../../img/download.jpeg';
-import logo2 from '../../img/download (1).jpeg';
+
 import logo3 from '../../img/download (2).jpeg';
 
-import dateStore from './dataStore'
-import date from './datacatalog'
+import dateStore from './dataStore';
+import date from './datacatalog';
 
 import RoomIcon from '@material-ui/icons/Room';
 import Pagamento from './pagamentosNaHora';
@@ -22,23 +21,22 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 export default (props)=>{
   
 
+const [produtos, useProdutos] = useState([])
 
-
-var produtos = [];
  
-const pago = produtos.map((j)=>{
-    return(
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-      {j}
-      <span class="badge badge-primary badge-pill">R$14.00</span></li>
-    )
+var pago = produtos.map((elistop)=>{
+  return(
+    <li class="list-group-item d-flex justify-content-between align-items-center" key={elistop}>
+    {elistop[0]}
+  <span class="badge badge-primary badge-pill">R$ {elistop[1]}</span></li>
+  )
 })
 
   const lis = date.map((date)=>{
     return(
       //Concertando codigos, tem de colocar a imagem no objeto
       <Produto img={logo3} title={date.title} preco={date.preco} codigo={date.codigo} click={()=>{
-       produtos.push(date.codigo)
+        useProdutos([...produtos, [date.title, date.preco, date.codigo]]);
       }}/>
     );
   })
@@ -119,7 +117,7 @@ var WhatsApp = dateStore.map((zap)=>{
 </div>
 <h5 style={{color: "#000b23"}}>Pedidos</h5>
 <ul class="list-group" style={{color: "#000b23"}}>
- {pago}
+  {pago}
 </ul>
 <br/>
 <a href="/loginpag"><button type="button" class="btn btn-success btn-lg btn-block " href="/pagamento">Realizar pedido</button></a>
