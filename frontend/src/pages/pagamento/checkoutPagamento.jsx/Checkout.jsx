@@ -16,19 +16,6 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: 'relative',
@@ -81,6 +68,36 @@ function getStepContent(step) {
     }
 }
 
+function testeNullInput(step) {
+  var returnStatement= true;
+  if(step==0){
+    var nome =document.getElementById('firstName').value;
+    var sobrenome =document.getElementById('lastName').value;
+    var adres =document.getElementById('address1').value;
+    var cidade =document.getElementById('city').value;
+    var CEP =document.getElementById('zip').value;
+    var tel_n =document.getElementById('cel').value;
+    if(nome.length==0){returnStatement=false;}
+    if(sobrenome.length==0){returnStatement=false;}
+    if(adres.length==0){returnStatement=false;}
+    if(cidade.length==0){returnStatement=false;}
+    if(CEP.length==0){returnStatement=false;}
+    if(tel_n.length==0){returnStatement=false;}
+  }
+  if(step==1){
+    var nome_c =document.getElementById('cardName').value;
+    var CA =document.getElementById('CA').value;
+    var expDT =document.getElementById('cvv').value;
+    var CVV =document.getElementById('city').value;
+    
+    if(nome_c.length==0){returnStatement=false;}
+    if(CA.length==0){returnStatement=false;}
+    if(expDT.length==0){returnStatement=false;}
+    if(CVV.length==0){returnStatement=false;}
+  } 
+  return returnStatement;
+}
+
 export default function Checkout() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -88,8 +105,10 @@ export default function Checkout() {
   
 
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
-    setOpen(true);
+    if(testeNullInput(activeStep)){
+      setActiveStep(activeStep + 1);
+    }
+      setOpen(true);
   };
 
   const handleBack = () => {
@@ -122,7 +141,7 @@ export default function Checkout() {
             ))}
           </Stepper>
           <React.Fragment>
-            {activeStep === steps.length ? (
+            {activeStep == steps.length ? (
               <React.Fragment>
                 <Typography variant="h1" gutterBottom>
                   Obrigado por Comprar com Lojas Fácil.
@@ -134,13 +153,24 @@ export default function Checkout() {
               </React.Fragment>
             ):(
               <React.Fragment>
+                
                 {getStepContent(activeStep)}
-                <div className={classes.buttons}>
+                  
+                  {activeStep < 2 && (
+                    <Typography variant="subtitle2" style={ {display:"flex",float : "left", color: '#bababa'}} >
+                    * = Campo Obrigátório
+                    </Typography>
+                  )}
+                  
+                  <div className={classes.buttons}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} className={classes.button}>
-                      Back
+                      Voltar
                     </Button>
                   )}
+
+
+
                   <Button
                     variant="contained"
                     color="primary"
@@ -162,12 +192,9 @@ export default function Checkout() {
         open={open}
         autoHideDuration={6000}
         onClose={handleClose}
-        message="Note archived"
+        message="Campo Obrigatório Vazio"
         action={
           <React.Fragment>
-            <Button color="secondary" size="small" onClick={handleClose}>
-              UNDO
-            </Button>
             <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
               <CloseIcon fontSize="small" />
             </IconButton>
