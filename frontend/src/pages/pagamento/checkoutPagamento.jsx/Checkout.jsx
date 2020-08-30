@@ -86,9 +86,9 @@ function testeNullInput(step) {
   }
   if(step==1){
     var nome_c =document.getElementById('cardName').value;
-    var CA =document.getElementById('CA').value;
-    var expDT =document.getElementById('cvv').value;
-    var CVV =document.getElementById('city').value;
+    var CA =document.getElementById('cardNumber').value;
+    var expDT =document.getElementById('expDate').value;
+    var CVV =document.getElementById('cvv').value;
     
     if(nome_c.length==0){returnStatement=false;}
     if(CA.length==0){returnStatement=false;}
