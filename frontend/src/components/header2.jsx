@@ -72,26 +72,8 @@ export default function TemporaryDrawer() {
         
       </List>
       <Divider />
-      <List>
-      <a href="/pgempresas">
-        
-        <ListItem button >
-      <ListItemIcon> </ListItemIcon>
-            <ListItemText  primary="Restaurantes" style={{color: "#022235"}}/></ListItem></a>  
-      
-            <a href="/"><ListItem button >
-      <ListItemIcon> </ListItemIcon>
-            <ListItemText  primary="Casa" style={{color: "#022235"}}/></ListItem></a>
+     
 
-            <a href="/"><ListItem button >
-      <ListItemIcon> </ListItemIcon>
-            <ListItemText  primary="Materiais" style={{color: "#022235"}}/></ListItem></a>
-      
-
-            <a href="/"><ListItem button >
-      <ListItemIcon> </ListItemIcon>
-            <ListItemText  primary="Lojas" style={{color: "#022235"}}/></ListItem></a>
-      </List>
     </div>
   );
 

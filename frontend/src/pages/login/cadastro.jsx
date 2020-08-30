@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useState }  from 'react';
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -11,7 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
@@ -20,23 +20,6 @@ import Header from '../../components/header'
 
 
 
-function Copyright() {
-
-
-  
-
-
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -60,7 +43,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
-
+  const [value, setValue] = useState('Consumidor');
+  
   return (
   <div>
     <Header/>
@@ -71,7 +55,7 @@ export default function SignUp() {
         <form className={classes.form} noValidate>
         <FormControl component="fieldset">
   <FormLabel component="legend">Tipo de cadastro</FormLabel>
-  <RadioGroup aria-label="gender" name="gender1" >
+  <RadioGroup aria-label="gender" name="tipoempreendimento" >
     <FormControlLabel value="Empreendimento" control={<Radio />} label="Empreendimento" />
     <FormControlLabel value="Consumidor" control={<Radio />} label="Consumidor" />
     
