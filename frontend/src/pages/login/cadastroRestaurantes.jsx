@@ -136,7 +136,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            href="/cadastroRestaurante"
+            href="/cadastroDeCardapio"
           >
             Cadastre-se
           </Button>
