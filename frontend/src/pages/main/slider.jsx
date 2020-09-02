@@ -1,7 +1,8 @@
 import React from 'react';
 import logo1 from '../../img/download.jpeg';
-import logo2 from '../../img/download (1).jpeg';
-import logo3 from '../../img/download (2).jpeg';
+import logo2 from '../../img/download1.jpeg';
+import logo3 from '../../img/download2.jpeg';
+import logo4 from '../../img/download3.jpeg';
 
 
 export default (props)=>{
@@ -17,6 +18,9 @@ export default (props)=>{
     </div>
     <div class="carousel-item">
       <img src={logo3} class="d-block w-100 carousel" alt="..."/>
+    </div>
+    <div class="carousel-item">
+      <img src={logo4} class="d-block w-100 carousel" alt="..."/>
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
