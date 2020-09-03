@@ -38,8 +38,9 @@ class SignUp extends React.Component {
   }
 
   cadastrarCliente(){
+    var now = new Date().getTime();
     var data = {
-      _id: 2,
+      _id: now,
       nome: this.state.Nome,
       sobrenome: this.state.Sobrenome,
       email: this.state.Email,
