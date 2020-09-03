@@ -22,10 +22,6 @@ import Header from '../../components/header'
 
 function Copyright() {
 
-
-  
-
-
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -35,7 +31,7 @@ function Copyright() {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
-  );
+  ); 
 }
 
 
@@ -50,9 +46,44 @@ class SignUp extends React.Component {
       Email:'',
       Senha:'',
       documento:'',
-      emprendimento: null
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.cadastrarCliente = this.cadastrarCliente.bind(this);
+
+
   }
+
+  cadastrarCliente(){
+    var data = {
+      _id: 2,
+      nome: this.state.Nome,
+      sobrenome: this.state.Sobrenome,
+      email: this.state.Email,
+      senha: this.state.Senha,
+      documento: this.state.documento
+    }
+    data = JSON.stringify(data)
+        console.log(data)
+        fetch('http://localhost:5000/api/cadastro',{
+            method:"POST",
+            headers: {'Content-Type': 'application/json'},
+            body:data
+        }).then(alert('Cadastrado com sucesso'))
+        .catch(err => alert(err))
+        window.location.href = "/";
+
+  }
+
+  handleChange(event){
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+        [name]:value
+    });
+    console.log(value)
+}
 
   render(){
   return (
@@ -64,25 +95,20 @@ class SignUp extends React.Component {
       <h1>Cadastre-se</h1>
         <form  noValidate>
         <FormControl component="fieldset">
-  <FormLabel component="legend">Tipo de cadastro</FormLabel>
-  <RadioGroup aria-label="gender" name="gender1" >
-    <FormControlLabel value="Empreendimento" control={<Radio />} label="Empreendimento" />
-    <FormControlLabel value="Consumidor" control={<Radio />} label="Consumidor" />
-    
-  </RadioGroup>
 </FormControl>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="Nome"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
+                id="Nome"
                 label="Nome"
                 value={this.state.Nome}
                 autoFocus
+                onChange={this.handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -90,24 +116,27 @@ class SignUp extends React.Component {
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
+                id="Sobrenome"
                 label="Sobrenome"
-                name="lastName"
+                name="Sobrenome"
                 autoComplete="lname"
                 value={this.state.Sobrenome}
+                onChange={this.handleChange}
               />
             </Grid>
             <Grid item xs={12} >
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="documento"
                 variant="outlined"
                 required
                 fullWidth
+                type="number"
                 id="documento"
-                label="CPF/CNPJ"
+                label="CNPJ"
                 value={this.state.documento}
                 autoFocus
+                onChange={this.handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -115,11 +144,12 @@ class SignUp extends React.Component {
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
+                id="Email"
                 label="Email"
-                name="email"
-                autoComplete="email"
+                name="Email"
+                autoComplete="Email"
                 value={this.state.Email}
+                onChange={this.handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -127,12 +157,13 @@ class SignUp extends React.Component {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
-                label="Password"
+                name="Senha"
+                label="Senha"
                 type="password"
-                id="password"
+                id="Senha"
                 autoComplete="current-password"
                 value={this.state.Senha}
+                onChange={this.handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -145,12 +176,11 @@ class SignUp extends React.Component {
             </Grid>
           </Grid>
           <Button
-            type="submit"
+            onClick={this.cadastrarCliente}
             fullWidth
             variant="contained"
             color="primary"
             // alterar
-            href="/cadastropag"
           >
             Cadastre-se
           </Button>
