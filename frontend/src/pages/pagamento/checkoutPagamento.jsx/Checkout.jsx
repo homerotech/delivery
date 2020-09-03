@@ -1,8 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -13,19 +11,10 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -64,10 +53,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Endereço de entrega', 'Dados do pagamento', 'Review your order'];
+const steps = ['Dados do Cliente', 'Dados do pagamento', 'Revisão do pedido'];
 
 function getStepContent(step) {
-  switch (step) {
+  switch (step) { 
     case 0:
       return <AddressForm />;
     case 1:
@@ -76,20 +65,64 @@ function getStepContent(step) {
       return <Review />;
     default:
       throw new Error('Unknown step');
+    }
+}
+
+function testeNullInput(step) {
+  var returnStatement= true;
+  if(step==0){
+    var nome =document.getElementById('firstName').value;
+    var sobrenome =document.getElementById('lastName').value;
+    var adres =document.getElementById('address1').value;
+    var cidade =document.getElementById('city').value;
+    var CEP =document.getElementById('zip').value;
+    var tel_n =document.getElementById('cel').value;
+    if(nome.length==0){returnStatement=false;}
+    if(sobrenome.length==0){returnStatement=false;}
+    if(adres.length==0){returnStatement=false;}
+    if(cidade.length==0){returnStatement=false;}
+    if(CEP.length==0){returnStatement=false;}
+    if(tel_n.length==0){returnStatement=false;}
   }
+  if(step==1){
+    var nome_c =document.getElementById('cardName').value;
+    var CA =document.getElementById('cardNumber').value;
+    var expDT =document.getElementById('expDate').value;
+    var CVV =document.getElementById('cvv').value;
+    
+    if(nome_c.length==0){returnStatement=false;}
+    if(CA.length==0){returnStatement=false;}
+    if(expDT.length==0){returnStatement=false;}
+    if(CVV.length==0){returnStatement=false;}
+  } 
+  return returnStatement;
 }
 
 export default function Checkout() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
   const [activeStep, setActiveStep] = React.useState(0);
+  
 
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
+    if(testeNullInput(activeStep)){
+      setActiveStep(activeStep + 1);
+    }
+      setOpen(true);
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+  
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+
+  
 
   return (
     <React.Fragment>
@@ -108,39 +141,66 @@ export default function Checkout() {
             ))}
           </Stepper>
           <React.Fragment>
-            {activeStep === steps.length ? (
+            {activeStep == steps.length ? (
               <React.Fragment>
                 <Typography variant="h1" gutterBottom>
-                  Thank you for your order.
+                  Obrigado por Comprar com Lojas Fácil.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order confirmation, and will
-                  send you an update when your order has shipped.
+                  O número do seu pedido é #2001539. Enviamos um email para confirmação do seu pedido, voltaremos 
+                  com qualquer atualização do seu pedido.
                 </Typography>
               </React.Fragment>
-            ) : (
+            ):(
               <React.Fragment>
+                
                 {getStepContent(activeStep)}
-                <div className={classes.buttons}>
+                  
+                  {activeStep < 2 && (
+                    <Typography variant="subtitle2" style={ {display:"flex",float : "left", color: '#bababa'}} >
+                    * = Campo Obrigátório
+                    </Typography>
+                  )}
+                  
+                  <div className={classes.buttons}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} className={classes.button}>
-                      Back
+                      Voltar
                     </Button>
                   )}
+
+
+
                   <Button
                     variant="contained"
                     color="primary"
                     onClick={handleNext}
                     className={classes.button}
                   >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Próximo'}
+                    {activeStep == steps.length - 1 ? 'Realizar pedido' : 'Próximo'}
                   </Button>
                 </div>
               </React.Fragment>
             )}
           </React.Fragment>
         </Paper>
-        
+        <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Campo Obrigatório Vazio"
+        action={
+          <React.Fragment>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
       </main>
     </React.Fragment>
   );}

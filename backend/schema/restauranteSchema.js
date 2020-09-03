@@ -14,7 +14,8 @@ const restauranteSchema = mongoose.Schema({
     descricaoRestaurante: String,
     logo: String,
     estado: String,
-    CEP: Number
+    CEP: Number,
+    frete: Number
 }, {
     timestamps: true
 });
