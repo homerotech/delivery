@@ -11,7 +11,7 @@ import loginPag from './pages/pagamento/loginPag'
 import cadastropag from './pages/pagamento/cadastropag';
 import Checkout from './pages/pagamento/checkoutPagamento.jsx/Checkout'
 import PrivateRoute from './PrivateRoute'
-
+import dashboard from './pages/dashboard/dashboard'
 import Termo from './pdf/pdf'
 
 import cadastroDeCardapio from './pages/login/cadastroDeCardapio'
@@ -28,6 +28,7 @@ function Routes(){
         <Route path="/cadastro" component={cadastro}/>     
         <Route path="/contato" component={contato}/>   
         <PrivateRoute path="/cadastroRestaurante" component={restaurantecadastro}/> 
+        <Route path="/dashboard" component={dashboard}/> 
         <Route path="/pgempresas" component={pgempresas}/>     
         <Route path="/cardapio" component={catalogo}/>  
         <Route path="/loginpag" component={loginPag}/>   
