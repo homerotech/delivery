@@ -1,4 +1,4 @@
-const Cliente = require('../schemas/cadastroSchema');
+const Cliente = require('../schema/cadastroSchema');
 
     //Cadastrar cliente
     exports.create = (req,res) => {

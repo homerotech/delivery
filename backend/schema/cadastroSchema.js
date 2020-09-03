@@ -7,7 +7,7 @@ const cadastroSchema = mongoose.Schema({
     sobrenome: String ,
     email: String,
     senha: String,
-    cpf: Number
+    documento: Number
     
 }, {
     timestamps: true
