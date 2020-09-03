@@ -28,8 +28,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 require('./backend/routes/produtoRoute')(app);
 require('./backend/routes/restauranteRoute')(app);
-// require('./api/routes/clienteRoutes.js')(app);
-// require('./api/routes/counterRoutes.js')(app);
+ require('./backend/routes/cadastroRoute')(app);
+ require('./backend/routes/authRoute.js')(app);
 // require('./api/routes/pedidoRoutes.js')(app);
 // require('./api/routes/uploadRoute.js')(app);
 

@@ -10,31 +10,35 @@ import catalogo from './pages/catalogosEEmpresas/catalogo';
 import loginPag from './pages/pagamento/loginPag'
 import cadastropag from './pages/pagamento/cadastropag';
 import Checkout from './pages/pagamento/checkoutPagamento.jsx/Checkout'
+import PrivateRoute from './PrivateRoute'
 
 import Termo from './pdf/pdf'
 
 import cadastroDeCardapio from './pages/login/cadastroDeCardapio'
 import cadastrodeprodutos from './pages/login/cadastrodeprodutos';
 
+ 
+
 function Routes(){
     return(
  <BrowserRouter>
      <Switch>
-        
         <Route path="/" exact component={main}/>
         <Route path="/login" component={login}/>   
         <Route path="/cadastro" component={cadastro}/>     
         <Route path="/contato" component={contato}/>   
-        <Route path="/cadastroRestaurante" component={restaurantecadastro}/> 
+        <PrivateRoute path="/cadastroRestaurante" component={restaurantecadastro}/> 
         <Route path="/pgempresas" component={pgempresas}/>     
         <Route path="/cardapio" component={catalogo}/>  
         <Route path="/loginpag" component={loginPag}/>   
         <Route path="/cadastropag" component={cadastropag}/>
         <Route path="/Checkout" component={Checkout}/>
-        <Route path="/cadastroDeCardapio" component={cadastroDeCardapio}/> 
-        <Route path="/cadastroDeProdutos" component={cadastrodeprodutos}/>  
+        <PrivateRoute path="/cadastroDeCardapio" component={cadastroDeCardapio}/> 
+        <PrivateRoute path="/cadastroDeProdutos" component={cadastrodeprodutos}/>  
         <Route path="/termos" component={Termo}/>
      </Switch>
  </BrowserRouter>);
 };
+
+ 
 export default Routes;
