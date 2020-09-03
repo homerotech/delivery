@@ -48,14 +48,14 @@ export default (props)=>{
         </div> 
         
         <div className="emlinha">
-        <InfoCards
-        subtitle="Crie seu catálogo e receba ppedidos pela internet direto no seu WhatsApp"
-        text="Cadastre seus produtos, descrições. Insira fotos e muito mais. Personalize seu catálogo e ofereça muito mais. Personalize seu catálogo e ofereça opções de pagamento e entrega"
-        />
-        <InfoCards
-        subtitle="Gerencie tudo pelo celular"
-        text="Altere seu perfil, opções para pagamento, altere preços e interaja com seu cliente pelo WhatsApp"
-        />
+          <InfoCards
+          subtitle="Crie seu catálogo e receba pedidos pela internet direto no seu WhatsApp"
+          text="Cadastre seus produtos, descrições. Insira fotos e muito mais. Personalize seu catálogo e ofereça muito mais. Personalize seu catálogo e ofereça opções de pagamento e entrega"
+          />
+          <InfoCards
+          subtitle="Gerencie tudo pelo celular"
+          text="Altere seu perfil, opções para pagamento, altere preços e interaja com seu cliente pelo WhatsApp"
+          />
       
         </div>
         
@@ -71,21 +71,24 @@ export default (props)=>{
       <small>70 produtos</small>
       <h2 class="mt-0 mb-1">R$49,90</h2>
       Pago trimestralmente
-      <a href="#" class="btn btn-primary" style={{backgroundColor: "#B8860B", border:"none"}}>Trimestral</a>
+      <a href="/cadastro" class="btn btn-primary" style={{backgroundColor: "#B8860B", border:"none"}}>Trimestral</a>
     </div>
       
   </li></a>
 
-  <a style={{color: "green"}}><li class="media" >
-    
-    <div class="card-body card container sobreprecos" style={{backgroundColor: "white"}} >
-      <small>120 produtos</small>
-      <h2 class="mt-0 mb-1">R$89,90</h2>
-      Pago semestralmente
-      <a href="#" class="btn btn-primary" style={{backgroundColor: "#B8860B", border:"none"}}>Semestral</a>
-    </div>
+
+  <a style={{color: "green"}}>
+    <li class="media" >
       
-  </li></a>
+      <div class="card-body card container sobreprecos" style={{backgroundColor: "white"}} >
+        <small>120 produtos</small>
+        <h2 class="mt-0 mb-1">R$89,90</h2>
+        Pago semestralmente
+        <a href="/cadastro" class="btn btn-primary" style={{backgroundColor: "#B8860B", border:"none"}}>Semestral</a>
+      </div>
+      
+    </li>
+  </a>
 
     
  
@@ -95,7 +98,7 @@ export default (props)=>{
       <small>250 produtos</small>
       <h2 class="mt-0 mb-1" >R$169,90</h2>
       Pago anualmente
-      <a href="#" class="btn btn-primary" style={{backgroundColor: "#B8860B", border:"none"}}>Anual</a>
+      <a href="/cadastro" class="btn btn-primary" style={{backgroundColor: "#B8860B", border:"none"}}>Anual</a>
     </div>
       
   </li></a>
