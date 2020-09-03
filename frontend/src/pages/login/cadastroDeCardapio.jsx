@@ -16,7 +16,7 @@ export default (props)=>{
     </div>
     <form>
   <div class="form-group">
-    <label for="exampleFormControlFile1">Logo do restaurante</label>
+    <label for="exampleFormControlFile1"><strong>Logo do restaurante</strong></label>
     <input type="file" class="form-control-file" id="exampleFormControlFile1"/>
   </div>
 </form>
@@ -30,6 +30,10 @@ export default (props)=>{
     <input type="text" class="form-control" id="inputAddress2" placeholder=""/>
   </div>
   <div class="form-row">
+  <div class="form-group col-md-6">
+      <label for="inputCity">Token mercado pago</label>
+      <input type="text" class="form-control" id="inputToken"/>
+    </div>
     <div class="form-group col-md-6">
       <label for="inputCity">Cidade</label>
       <input type="text" class="form-control" id="inputCity"/>

@@ -55,7 +55,7 @@ export default (props)=>{
                 <input type="number" class="form-control" id="inputAddress" placeholder="2.55"/>
                 <div className="botoesfinais">
                 <a href="/cadastroDeProdutos" class="btn btn-primary">Cadastrar outro produto</a>
-                <a href="/cardapio" class="btn btn-primary">Finalizar</a>
+                <a href="/checkout" class="btn btn-primary">Finalizar</a>
                 </div>
                 </div>
                 

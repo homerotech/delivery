@@ -56,7 +56,7 @@ export default function SignIn() {
       <CssBaseline />
       <div className={classes.paper}>
         <h1>Entrar</h1>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} type="POST" action="">
           <TextField
             variant="outlined"
             margin="normal"
