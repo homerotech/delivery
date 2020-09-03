@@ -19,40 +19,29 @@ import Container from '@material-ui/core/Container';
 import Header from '../../components/header'
 
 
+class SignUp extends React.Component {
 
+  constructor(){
+    super()
+    this.state={
+      Nome: '',
+      Sobrenome: '',
+      Email:'',
+      Senha:'',
+      documento:'',
+      emprendimento: null
+    }
+  }
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
-
-export default function SignUp() {
-  const classes = useStyles();
-  const [value, setValue] = useState('Consumidor');
-  
+  render(){
   return (
   <div>
     <Header/>
       <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
+      <div>
       <h1>Cadastre-se</h1>
-        <form className={classes.form} noValidate>
+        <form  noValidate>
         <FormControl component="fieldset">
   <FormLabel component="legend">Tipo de cadastro</FormLabel>
   <RadioGroup aria-label="gender" name="tipoempreendimento" >
@@ -71,6 +60,7 @@ export default function SignUp() {
                 fullWidth
                 id="firstName"
                 label="Nome"
+                value={this.state.Nome}
                 autoFocus
               />
             </Grid>
@@ -83,6 +73,7 @@ export default function SignUp() {
                 label="Sobrenome"
                 name="lastName"
                 autoComplete="lname"
+                value={this.state.Sobrenome}
               />
             </Grid>
             <Grid item xs={12} >
@@ -92,8 +83,9 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
-                id="CPF"
-                label="CPF"
+                id="documento"
+                label="CPF/CNPJ"
+                value={this.state.documento}
                 autoFocus
               />
             </Grid>
@@ -106,6 +98,7 @@ export default function SignUp() {
                 label="Email"
                 name="email"
                 autoComplete="email"
+                value={this.state.Email}
               />
             </Grid>
             <Grid item xs={12}>
@@ -115,9 +108,10 @@ export default function SignUp() {
                 fullWidth
                 name="password"
                 label="Password"
-                type="Senha"
+                type="password"
                 id="password"
                 autoComplete="current-password"
+                value={this.state.Senha}
               />
             </Grid>
             <Grid item xs={12}>
@@ -134,7 +128,6 @@ export default function SignUp() {
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
             // alterar
             href="/cadastropag"
           >
@@ -152,4 +145,8 @@ export default function SignUp() {
       
     </Container></div>
   );
+  }
+
 }
+
+export default SignUp

@@ -10,7 +10,7 @@ module.exports = (app) => {
     //Resgatar todos produtos produto
     app.get('/api/restaurante',restaurante.findAll);
 
-    //Resgatar produito pelo id
+    //Resgatar produto pelo id
     app.get('/api/restaurante/:id',restaurante.findID);
 
     //Atualizar dados produto

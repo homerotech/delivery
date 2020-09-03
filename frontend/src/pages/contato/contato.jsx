@@ -14,17 +14,17 @@ export default (props)=>{
 {/* <!--Section description--> */}
 <p class="text-center w-responsive mx-auto mb-5">Tem alguma dúvida? Contacte-nos!</p>
 
-<div className="row">
+<div className="row justify-content-center">
 
     {/* <!--Grid column--> */}
-    <div class="col-md-9 mb-md-0 mb-5">
+    <div class="col-md-9 mb-md-0 mb-5 " >
         <form id="contact-form" name="contact-form" action="mail.php" method="POST">
 
             {/* <!--Grid row--> */}
             <div class="row">
 
                 {/* <!--Grid column--> */}
-                <div class="col-md-6">
+                <div class="col-md-6 ">
                     <div class="md-form mb-0">
                     <label for="name" class="">Seu nome</label>
                         <input type="text" id="name" name="name" class="form-control"/>
