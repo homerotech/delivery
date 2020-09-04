@@ -15,37 +15,45 @@ export default (props)=>{
       setValue(event.target.value);
       
     };
+ 
     function CadastroOuAlteracao(value){
-        if (props.state.value==="alterar"){
+        if (value!='cadastro'){
             return(
                 <div class="form-group">
                 <label for="inputAddress"><strong>id do produto que deseja alterar</strong></label>
                 <input type="text" class="form-control" id="inputAddress" placeholder="Ex.: Calça jeans"/>
+                {console.log(value)}
                 </div>
+               
             )
         }
     }
     return(
-        <div>
+        <div >
             <Header/>
+            <br/>
+            <div className="container" style={{backgroundColor:"#f3f3f3"}}>
             <h2 style={{color:"black"}}><strong>Cadastro de produtos</strong></h2>
+          
             <FormControl component="fieldset" style={{color:"black"}}>
-            
+          
             <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
             <FormControlLabel value="cadastro" control={<Radio />} label="Cadastrar produto" />
             <FormControlLabel value="alterar" control={<Radio />} label="Alterar produto" />
             </RadioGroup>
             </FormControl>
             <form style={{color:"black"}} className="container">
-                {CadastroOuAlteracao}
+                {CadastroOuAlteracao(value)}
                 <div class="form-group">
                 <label for="inputAddress"><strong>Nome do produto</strong></label>
                 <input type="text" class="form-control" id="inputAddress" placeholder="Ex.: Calça jeans"/>
                 </div>
+                <br/><br/>
                 <div class="form-group">
                 <label for="exampleFormControlFile1"><strong>Imagem do produto</strong></label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1"/>
                 </div>
+                <br/><br/>
                 <div class="form-group">
                 <label for="inputAddress"><strong>Descrição do produto</strong></label>
                 <input type="text" class="form-control" id="inputAddress" placeholder="max 255 caracteres"/>
@@ -58,8 +66,10 @@ export default (props)=>{
                 <a href="/checkout" class="btn btn-primary">Finalizar</a>
                 </div>
                 </div>
-                
+              <br/>  
 </form>
+</div>
+<br/><br/><br/>
         </div>
     )
 }
