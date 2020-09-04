@@ -41,8 +41,7 @@ var pago = produtos.map((elistop)=>{
     );
   })
 
-console.log(produtos)
-   
+
 //pagamento na hora
 
 const pag = dateStore.map((dateStore)=>{

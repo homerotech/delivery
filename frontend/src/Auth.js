@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-var session = {session: "RCXCGE3H74LFQR3IMNKHRHMJTX34I7EOQ9FV5ATCI6LQ"}
+var session = Cookies.get("session")
 
 var params = {
     method: 'POST',
@@ -17,14 +17,13 @@ export async function isAuthenticated() {
         ).then(
             res => {
             if(res===false){
-                console.log(res)
+
                 return false
             }
             else{
-                return true
+                return res
             }
             }
             )
-            console.log(response)
             return response
     }

@@ -28,7 +28,7 @@ function Routes(){
         <Route path="/cadastro" component={cadastro}/>     
         <Route path="/contato" component={contato}/>   
         <PrivateRoute path="/cadastroRestaurante" component={restaurantecadastro}/> 
-        <Route path="/dashboard" component={dashboard}/> 
+        <PrivateRoute path="/dashboard" component={dashboard}/> 
         <Route path="/pgempresas" component={pgempresas}/>     
         <Route path="/cardapio" component={catalogo}/>  
         <Route path="/loginpag" component={loginPag}/>   

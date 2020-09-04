@@ -4,6 +4,6 @@ module.exports = (app) =>{
     //Cadastrar
     app.post('/api/cadastro',cadastro.create);
     app.get('/api/cliente',cadastro.findAll);
-
+    app.get('/api/cliente/:id',cadastro.findID);
 }
 

@@ -3,6 +3,7 @@ module.exports = (app) =>{
 
     //Cadastrar
     app.post('/api/login',auth.login);
-    app.post('/api/auth',auth.compare)
+    app.post('/api/auth',auth.compare);
+    app.put('/api/logout/:session',auth.logout);
 }
 

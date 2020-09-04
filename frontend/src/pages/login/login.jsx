@@ -12,81 +12,121 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Header from '../../components/header'
+import Header from '../../components/header';
+import Cookies from 'js-cookie'
 
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
 
-export default function SignIn() {
-  const classes = useStyles();
-  return (
-    <div>
-      <Header/>
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <h1>Entrar</h1>
-        <form className={classes.form} type="POST" action="">
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Senha"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          
-          <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Entre
-          </Button>
-          <Grid container>
-            
-            <Grid item>
-              <Link href="/cadastro" variant="body2">
-                {"Não tem uma conta? Cadastre-se"}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
+class SignIn extends React.Component {
+
+  constructor(){
+    super()
+    this.state={
+      email:"",
+      senha:""
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.login = this.login.bind(this);
+  }
+
+  login(event){
+    var data = {
+      email: this.state.email,
+      senha: this.state.senha,
+    }
+    data = JSON.stringify(data)
+    event.preventDefault();
+
+    fetch("http://localhost:5000/api/login",{
+      method:"POST",
+      headers: {'Content-Type': 'application/json'},
+      body:data
+        }).then(
+          async res =>{
+            if(res.status===401){
+              document.getElementById("incorrect").innerHTML = "E-mail ou senha incorretos"
+            }
+            else{
+              const object = await res.json()
+              Cookies.set('name', object.session, { expires: 7 })
+              window.location.href='/dashboard'
+            }
+          }
+        )
       
-    </Container></div>
-  );
+  }
+
+  handleChange(event){
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+        [name]:value
+    });
 }
+
+  render(){
+    return (
+      <div>
+        <Header/>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div>
+          <h1>Entrar</h1>
+          <span id="incorrect" style={{color:'red'}}></span>
+          <form onSubmit={this.login}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              value={this.state.email}
+              onChange={this.handleChange}
+              id="email"
+              label="E-mail"
+              type="email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              onChange={this.handleChange}
+              value={this.state.senha}
+              name="senha"
+              label="Senha"
+              type="password"
+              id="senha"
+              autoComplete="current-password"
+            />
+            
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              type="submit"
+            >
+              Entre
+            </Button>
+            <Grid container>
+              
+              <Grid item>
+                <Link href="/cadastro" variant="body2">
+                  {"Não tem uma conta? Cadastre-se"}
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+        
+      </Container></div>
+    );
+  }
+
+}
+
+export default SignIn

@@ -67,7 +67,6 @@ class SignUp extends React.Component {
     this.setState({
         [name]:value
     });
-    console.log(value)
 }
 
   render(){

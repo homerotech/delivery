@@ -1,6 +1,25 @@
 const Auth = require('../schema/authSchema');
 const Cadastro = require('../schema/cadastroSchema');
 
+    exports.getid = (req,res) => {
+        Auth.findOne(req.body).then(
+            data => {
+                res.send(data._id)
+            }
+        )
+    }
+
+    exports.logout = (req,res) => {
+        Auth.findOneAndRemove(req.body).then(
+            res.send((
+                {"message": "deslogado"}
+            ))
+        ).catch(err => 
+            res.send({
+                "message": err
+            }))
+    }
+
     exports.compare = (req,res) => {
         Auth.findOne(req.body).then(session => {
             if(!session){
@@ -23,9 +42,10 @@ const Cadastro = require('../schema/cadastroSchema');
             id =Math.random().toString(36).substr(2, 15)+Math.random().toString(36).substr(2, 15) + Math.random().toString(36).substr(2, 15) + Math.random().toString(36).substr(2, 15);
             return id.toUpperCase();
           };
+          id=ID()
         Cadastro.findOne({email: req.body.email}).then(cliente => {
             if(!cliente) {
-                return res.send({
+                return res.status(401).send({
                     message: "Email ou Senha Incorreta"
                 })
             }
@@ -33,14 +53,13 @@ const Cadastro = require('../schema/cadastroSchema');
             if(req.body.senha == cliente.senha) {
                 Auth.create({
                     _id: cliente.id,
-                    session: ID()
+                    session: id
                 })
                 return res.send({
-                    message: "Senha OK."
-                
+                    "session": id
                 })
             }
-            res.send({
+            res.status(401).send({
                 message: "Email ou Senha Incorreta"
             })
         })

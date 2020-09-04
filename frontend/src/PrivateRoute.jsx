@@ -10,12 +10,14 @@ class PrivateRoute extends React.Component {
     state = {
       loading: true,
       isAuthenticated: false,
+      id: null
     }
     componentDidMount() {
-      asyncCall().then((isAuthenticated) => {
+      asyncCall().then((res) => {
         this.setState({
           loading: false,
-          isAuthenticated,
+          isAuthenticated: res.isAuth,
+          id: res.id
         });
       });
     }
@@ -28,9 +30,9 @@ class PrivateRoute extends React.Component {
           <Route {...rest} render={props => (
             <div>
               {!this.state.isAuthenticated && <Redirect to={{ pathname: '/login', state: { from: this.props.location } }} />}
-              <Component {...this.props} />
+              <Component id={this.state.id} {...this.props} />
             </div>
-            )}
+            )} 
           />
         )
       }
