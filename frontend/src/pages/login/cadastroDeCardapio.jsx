@@ -4,42 +4,52 @@ import Header from '../../components/header'
 
 export default (props)=>{
     return(
-        <div style={{color:"black"}} >
+        <div className="" style={{backgroundColor:"#f3f3f3", color: "black"}} >
             <Header/>
             <br/>
             <h3>Cadastrar ou alterar cardapio</h3>
             <form className="container">
             <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Nome do estabelecimento</label>
+      <label for="inputEmail4"><h5>Nome do estabelecimento</h5></label>
       <input type="name" class="form-control" id="inputEmail4"/>
     </div>
     <form>
   <div class="form-group">
-    <label for="exampleFormControlFile1">Logo do restaurante</label>
+    <label for="exampleFormControlFile1"><h5>Logo do restaurante</h5></label>
     <input type="file" class="form-control-file" id="exampleFormControlFile1"/>
   </div>
 </form>
+<div class="form-group col-md-12">
+      <label for="inputState"><h5>Aceita Vale alimentação</h5></label>
+      <select id="inputState" class="form-control">
+        <option selected></option>
+        <option value="Nao">Não</option>
+	<option value="sim">Sim</option></select></div>
   </div>
   <div class="form-group">
-    <label for="inputAddress">Endereço</label>
+    <label for="inputAddress"><h5>Endereço</h5></label>
     <input type="text" class="form-control" id="inputAddress" placeholder="Rua e Numero"/>
   </div>
   <div class="form-group">
-    <label for="inputAddress2">Descrição do restaurante</label>
+    <label for="inputAddress2"><h5>Descrição do restaurante</h5></label>
     <input type="text" class="form-control" id="inputAddress2" placeholder=""/>
   </div>
   <div class="form-row">
+  <div class="form-group col-md-6">
+      <label for="inputCity"><h5>Token mercado pago</h5></label>
+      <input type="text" class="form-control" id="inputToken"/>
+    </div>
     <div class="form-group col-md-6">
-      <label for="inputCity">Cidade</label>
+      <label for="inputCity"><h5>Cidade</h5></label>
       <input type="text" class="form-control" id="inputCity"/>
     </div>
     <div class="form-group col-md-6">
-      <label for="inputCity">Número</label>
+      <label for="inputCity"><h5>Número</h5></label>
       <input type="tel" class="form-control" id="inputCity" placeholder="55(__) ______ ____"/>
     </div>
     <div class="form-group col-md-4">
-      <label for="inputState">Estado</label>
+      <label for="inputState"><h5>Estado</h5></label>
       <select id="inputState" class="form-control">
         <option selected>Escolher...</option>
         <option value="AC">Acre</option>
@@ -72,7 +82,7 @@ export default (props)=>{
       </select>
     </div>
     <div class="form-group col-md-2">
-      <label for="inputZip">CEP</label>
+      <label for="inputZip"><h5>CEP</h5></label>
       <input type="text" class="form-control" id="inputZip"/>
     </div>
   </div>
@@ -80,7 +90,9 @@ export default (props)=>{
     
   </div>
   <a href="/cadastroDeProdutos" class="btn btn-primary">Finalizar</a>
+  <br/>
             </form>
+            <br/><br/><br/>
         </div>
     )
 }

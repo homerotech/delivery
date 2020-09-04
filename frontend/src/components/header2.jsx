@@ -72,26 +72,8 @@ export default function TemporaryDrawer() {
         
       </List>
       <Divider />
-      <List>
-      <a href="/pgempresas">
-        
-        <ListItem button >
-      <ListItemIcon> </ListItemIcon>
-            <ListItemText  primary="Restaurantes" style={{color: "#022235"}}/></ListItem></a>  
-      
-            <a href="/"><ListItem button >
-      <ListItemIcon> </ListItemIcon>
-            <ListItemText  primary="Casa" style={{color: "#022235"}}/></ListItem></a>
+     
 
-            <a href="/"><ListItem button >
-      <ListItemIcon> </ListItemIcon>
-            <ListItemText  primary="Materiais" style={{color: "#022235"}}/></ListItem></a>
-      
-
-            <a href="/"><ListItem button >
-      <ListItemIcon> </ListItemIcon>
-            <ListItemText  primary="Lojas" style={{color: "#022235"}}/></ListItem></a>
-      </List>
     </div>
   );
 
@@ -116,27 +98,12 @@ export default function TemporaryDrawer() {
               <MenuIcon />
             </IconButton>
           
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              
-            </div>
-            <InputBase
-              placeholder="&nbsp;&nbsp;Pesquisar"
-              style={{backgroundColor: "white", borderRadius: "20px",fontColor: "#022235", opacity: "0.4"}}
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              
-              inputProps={{ 'aria-label': 'search' }}
-              id="input"
-            />
-          </div><SearchIcon type="submit"/>
+        
           <div className={classes.grow} />
           <div className="iconsheaderMobile">
           
             
-            <a href="/login" style={{color: "#fff"}}><IconButton
+            <a href="/dashboard" style={{color: "#fff"}}><IconButton
               edge="end"
               aria-label="account of current user"
               

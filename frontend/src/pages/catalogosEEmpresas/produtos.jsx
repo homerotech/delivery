@@ -17,7 +17,8 @@ export default (props)=>{
             </div>
     <hr style={{color: "green"}}/>
         </li>
-    <div style={{color: "black", marginTop: "20px"}} class="card-footer"><h5 className="preco">R${props.preco}</h5><small>N {props.codigo}</small><button id="shopicon" className="btn btn-outline-success" onClick={executeScroll} ><AddShoppingCartIcon/></button></div>
+    <div style={{color: "black", marginTop: "20px"}} class="card-footer"><h5 className="preco">R${props.preco}</h5><small>N {props.codigo}</small>
+    <button id="shopicon" className="btn btn-outline-success" onClick={props.click} ><AddShoppingCartIcon/></button></div>
   <hr style={{color: "green"}}/>
 </div>
     )
