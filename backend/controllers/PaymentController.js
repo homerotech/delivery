@@ -1,7 +1,7 @@
-const express = require("express");
-const app = express();
-const mercadopago = require("mercadopago");
+module.exports = (app) =>{
 
+const mercadopago = require("mercadopago");
+const express = require('express');
 //REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel/credentials
 mercadopago.configurations.setAccessToken(
   "TEST-2745994227570117-090419-a1649a09cc2897951cf090fc28a08502-166811747"
@@ -44,8 +44,4 @@ app.post("/process_payment", (req, res) => {
     .catch(function (error) {
       res.status(response.status).send(error);
     });
-});
-
-app.listen(8080, () => {
-  console.log("The server is now running on Port 8080");
-});
+});}

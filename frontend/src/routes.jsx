@@ -34,7 +34,7 @@ function Routes(){
         <Route path="/loginpag" component={loginPag}/>   
         <Route path="/cadastropag" component={cadastropag}/>
         <Route path="/Checkout" component={Checkout}/>
-        <Route path="/cadastroDeCardapio" component={cadastroDeCardapio}/> 
+        <PrivateRoute path="/cadastroDeCardapio" component={cadastroDeCardapio}/> 
         <PrivateRoute path="/cadastroDeProdutos" component={cadastrodeprodutos}/>  
         <Route path="/termos" component={Termo}/>
      </Switch>

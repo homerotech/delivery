@@ -9,7 +9,7 @@
     />
 
     <meta charset="utf-8" />
-
+    <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -63,7 +63,7 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <form action="/process_payment" method="post" id="paymentForm"  >
+    <form action="/process_payment" method="post" id="paymentForm" hidden >
       <h3>Detalhe do comprador</h3>
         <div>
           <div>
@@ -133,7 +133,6 @@
     </form>
    
   </body>
-  <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
   <script
     src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

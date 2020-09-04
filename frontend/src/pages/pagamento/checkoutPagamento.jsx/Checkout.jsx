@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   buttons: {
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
   },
   button: {
     marginTop: theme.spacing(3),
@@ -52,9 +52,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 // KEY AQUI \/\/\/\/\/
-//window.Mercadopago.setPublishableKey(  "TEST-b34fa712-a6e8-4865-8fd6-b7e0f72ebee5");
+window.Mercadopago.setPublishableKey("TEST-d04f8d42-04e2-4b0e-a7fe-9076a52b1f07");
 
-//window.Mercadopago.getIdentificationTypes();
+window.Mercadopago.getIdentificationTypes();
 
 // KEY AQUI ^^^^^^^
 
