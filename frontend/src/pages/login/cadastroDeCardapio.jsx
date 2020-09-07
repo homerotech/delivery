@@ -69,10 +69,10 @@ handleChange(event){
     if(files !== null){
     const formData = new FormData()
     formData.append('file',files)
-    fetch('http://191.252.177.239//api/upload/del/'+this.state.id,{
+    fetch('http://localhost:5000/api/upload/del/'+this.state.id,{
         method:"DELETE"
     });
-    fetch('http://casadaslaceiras.store:5000/api/upload/'+this.state.id,{
+    fetch('http://localhost:5000/api/upload/'+this.state.id,{
         method:"POST",
         body:formData
     }).then( this.setState({
@@ -92,7 +92,7 @@ handleChange(event){
 
     data = JSON.stringify(data)
     console.log(data)
-    fetch('http://casadaslaceiras.store:5000/api/produto/'+this.state.id,{
+    fetch('http://localhost:5000/api/produto/'+this.state.id,{
         method:"PUT",
         headers: {'Content-Type': 'application/json'},
         body:data
