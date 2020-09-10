@@ -1,18 +1,36 @@
 import React from 'react';
 import Header from '../../components/header'
-
+import Button from '@material-ui/core/Button';
 class cadastroCardapio extends React.Component {
   
 
   
 
   componentDidMount(){
-    fetch('http://localhost:5000/api/restaurante'+this.props.id).then(
+    fetch('http://localhost:5000/api/restaurante/'+this.props.id).then(
       res=>{
         if (res.status===404) {
+          this.setState({
+            isUpdate: false
+          })
         }
         else{
-          res.json()
+          res.json().then(
+            data => {this.setState({
+              _id:data._id,
+              isLoading: false,
+              nome:data.nome,
+              desc:data.desc,
+              endereco:data.endereco,
+              CEP:data.CEP,
+              telefone:data.telefone,
+              cidade:data.cidade,
+              token:data.token,
+              estado:data.estado,
+              valeRefeicao: data.valeRefeicao,
+              isUpdate: true
+            })}
+          )
         }
       }
     )
@@ -26,6 +44,7 @@ class cadastroCardapio extends React.Component {
   constructor(props){
     super(props)
     this.state={
+      _id:"",
       isLoading: true,
       nome:"",
       desc:"",
@@ -34,9 +53,9 @@ class cadastroCardapio extends React.Component {
       telefone:null,
       cidade:"",
       token:"",
-      Estado:"",
+      estado:"",
       valeRefeicao: null,
-      isUpdate: false
+      isUpdate: true
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
@@ -59,47 +78,54 @@ handleChange(event){
         [name]:value
     });
 
-    console.log(value)
 }
 
   cadastrarProduto(){
-    var res = window.confirm("Tem certeza que deseja alterar este produto?")
-    if (res === true) { 
-    const files = this.state.img
-    if(files !== null){
-    const formData = new FormData()
-    formData.append('file',files)
-    fetch('http://191.252.177.239//api/upload/del/'+this.state.id,{
-        method:"DELETE"
-    });
-    fetch('http://casadaslaceiras.store:5000/api/upload/'+this.state.id,{
-        method:"POST",
-        body:formData
-    }).then( this.setState({
-        img_link: this.state.id+'.png'
-    }))
-        }
+    // const files = this.state.img;
+    // if(files !== null){
+    // const formData = new FormData()
+    // formData.append('file',files)
+    // fetch('http://localhost:5000/api/upload/del/'+this.state.id,{
+    //     method:"DELETE"
+    // });
+    // fetch('http://localhost:5000:5000/api/upload/'+this.state.id,{
+    //     method:"POST",
+    //     body:formData
+    // }).then( this.setState({
+    //     img_link: this.state.id+'.png'
+    // }))
+    //     }
     var data = { 
-        _id: this.state.id,
-        nome: this.state.nome,
-        desc: this.state.desc,
-        ref: this.state.ref,
-        categoria: this.state.categoria,
-        valor: this.state.valor,
-        qtd: this.state.qtd,
-        img: this.state.img_link,
+      _id:this.props.id,
+      nome:this.state.nome,
+      telefone:this.state.telefone,
+      endereco:this.state.endereco,
+      valeRefeicao: this.state.valeRefeicao,
+      desc:this.state.desc,
+      cidade:this.state.cidade,
+      token:this.state.token,
+      estado:this.state.estado,
+      CEP:this.state.CEP,
     }
 
     data = JSON.stringify(data)
     console.log(data)
-    fetch('http://casadaslaceiras.store:5000/api/produto/'+this.state.id,{
+    if(!this.state.isUpdate){
+      fetch('http://localhost:5000/api/restaurante',{
+        method:"POST",
+        headers: {'Content-Type': 'application/json'},
+        body:data
+    }).then(alert('Catálogo com sucesso'))
+    .catch(err => alert(err))
+    }
+    else{
+      fetch('http://localhost:5000/api/restaurante/'+this.state.id,{
         method:"PUT",
         headers: {'Content-Type': 'application/json'},
         body:data
-    }).then(alert('Produto alterado com sucesso'))
+    }).then(alert('Catálogo alterado com sucesso'))
     .catch(err => alert(err))
-    window.location.href = "/Produtos";
-      }
+    }
     }
 
 
@@ -114,7 +140,7 @@ handleChange(event){
           <div class="form-row">
   <div class="form-group col-md-6">
     <label for="inputEmail4"><h5>Nome do estabelecimento</h5></label>
-    <input type="name" class="form-control" id="inputEmail4"/>
+    <input name="nome" class="form-control" onChange={this.handleChange} value={this.state.nome}/>
   </div>
   <form>
 <div class="form-group">
@@ -126,34 +152,34 @@ handleChange(event){
     <label for="inputState"><h5>Aceita Vale alimentação</h5></label>
     </div>
     <div className="justify-content-center" style={{width:"100%",display:"flex"}}>
-    <input type="radio" name="joke" value="true" /> Sim
-    <input type="radio" name="joke" value="false" /> Não
+    <input name="valeRefeicao" type="radio" value="true" onChange={this.handleChange}/> Sim
+    <input name="valeRefeicao" type="radio" value="false" onChange={this.handleChange}/> Não
     </div>
     </div>
 <div class="form-group">
   <label for="inputAddress"><h5>Endereço</h5></label>
-  <input type="text" class="form-control" id="inputAddress" placeholder="Rua e Numero"/>
+  <input name="endereco" onChange={this.handleChange} value={this.state.endereco} type="text" class="form-control" id="inputAddress" placeholder="Rua e Numero"/>
 </div>
 <div class="form-group">
   <label for="inputAddress2"><h5>Descrição do restaurante</h5></label>
-  <input type="text" class="form-control" id="inputAddress2" placeholder=""/>
+  <input name="desc" type="text" onChange={this.handleChange} value={this.state.desc} class="form-control" id="inputAddress2" placeholder=""/>
 </div>
 <div class="form-row">
 <div class="form-group col-md-6">
     <label for="inputCity"><h5>Token mercado pago</h5></label>
-    <input type="text" class="form-control" id="inputToken"/>
+    <input name="token" type="text" class="form-control" onChange={this.handleChange} value={this.state.token} id="inputToken"/>
   </div>
   <div class="form-group col-md-6">
     <label for="inputCity"><h5>Cidade</h5></label>
-    <input type="text" class="form-control" id="inputCity"/>
+    <input name="cidade" type="text" class="form-control" id="inputCity" onChange={this.handleChange} value={this.state.cidade}/>
   </div>
   <div class="form-group col-md-6">
     <label for="inputCity"><h5>Número</h5></label>
-    <input type="tel" class="form-control" id="inputCity" placeholder="55(__) ______ ____"/>
+    <input name="telefone" type="tel" class="form-control" id="inputCity" onChange={this.handleChange} value={this.state.telefone} placeholder="55(__) ______ ____"/>
   </div>
   <div class="form-group col-md-4">
     <label for="inputState"><h5>Estado</h5></label>
-    <select id="inputState" class="form-control">
+    <select name="estado" onChange={this.handleChange} id="inputState" class="form-control">
       <option selected>Escolher...</option>
       <option value="AC">Acre</option>
 <option value="AL">Alagoas</option>
@@ -186,13 +212,13 @@ handleChange(event){
   </div>
   <div class="form-group col-md-2">
     <label for="inputZip"><h5>CEP</h5></label>
-    <input type="text" class="form-control" id="inputZip"/>
+    <input onChange={this.handleChange} name="CEP"  value={this.state.CEP} type="text" class="form-control" id="inputZip"/>
   </div>
 </div>
 <div class="form-group">
   
 </div>
-<a href="/cadastroDeProdutos" class="btn btn-primary">Finalizar</a>
+<Button onClick={this.cadastrarProduto} class="btn btn-primary">Finalizar</Button>
 <br/>
           </form>
           <br/><br/><br/>
