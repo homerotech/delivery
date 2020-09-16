@@ -10,7 +10,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 export default (props)=>{
     const [value, setValue] = React.useState('cadastro');
-
+    
     const handleChange = (event) => {
       setValue(event.target.value);
       

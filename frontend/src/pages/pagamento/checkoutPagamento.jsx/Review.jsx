@@ -6,6 +6,11 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 
+import Pedido from '../../catalogosEEmpresas/catalogo'
+
+const produtos = Pedido.pago
+
+console.log(produtos)
 const products = [
   { name: 'Pedido 1', desc: 'Pizza', price: 'R$9.99' },
   { name: 'Pedido 2', desc: 'Vinho do porto', price: 'R$3.45' },

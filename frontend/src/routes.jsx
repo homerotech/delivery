@@ -13,7 +13,7 @@ import Checkout from './pages/pagamento/checkoutPagamento.jsx/Checkout'
 import PrivateRoute from './PrivateRoute'
 import dashboard from './pages/dashboard/dashboard'
 import Termo from './pdf/pdf'
-
+import Dash from './dashboardMAGNUM/Components/Main'
 import cadastroDeCardapio from './pages/login/cadastroDeCardapio'
 import cadastrodeprodutos from './pages/login/cadastrodeprodutos';
 
@@ -37,6 +37,7 @@ function Routes(){
         <PrivateRoute path="/cadastroDeCardapio" component={cadastroDeCardapio}/> 
         <PrivateRoute path="/cadastroDeProdutos" component={cadastrodeprodutos}/>  
         <Route path="/termos" component={Termo}/>
+        <Route exact path="/dashadmin" component={Dash}/>
      </Switch>
  </BrowserRouter>);
 };

@@ -19,7 +19,7 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
  
 export default (props)=>{
-  
+
 
 const [produtos, useProdutos] = useState([])
 
@@ -119,7 +119,7 @@ var WhatsApp = dateStore.map((zap)=>{
   {pago}
 </ul>
 <br/>
-<a href="/loginpag"><button type="button" class="btn btn-success btn-lg btn-block " href="/pagamento">Realizar pedido</button></a>
+<a href="/checkout"><button type="button" class="btn btn-success btn-lg btn-block " href="/pagamento">Realizar pedido</button></a>
 <br/>
     <div className><p style={{color:"black"}}>Qualquer alteração fale direto com o WhatsApp do fornecedor.</p>{WhatsApp}</div>
 <br/>

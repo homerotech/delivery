@@ -18,3 +18,7 @@
 [0814/000707.866:ERROR:exception_snapshot_win.cc(98)] thread ID 16800 not found in process
 [0814/000707.867:ERROR:exception_snapshot_win.cc(98)] thread ID 2312 not found in process
 [0814/000707.867:ERROR:exception_snapshot_win.cc(98)] thread ID 17528 not found in process
+[0911/195212.602:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0916/141849.338:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0916/143254.862:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0916/144241.228:ERROR:crash_report_database_win.cc(428)] unexpected header
