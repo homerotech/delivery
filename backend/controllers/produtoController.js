@@ -1,9 +1,10 @@
+
 const Produto = require('../schema/produtoSchema')
 
 //Cadastrar produto
 exports.create = (req,res) => {
     Produto.create(req.body)
-    .then(produto => {
+    .then(produtos => {
         res.send("Produto cadastrado com sucesso")
     })
     .catch(err => {

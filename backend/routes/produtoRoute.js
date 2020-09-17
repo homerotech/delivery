@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    const produto = require('../controllers/produtoController')
+    const produto = require('../controllers/produtoController');
     
     //Cadastrar produto
     app.post('/api/produto',produto.create);

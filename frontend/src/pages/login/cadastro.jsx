@@ -55,7 +55,7 @@ class SignUp extends React.Component {
             body:data
         }).then(alert('Cadastrado com sucesso'))
         .catch(err => alert(err))
-        window.location.href = "/";
+        window.location.href = "/cadastroRestaurante";
 
   }
 
@@ -171,7 +171,7 @@ class SignUp extends React.Component {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/login" variant="body2">
                 Já tem uma conta? Realize o login!
               </Link>
             </Grid>
