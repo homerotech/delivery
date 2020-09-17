@@ -16,6 +16,7 @@ import Termo from './pdf/pdf'
 import Dash from './dashboardMAGNUM/Components/Main'
 import cadastroDeCardapio from './pages/login/cadastroDeCardapio'
 import cadastrodeprodutos from './pages/login/cadastrodeprodutos';
+import testandocatalogo from './pages/catalogosEEmpresas/testandocatalogo';
 
  
 
@@ -30,7 +31,9 @@ function Routes(){
         <PrivateRoute path="/cadastroRestaurante" component={restaurantecadastro}/> 
         <PrivateRoute path="/dashboard" component={dashboard}/> 
         <Route path="/pgempresas" component={pgempresas}/>     
-        <Route path="/cardapio" component={catalogo}/>  
+        
+        <Route path="/cardapio" component={catalogo}/> 
+        <Route path="/:id" component={testandocatalogo}/>  
         <Route path="/loginpag" component={loginPag}/>   
         <Route path="/cadastropag" component={cadastropag}/>
         <Route path="/Checkout" component={Checkout}/>
