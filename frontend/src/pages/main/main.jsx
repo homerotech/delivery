@@ -33,7 +33,7 @@ export default (props)=>{
   
   </li></a>
 
-  <br/> <h3 style={{color: "#08284d"}}>Confira o nosso cardápio modelo</h3>
+  <br/> <h3 style={{color: "#08284d"}}>Confira o nosso modelo</h3>
   <div className=" emlinha"> 
   <div class="col-sm-4 ">
  
@@ -105,7 +105,7 @@ export default (props)=>{
 
   <br/>  <br/>
 </ul>
-<p  style={{color: "#35CC3A"}}><br/>Garantia de 10 dias de reembolso. <br/>Integração com WhatsApp e plataforma de pagamento<br/> Pedidos ilimitados<br/> Opções de pagamento<br/>Opções de entrega<br/>Link de compartilhamento<br/></p>
+<p  style={{color: "#35CC3A"}}><br/>Garantia de 10 dias reembolso. </p>
 <div data-aos="fade-left"><Scroll/></div><br/>
         </div>
     )

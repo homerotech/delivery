@@ -109,7 +109,7 @@ handleChange(event){
       <div className="" style={{backgroundColor:"#f3f3f3", color: "black"}} >
           <Header/>
           <br/>
-          <h3>Cadastrar ou alterar cardapio</h3>
+          <h3>Cadastrar ou alterar</h3>
           <form className="container">
           <div class="form-row">
   <div class="form-group col-md-6">
@@ -118,7 +118,7 @@ handleChange(event){
   </div>
   <form>
 <div class="form-group">
-  <label for="exampleFormControlFile1"><h5>Logo do restaurante</h5></label>
+  <label for="exampleFormControlFile1"><h5>Logo</h5></label>
   <input type="file" class="form-control-file" id="exampleFormControlFile1"/>
 </div>
 </form>
