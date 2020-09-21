@@ -121,7 +121,11 @@ var WhatsApp = dateStore.map((zap)=>{
 <br/>
 <a href="/checkout"><button type="button" class="btn btn-success btn-lg btn-block " href="/pagamento">Realizar pedido</button></a>
 <br/>
-    <div className><p style={{color:"black"}}>Qualquer alteração fale direto com o WhatsApp do fornecedor.</p>{WhatsApp}</div>
+    <div className><p style={{color:"black"}}>
+      <br></br>
+      <h5>Será acrescido R$0,10 por pedido</h5>
+      
+      Qualquer alteração fale direto com o WhatsApp do fornecedor.</p>{WhatsApp}</div>
 <br/>
         </div>
     )
