@@ -33,7 +33,7 @@ function Routes(){
         <Route path="/pgempresas" component={pgempresas}/>     
         
         <Route path="/cardapio" component={catalogo}/> 
-        <Route path="/:id" component={testandocatalogo}/>  
+        <Route path="/t/:id" component={testandocatalogo}/>  
         <Route path="/loginpag" component={loginPag}/>   
         <Route path="/cadastropag" component={cadastropag}/>
         <Route path="/Checkout" component={Checkout}/>
