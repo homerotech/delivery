@@ -14,6 +14,10 @@ import Review from "./Review";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import { CountProvider, useCount} from '../../catalogosEEmpresas/Context'
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -61,13 +65,18 @@ window.Mercadopago.getIdentificationTypes();
 const steps = ["Dados do Cliente", "Dados do pagamento", "Revisão do pedido"];
 
 function getStepContent(step) {
+  
   switch (step) {
     case 0:
       return <AddressForm />;
     case 1:
       return <PaymentForm />;
     case 2:
-      return <Review />;
+      return <Review name={nome} sobrenome={sobrenome} endereco={adres} cidade={cidade} cep={CEP} teln={tel_n}
+                      nomecard={nome_c} numero={numcard} dataven={expmes} datavenca={expano}
+      
+      
+      />;
     default:
       throw new Error("Unknown step");
   }
@@ -81,6 +90,8 @@ var tel_n;
 
 var nome_c;
 var CA;
+var numcard;
+var datavenc;
 var expmes;
 var expano;
 var CVV;
@@ -116,6 +127,18 @@ function testeNullInput(step) {
     }
   }
   if (step == 1) {
+    nome_c= document.getElementById(
+      "cardName"
+    ).value
+    numcard= document.getElementById(
+      "cardNumber1"
+    ).value
+   expmes=document.getElementById(
+      "expmes"
+    ).value
+    expano=document.getElementById(
+      "expano"
+    ).value
     document.getElementById("cardholderName").value = document.getElementById(
       "cardName"
     ).value;
@@ -167,7 +190,10 @@ function testeNullInput(step) {
   return returnStatement;
 }
 
-export default function Checkout() {
+export default function Checkout(props) {
+  const {produtos, setProdutos} = useCount();
+  console.log(produtos)
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [activeStep, setActiveStep] = React.useState(0);

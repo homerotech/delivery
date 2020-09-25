@@ -5,27 +5,15 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
+import  CountProvider,{ useCount} from '../../catalogosEEmpresas/Context'
 
-import Pedido from '../../catalogosEEmpresas/catalogo'
 
-const produtos = Pedido.pago
 
-console.log(produtos)
-const products = [
-  { name: 'Pedido 1', desc: 'Pizza', price: 'R$9.99' },
-  { name: 'Pedido 2', desc: 'Vinho do porto', price: 'R$3.45' },
-  { name: 'Pedido 3', desc: 'Chiclete', price: 'R$6.51' },
-  { name: 'Pedido 4', desc: 'Churrasco', price: 'R$14.11' },
-  { name: 'Frete', desc: '', price: 'Free' },
-];
-const addresses = ['Nome do Restaurante', 'Rio de janeiro', 'Rua', '99', 'BRASIL'];
-const payments = [
-  { name: 'Bandeira do Cartão', detail: 'Visa' },
-  { name: 'Nome no cartão', detail: 'Mr John Smith' },
-  { name: 'Número no cartão', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Data de expiração', detail: '04/2024' },
-];
 
+
+
+//name={nome} sobrenome={sobrenome} endereco={adres} cidade={cidade} cep={cep} teln={tel_n}
+//nomecard={nomecard} numero={numcard} dataven={datavenc}
 const useStyles = makeStyles((theme) => ({
   listItem: {
     padding: theme.spacing(1, 0),
@@ -38,10 +26,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Review() {
-  const classes = useStyles();
+export default function Review(props) {
+  const {produtos}= useCount()
+  var nome_c=props.nomecard;
+  const products =  [
+    { name: 'Pedido 1', desc: 'Pizza', price: 'R$9.99' },
+    { name: 'Pedido 2', desc: 'Vinho do porto', price: 'R$3.45' },
+    { name: 'Pedido 3', desc: 'Chiclete', price: 'R$6.51' },
+    { name: 'Pedido 4', desc: 'Churrasco', price: 'R$14.11' },
+    { name: 'Pedido 1', desc: 'Pizza', price: 'R$9.99' },
+    { name: 'Pedido 2', desc: 'Vinho do porto', price: 'R$3.45' },
+    { name: 'Pedido 3', desc: 'Chiclete', price: 'R$6.51' },
+    { name: 'Pedido 4', desc: 'Churrasco', price: 'R$14.11' },
+    { name: 'Frete', desc: '', price: 'Free' },
+  ];
+  
+console.log(produtos)
+  const payments = [
 
+    { name: 'Nome no cartão', detail: `${nome_c}` },
+    { name: 'Número no cartão', detail: props.numero },
+    { name: 'Data de expiração', detail: `${props.dataven}/${props.datavenca}`},
+  ];
+  const classes = useStyles();
+  const addresses = [ props.name,props.endereco,props.teln];
   return (
+    <CountProvider>
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Order summary
@@ -65,7 +75,7 @@ export default function Review() {
           <Typography variant="h6" gutterBottom className={classes.title}>
             Endereço
           </Typography>
-          <Typography gutterBottom>John Smith</Typography>
+          
           <Typography gutterBottom>{addresses.join(', ')}</Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
@@ -86,5 +96,5 @@ export default function Review() {
           </Grid>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </React.Fragment></CountProvider>
   );}

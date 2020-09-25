@@ -1,14 +1,15 @@
 import React from 'react';
 import Routes from './routes'
 import './App.css';
-import Header from './components/header'
+import CountProvider from './pages/catalogosEEmpresas/Context'
 
 function App() {
-  return (
+  return (<CountProvider>
     <div className="App">
        
         <Routes/>
     </div>
+    </CountProvider>
   );
 }
 

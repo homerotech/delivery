@@ -9,7 +9,7 @@ import pgempresas from './pages/catalogosEEmpresas/pgEmpresas'
 import catalogo from './pages/catalogosEEmpresas/catalogo';
 import loginPag from './pages/pagamento/loginPag'
 import cadastropag from './pages/pagamento/cadastropag';
-import Checkout from './pages/pagamento/checkoutPagamento.jsx/Checkout'
+import Checkout from './pages/pagamento/checkoutPagamento/Checkout'
 import PrivateRoute from './PrivateRoute'
 import dashboard from './pages/dashboard/dashboard'
 import Termo from './pdf/pdf'

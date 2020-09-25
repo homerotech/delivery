@@ -1,4 +1,8 @@
 import React, {useState} from 'react';
+import CountProvider, {useCount} from './Context'
+
+
+
 import logorestaurante from '../../img/logo-restaurante.png';
 
 import './catalogo.css';
@@ -17,13 +21,14 @@ import Pagamento from './pagamentosNaHora';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
 
- 
+
+  
+
 export default (props)=>{
+const {produtos, setProdutos} = useCount();
 
 
-const [produtos, useProdutos] = useState([])
 
- 
 var pago = produtos.map((elistop)=>{
   return(
     <li class="list-group-item d-flex justify-content-between align-items-center" key={elistop}>
@@ -36,7 +41,7 @@ var pago = produtos.map((elistop)=>{
     return(
       //Concertando codigos, tem de colocar a imagem no objeto
       <Produto img={logo3} title={date.title} preco={date.preco} codigo={date.codigo} click={()=>{
-        useProdutos([...produtos, [date.title, date.preco, date.codigo]]);
+        setProdutos([...produtos, [date.title, date.preco, date.codigo]]);
       }}/>
     );
   })
@@ -74,7 +79,11 @@ return(
 
 var WhatsApp = dateStore.map((zap)=>{
   return(
-   <a className="btn btn-outline-success botaozap"   href={"https://wa.me/"+ zap.num}><WhatsAppIcon /></a>
+   <a className="btn btn-outline-success botaozap"   href={"https://api.whatsapp.com/send?phone="+ zap.num +"&text=%20PEDIDO%20LOJAS%20FACIL"+produtos.map((elis)=>{
+    return(
+     ` ${elis[1]} %20 ${elis[0]}%0a`
+    )})  
+    }><WhatsAppIcon /></a>
    
   )
 });
@@ -83,8 +92,17 @@ var WhatsApp = dateStore.map((zap)=>{
 
 
 
+
+
+
+function passadados(dados){
+          return dados=produtos
+}
+
+
+
     return(
-     
+     <CountProvider>
         <div>
         {aberto}      
             <div class="jumbotron p-0">
@@ -119,7 +137,7 @@ var WhatsApp = dateStore.map((zap)=>{
   {pago}
 </ul>
 <br/>
-<a href="/checkout"><button type="button" class="btn btn-success btn-lg btn-block " href="/pagamento">Realizar pedido</button></a>
+<a href={"/checkout"}><button type="button" class="btn btn-success btn-lg btn-block" click={ passadados(produtos)} >Realizar pedido</button></a>
 <br/>
     <div className><p style={{color:"black"}}>
       <br></br>
@@ -128,5 +146,9 @@ var WhatsApp = dateStore.map((zap)=>{
       Qualquer alteração fale direto com o WhatsApp do fornecedor.</p>{WhatsApp}</div>
 <br/>
         </div>
+        </CountProvider>
     )
 }
+
+// +produtos.map((zop)=>{
+  // return(`nome=${zop[0]}&preco=${zop[1]}`)})
