@@ -15,7 +15,7 @@ export default function PaymentForm() {
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <TextField
-            required
+            
             id="email1"
             label="email"
             fullWidth

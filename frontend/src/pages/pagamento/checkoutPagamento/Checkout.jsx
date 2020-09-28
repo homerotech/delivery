@@ -16,9 +16,16 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import { CountProvider, useCount} from '../../../Context/Context'
 import produtos from "../../catalogosEEmpresas/produtos";
-
-
-
+//name={nome} sobrenome={sobrenome} endereco={adres} cidade={cidade} cep={CEP} teln={tel_n}
+//nomecard={nome_c} numero={numcard} dataven={expmes} datavenca={expano} produtos={produtos}
+// var twilioprodutos = produtos.map((xan)=>{return(xan[1])})
+var twilioText = `NOVO PEDIDO REALIZADO POR LOJASFACIL:
+        ${nome} ${sobrenome} 
+        telefone: ${tel_n};
+        endereco: ${adres};
+        pedido: ${produtos}
+`;
+console.log(twilioText)
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
