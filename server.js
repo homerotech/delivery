@@ -9,7 +9,7 @@ mongoose.connect(dbConfig.url,{
 }).then( () => {
   console.log("Conectado ao banco de dados")
 }).catch(err =>{
-  console.log("Erro ao conectar com o banco de dados")
+  console.log("Erro ao conectar com o banco de dados" +err)
   process.exit();
 });
 

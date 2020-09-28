@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import logorestaurante from '../../img/logo-restaurante.png';
-
+import CountProvider, {useCount} from '../../Context/Context'
 import './catalogo.css';
 import Produto from './produtos'
 import AlertOpen from './AlertOpen';
 import AlertClose from './AlertClose';
 
-
+import {Link} from 'react-router-dom'
 
 import axios from 'axios'
 
@@ -21,7 +21,7 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
 export default (props)=>{
 
- 
+  const {produtos, setProdutos} = useCount()
 
     const [load, setLoad] = useState(false);
     const [error, setError] = useState('');
@@ -59,14 +59,13 @@ export default (props)=>{
 
 
 
-console.log(dados)
 
 
 
 
 
 
-const [produtos, useProdutos] = useState([])
+
 
  
 var pago = produtos.map((elistop)=>{
@@ -81,7 +80,7 @@ var pago = produtos.map((elistop)=>{
     return(
       //Concertando codigos, tem de colocar a imagem no objeto
       <Produto img={logo3} title={date.title} preco={date.preco} codigo={date.codigo} click={()=>{
-        useProdutos([...produtos, [date.title, date.preco, date.codigo]]);
+        setProdutos([...produtos, [date.title, date.preco, date.codigo]]);
       }}/>
     );
   })
@@ -119,7 +118,11 @@ return(
 
 var WhatsApp = dateStore.map((zap)=>{
   return(
-   <a className="btn btn-outline-success botaozap"   href={"https://wa.me/"+ dados.telefone}><WhatsAppIcon /></a>
+   <a className="btn btn-outline-success botaozap"   href={"https://api.whatsapp.com/send?phone="+ zap.num +"&text=%20PEDIDO%20LOJAS%20FACIL"+produtos.map((elis)=>{
+    return(
+     ` ${elis[1]} %20 ${elis[0]}%0a`
+    )})  
+    }><WhatsAppIcon /></a>
    
   )
 });
@@ -129,7 +132,7 @@ var WhatsApp = dateStore.map((zap)=>{
 
 
     return(
-     
+     <CountProvider>
         <div>
         {aberto(dados.aberto, dados.fechamen)}      
             <div class="jumbotron p-0">
@@ -164,10 +167,19 @@ var WhatsApp = dateStore.map((zap)=>{
   {pago}
 </ul>
 <br/>
-<a href="/checkout"><button type="button" class="btn btn-success btn-lg btn-block " href="/pagamento">Realizar pedido</button></a>
+<Link to={{
+    pathname: "/Checkout",
+    data: produtos // your data array of objects
+  }}
+><button type="button" class="btn btn-success btn-lg btn-block" click={ ()=>{useCount(produtos)}} >Realizar pedido</button></Link>
 <br/>
-    <div className><p style={{color:"black"}}>Qualquer alteração fale direto com o WhatsApp do fornecedor.</p>{WhatsApp}</div>
+    <div className><p style={{color:"black"}}>
+      <br></br>
+      <h5>Será acrescido R$0,10 por pedido</h5>
+      
+      Qualquer alteração fale direto com o WhatsApp do fornecedor.</p>{WhatsApp}</div>
 <br/>
-        </div>
+<br/>
+        </div></CountProvider>
     )
 }

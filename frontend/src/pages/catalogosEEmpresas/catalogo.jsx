@@ -9,7 +9,7 @@ import './catalogo.css';
 import Produto from './produtos'
 import AlertOpen from './AlertOpen';
 import AlertClose from './AlertClose';
-import Button from './buttonclasses'
+import Button from './buttonclasses';
 
 import logo3 from '../../img/download (2).jpeg';
 
