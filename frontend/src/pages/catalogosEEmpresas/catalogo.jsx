@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import CountProvider, {useCount} from '../../Context/Context'
 
-
+import {Link} from 'react-router-dom'
 
 import logorestaurante from '../../img/logo-restaurante.png';
 
@@ -137,7 +137,11 @@ function passadados(dados){
   {pago}
 </ul>
 <br/>
-<a href={"/checkout"}><button type="button" class="btn btn-success btn-lg btn-block" click={ passadados(produtos)} >Realizar pedido</button></a>
+<Link to={{
+    pathname: "/Checkout",
+    data: produtos // your data array of objects
+  }}
+><button type="button" class="btn btn-success btn-lg btn-block" click={ ()=>{useCount(produtos)}} >Realizar pedido</button></Link>
 <br/>
     <div className><p style={{color:"black"}}>
       <br></br>

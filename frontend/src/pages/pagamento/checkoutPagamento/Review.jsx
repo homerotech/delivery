@@ -10,8 +10,6 @@ import  CountProvider,{ useCount} from '../../../Context/Context'
 
 
 
-
-
 //name={nome} sobrenome={sobrenome} endereco={adres} cidade={cidade} cep={cep} teln={tel_n}
 //nomecard={nomecard} numero={numcard} dataven={datavenc}
 const useStyles = makeStyles((theme) => ({
@@ -57,10 +55,10 @@ console.log(produtos)
         Order summary
       </Typography>
       <List disablePadding>
-        {products.map((product) => (
+        {produtos.map((product) => (
           <ListItem className={classes.listItem} key={product.name}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
+            <ListItemText primary={product[0]} secondary={product[2]} />
+            <Typography variant="body2">{product[1]}</Typography>
           </ListItem>
         ))}
         <ListItem className={classes.listItem}>

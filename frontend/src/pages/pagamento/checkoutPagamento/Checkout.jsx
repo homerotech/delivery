@@ -15,6 +15,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import { CountProvider, useCount} from '../../../Context/Context'
+import produtos from "../../catalogosEEmpresas/produtos";
 
 
 
@@ -73,7 +74,7 @@ function getStepContent(step) {
       return <PaymentForm />;
     case 2:
       return <Review name={nome} sobrenome={sobrenome} endereco={adres} cidade={cidade} cep={CEP} teln={tel_n}
-                      nomecard={nome_c} numero={numcard} dataven={expmes} datavenca={expano}
+                      nomecard={nome_c} numero={numcard} dataven={expmes} datavenca={expano} produtos={produtos}
       
       
       />;
