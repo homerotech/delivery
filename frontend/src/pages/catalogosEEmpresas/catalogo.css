@@ -44,6 +44,7 @@
 .preco{
     position: absolute;
 }
+
 @media(min-width: 900px){
 .logoRestaurante{
     max-width: 800px;

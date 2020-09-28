@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import CountProvider, {useCount} from './Context'
+import CountProvider, {useCount} from '../../Context/Context'
 
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Routes from './routes'
 import './App.css';
-import CountProvider from './pages/catalogosEEmpresas/Context'
+import CountProvider from './Context/Context'
 
 function App() {
   return (<CountProvider>
