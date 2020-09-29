@@ -39,7 +39,7 @@ export default (props)=>{
         valeRefeicao: '',
         desc: '',
         cidade: '',
-       
+        token: '',
         estado: '',
         CEP: '',
     })
@@ -86,6 +86,12 @@ var pago = produtos.map((elistop)=>{
   })
 
 
+
+
+//tem token?
+
+const temToken = dados.token  != undefined;
+console.log(dados.token)
 //pagamento na hora
 
 const pag = dateStore.map((dateStore)=>{
@@ -167,11 +173,15 @@ var WhatsApp = dateStore.map((zap)=>{
   {pago}
 </ul>
 <br/>
-<Link to={{
+{
+  temToken? (<Link to={{
     pathname: "/Checkout",
     data: produtos // your data array of objects
   }}
-><button type="button" class="btn btn-success btn-lg btn-block" click={ ()=>{useCount(produtos)}} >Realizar pedido</button></Link>
+><button type="button" class="btn btn-success btn-lg btn-block" click={ ()=>{useCount(produtos)}} >Realizar pedido</button></Link>) : (<button type="button" class="btn btn-info btn-lg btn-block" >Este restaurante não oferece pagamento online</button>)
+
+
+}
 <br/>
     <div className><p style={{color:"black"}}>
       <br></br>
