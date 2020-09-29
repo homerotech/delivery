@@ -1,16 +1,18 @@
 const mongoose = require('mongoose');
+mongoose.set('debug', true);
 
 
 
-const cardapioSchema = mongoose.Schema({
+const produtoSchema = mongoose.Schema({
     _id: Number,
     nome: String,
     preco: Number,
     img: String,
     descricao: String,
-    classes: Array
+    cardapio: String
 
 }, {
-    timestamps: true
+    timestamps: true,
+    collection: 'Produto'
 });
-module.exports = mongoose.model('produto', cardapioSchema);
+module.exports = mongoose.model('Produto',produtoSchema);

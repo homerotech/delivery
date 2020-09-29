@@ -8,7 +8,7 @@ module.exports = (app) => {
     app.delete('/api/produto/:id',produto.delete);
 
     //Resgatar todos produtos produto
-    app.get('/api/produto',produto.findAll);
+    app.get('/api/produto/find/:url',produto.findAll);
 
     //Resgatar produito pelo id
     app.get('/api/produto/:id',produto.findID);

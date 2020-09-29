@@ -15,9 +15,9 @@ exports.create = (req,res) => {
 }
 //Achar todos produtos
 exports.findAll = (req,res) => {
-    Produto.find()
-.then(produtos => {
-        res.send(produtos);
+    Produto.find({cardapio: req.params.url})
+.then(produto => {
+        res.send(produto);
     })
 .catch(err => {
     res.status(500).send({
@@ -34,7 +34,7 @@ exports.uploadImg = (req,res) => {
 
 //Achar produto pelo ID
 exports.findID = (req,res) => {
-    Produto.findById(req.params.id)
+    Produto.find(req.params.id)
     .then(produto => {
         if(!produto) {
             return res.status(404).send({
