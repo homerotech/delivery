@@ -89,6 +89,21 @@ function getStepContent(step) {
       throw new Error("Unknown step");
   }
 }
+
+// var myTotal;
+
+
+
+
+
+
+
+
+
+
+
+
+
 var nome;
 var sobrenome;
 var adres;
@@ -197,10 +212,20 @@ function testeNullInput(step) {
   }
   return returnStatement;
 }
-
+var total;
+console.log(total)
 export default function Checkout(props) {
   const {produtos, setProdutos} = useCount();
   console.log(produtos)
+
+  let myTotal=0;
+  for(var i = 0, len = produtos.length; i < len; i++) {
+    myTotal += parseFloat(produtos[i][1]);  // Iterate over your first array and then grab the second element add the values up
+ }
+console.log(myTotal)
+
+
+total=myTotal;
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -397,9 +422,7 @@ export default function Checkout(props) {
                   Obrigado por Comprar com Lojas Fácil.
                 </Typography>
                 <Typography variant="subtitle1">
-                  O número do seu pedido é #2001539. Enviamos um email para
-                  confirmação do seu pedido, voltaremos com qualquer atualização
-                  do seu pedido.
+                  Seu pedido foi confirmado! Entre em contato com o restaurante para mais duvidas!
                 </Typography>
               </React.Fragment>
             ) : (

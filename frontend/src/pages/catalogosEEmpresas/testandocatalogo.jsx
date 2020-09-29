@@ -39,6 +39,7 @@ export default (props)=>{
         valeRefeicao: '',
         desc: '',
         cidade: '',
+        frete:'',
         token: '',
         estado: '',
         CEP: '',
@@ -178,7 +179,7 @@ var WhatsApp = dateStore.map((zap)=>{
     pathname: "/Checkout",
     data: produtos // your data array of objects
   }}
-><button type="button" class="btn btn-success btn-lg btn-block" click={ ()=>{useCount(produtos)}} >Realizar pedido</button></Link>) : (<button type="button" class="btn btn-info btn-lg btn-block" >Este restaurante não oferece pagamento online</button>)
+><button type="button" class="btn btn-success btn-lg btn-block" onClick={ ()=>{setProdutos([...produtos, ['taxa' ,0.1,  4]])}} >Realizar pedido</button></Link>) : (<button type="button" class="btn btn-info btn-lg btn-block" >Este restaurante não oferece pagamento online</button>)
 
 
 }
