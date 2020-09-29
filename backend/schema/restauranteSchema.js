@@ -14,6 +14,7 @@ const restauranteSchema = mongoose.Schema({
     token: String,
     estado: String,
     CEP: String,
+    url:String
 }, {
     timestamps: true
 });
