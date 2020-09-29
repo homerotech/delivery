@@ -14,7 +14,7 @@ import Review from "./Review";
 import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
-import { CountProvider, useCount} from '../../../Context/Context'
+import { CountProvider, useCount } from "../../../Context/Context";
 import produtos from "../../catalogosEEmpresas/produtos";
 //name={nome} sobrenome={sobrenome} endereco={adres} cidade={cidade} cep={CEP} teln={tel_n}
 //nomecard={nome_c} numero={numcard} dataven={expmes} datavenca={expano} produtos={produtos}
@@ -25,7 +25,7 @@ var twilioText = `NOVO PEDIDO REALIZADO POR LOJASFACIL:
         endereco: ${adres};
         pedido: ${produtos}
 `;
-console.log(twilioText)
+console.log(twilioText);
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
   buttons: {
     display: "flex",
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
   },
   button: {
     marginTop: theme.spacing(3),
@@ -64,7 +64,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 // KEY AQUI \/\/\/\/\/
-window.Mercadopago.setPublishableKey("TEST-d04f8d42-04e2-4b0e-a7fe-9076a52b1f07");
+window.Mercadopago.setPublishableKey(
+  "TEST-d04f8d42-04e2-4b0e-a7fe-9076a52b1f07"
+);
 
 window.Mercadopago.getIdentificationTypes();
 
@@ -73,36 +75,33 @@ window.Mercadopago.getIdentificationTypes();
 const steps = ["Dados do Cliente", "Dados do pagamento", "Revisão do pedido"];
 
 function getStepContent(step) {
-  
   switch (step) {
     case 0:
       return <AddressForm />;
     case 1:
       return <PaymentForm />;
     case 2:
-      return <Review name={nome} sobrenome={sobrenome} endereco={adres} cidade={cidade} cep={CEP} teln={tel_n}
-                      nomecard={nome_c} numero={numcard} dataven={expmes} datavenca={expano} produtos={produtos}
-      
-      
-      />;
+      return (
+        <Review
+          name={nome}
+          sobrenome={sobrenome}
+          endereco={adres}
+          cidade={cidade}
+          cep={CEP}
+          teln={tel_n}
+          nomecard={nome_c}
+          numero={numcard}
+          dataven={expmes}
+          datavenca={expano}
+          produtos={produtos}
+        />
+      );
     default:
       throw new Error("Unknown step");
   }
 }
 
 // var myTotal;
-
-
-
-
-
-
-
-
-
-
-
-
 
 var nome;
 var sobrenome;
@@ -150,18 +149,10 @@ function testeNullInput(step) {
     }
   }
   if (step == 1) {
-    nome_c= document.getElementById(
-      "cardName"
-    ).value
-    numcard= document.getElementById(
-      "cardNumber1"
-    ).value
-   expmes=document.getElementById(
-      "expmes"
-    ).value
-    expano=document.getElementById(
-      "expano"
-    ).value
+    nome_c = document.getElementById("cardName").value;
+    numcard = document.getElementById("cardNumber1").value;
+    expmes = document.getElementById("expmes").value;
+    expano = document.getElementById("expano").value;
     document.getElementById("cardholderName").value = document.getElementById(
       "cardName"
     ).value;
@@ -213,19 +204,18 @@ function testeNullInput(step) {
   return returnStatement;
 }
 var total;
-console.log(total)
+console.log(total);
 export default function Checkout(props) {
-  const {produtos, setProdutos} = useCount();
-  console.log(produtos)
+  const { produtos, setProdutos } = useCount();
+  console.log(produtos);
 
-  let myTotal=0;
-  for(var i = 0, len = produtos.length; i < len; i++) {
-    myTotal += parseFloat(produtos[i][1]);  // Iterate over your first array and then grab the second element add the values up
- }
-console.log(myTotal)
+  let myTotal = 0;
+  for (var i = 0, len = produtos.length; i < len; i++) {
+    myTotal += parseFloat(produtos[i][1]); // Iterate over your first array and then grab the second element add the values up
+  }
+  console.log(myTotal);
 
-
-total=myTotal;
+  total = myTotal;
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -268,6 +258,8 @@ total=myTotal;
     });
   }
 
+  document.getElementById("transactionAmount").value = total; /// valor total aqui
+  document.getElementById("description").value = twilioText;
   // PAGAMENTO // \/\/\/\/\/\/\\/\/\/\//\/\/
   document
     .getElementById("cardNumber")
@@ -422,7 +414,8 @@ total=myTotal;
                   Obrigado por Comprar com Lojas Fácil.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Seu pedido foi confirmado! Entre em contato com o restaurante para mais duvidas!
+                  Seu pedido foi confirmado! Entre em contato com o restaurante
+                  para mais duvidas!
                 </Typography>
               </React.Fragment>
             ) : (
