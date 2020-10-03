@@ -48,7 +48,7 @@ export default (props)=>{
     useEffect(() => {
         axios.get('http://localhost:5000/api/produto/find/'+props.match.params.url)
             .then(res => {
-                console.log(res.data)
+                console.log(res.data);
                 setDados(res.data);
                 setLoad(true);
             })
