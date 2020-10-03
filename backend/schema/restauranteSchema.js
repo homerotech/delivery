@@ -9,6 +9,7 @@ const restauranteSchema = mongoose.Schema({
     fechamen : Number,
     endereco: String,
     valeRefeicao: Boolean,
+    frete : Number,
     desc: String,
     cidade: String,
     token: String,
