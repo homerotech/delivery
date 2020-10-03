@@ -130,7 +130,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            href={"/cadastroDeCardapio/false"}
+            href={"/cadastroDeCardapio"}
           >
             Cadastre-se
           </Button>
