@@ -46,6 +46,8 @@ export default (props)=>{
         CEP: '',
     })
 
+
+    // const []
     useEffect(() => {
         axios.get('http://localhost:5000/api/produto/find/'+ props.match.params.url)
             .then(res => {
@@ -127,9 +129,9 @@ return(
 
 var WhatsApp = dateStore.map((zap)=>{
   return(
-   <a className="btn btn-outline-success botaozap"   href={"https://api.whatsapp.com/send?phone="+ zap.num +"&text=%20PEDIDO%20LOJAS%20FACIL"+produtos.map((elis)=>{
+   <a className="btn btn-outline-success botaozap"   href={"https://api.whatsapp.com/send?phone="+ zap.num +"&text=%20PEDIDO%20LOJAS%20FACIL%0a"+produtos.map((elis)=>{
     return(
-     ` ${elis[1]} %20 ${elis[0]}%0a`
+     ` ${elis[1]} %20 ${elis[0]},%0a`
     )})  
     }><WhatsAppIcon /></a>
    
@@ -181,7 +183,7 @@ var WhatsApp = dateStore.map((zap)=>{
     pathname: "/Checkout",
     data: produtos // your data array of objects
   }}
-><button type="button" class="btn btn-success btn-lg btn-block" onClick={ ()=>{setProdutos([...produtos, ['taxa' ,0.1,  4]])}} >Realizar pedido</button></Link>) : (<button type="button" class="btn btn-info btn-lg btn-block" >Este restaurante não oferece pagamento online</button>)
+><button type="button" class="btn btn-success btn-lg btn-block" onClick={ ()=>{setProdutos([...produtos, ['frete' ,date.frete,  4]])}} >Realizar pedido</button></Link>) : (<button type="button" class="btn btn-info btn-lg btn-block" >Este restaurante não oferece pagamento online</button>)
 
 
 }

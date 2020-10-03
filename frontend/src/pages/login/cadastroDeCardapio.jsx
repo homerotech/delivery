@@ -52,7 +52,7 @@ class cadastroCardapio extends React.Component {
       CEP:null,
       telefone:null,
       cidade:"",
-      token:"",
+      frete:"",
       estado:"",
       valeRefeicao: null,
       url:"",
@@ -104,10 +104,10 @@ handleChange(event){
       valeRefeicao: this.state.valeRefeicao,
       desc:this.state.desc,
       cidade:this.state.cidade,
-      token:this.state.token,
+      frete:this.state.frete,
       estado:this.state.estado,
       CEP:this.state.CEP,
-      url:this.state.URL
+      url:this.state.url
     }
 
     data = JSON.stringify(data)
@@ -174,8 +174,8 @@ handleChange(event){
 </div>
 <div class="form-row">
 <div class="form-group col-md-6">
-    <label for="inputCity"><h5>Token mercado pago</h5></label>
-    <input name="token" type="text" class="form-control" onChange={this.handleChange} value={this.state.token} id="inputToken"/>
+    <label for="inputCity"><h5>Preço do Frete</h5></label>
+    <input name="frete" type="text" class="form-control" onChange={this.handleChange} value={this.state.frete} id="inputToken"/>
   </div>
   <div class="form-group col-md-6">
     <label for="inputCity"><h5>Cidade</h5></label>
