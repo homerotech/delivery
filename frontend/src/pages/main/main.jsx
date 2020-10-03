@@ -7,9 +7,10 @@ import Header from '../../components/header'
 import Catalogo from '../catalogosEEmpresas/catalogo'
 import InfoCards from './infocards'
 import AOS from 'aos'
-
+import  CountProvider, {useCount} from '../../Context/Context'
 
 export default (props)=>{
+  const {produtos, setProdutos} = useCount()
   AOS.init({
     duration : 1000
   }) 
@@ -71,7 +72,7 @@ export default (props)=>{
       <small>70 produtos</small>
       <h2 class="mt-0 mb-1">R$49,90</h2>
       Pago trimestralmente
-      <a href="/cadastro" class="btn btn-primary" style={{backgroundColor: "#B8860B", border:"none"}}>Trimestral</a>
+      <a href="/cadastro" class="btn btn-primary" onClick={()=>{setProdutos(['Plano Trimestral', 49.9, '3'])}} style={{backgroundColor: "#B8860B", border:"none"}}>Trimestral</a>
     </div>
       
   </li></a>
@@ -84,7 +85,7 @@ export default (props)=>{
         <small>120 produtos</small>
         <h2 class="mt-0 mb-1">R$89,90</h2>
         Pago semestralmente
-        <a href="/cadastro" class="btn btn-primary" style={{backgroundColor: "#B8860B", border:"none"}}>Semestral</a>
+        <a href="/cadastro" class="btn btn-primary" onClick={()=>{setProdutos(['Plano Semestral', 89.9, '6'])}} style={{backgroundColor: "#B8860B", border:"none"}}>Semestral</a>
       </div>
       
     </li>
@@ -98,7 +99,7 @@ export default (props)=>{
       <small>250 produtos</small>
       <h2 class="mt-0 mb-1" >R$169,90</h2>
       Pago anualmente
-      <a href="/cadastro" class="btn btn-primary" style={{backgroundColor: "#B8860B", border:"none"}}>Anual</a>
+      <a href="/cadastro" class="btn btn-primary" onClick={()=>{setProdutos(['Plano Anual', 169.9, '12'])}} style={{backgroundColor: "#B8860B", border:"none"}}>Anual</a>
     </div>
       
   </li></a>
