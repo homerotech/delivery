@@ -46,7 +46,7 @@ class dashboard extends React.Component {
                 <div className="card">
 
                 <h2 style={{color: "black"}}>Bem vindo {this.state.Dados.nome}</h2>
-                <a className="btn-success btn" href="/cadastroDeCardapio">Alterar Cardapio</a>
+                <a className="btn-success btn" href="/cadastroDeCardapio/true">Alterar Cardapio</a>
                 <br/>
                 <a className="btn-success btn" href="/cadastroDeProdutos">Cadastrar ou alterar produto</a>
                 <br/>

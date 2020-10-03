@@ -119,7 +119,7 @@ handleChange(event){
         body:data
     }).then(alert('Catálogo Cadastrado com sucesso'))
     .catch(err => alert(err))
-    window.location.href='/dashboard'
+    window.location.href='/Checkout'
     }
     else{
       fetch('http://localhost:5000/api/restaurante/'+this.props.id,{
@@ -183,7 +183,7 @@ handleChange(event){
   </div>
   <div class="form-group col-md-6">
     <label for="inputCity"><h5>Número</h5></label>
-    <input name="telefone" type="tel" class="form-control" id="inputCity" onChange={this.handleChange} value={this.state.telefone} placeholder="55(__) ______ ____"/>
+    <input name="telefone" type="tel" class="form-control" id="inputCity" onChange={this.handleChange} value={this.state.telefone} placeholder="(__) ______ ____"/>
   </div>
   <div class="form-group col-md-4">
     <label for="inputState"><h5>Estado</h5></label>
