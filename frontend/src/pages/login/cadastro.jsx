@@ -157,7 +157,7 @@ class SignUp extends React.Component {
                 label="Eu aceito os termos e permissões do site"
               />
               <br/>
-              <a href="../../../public/termos-lojas-facil-01-_1_.html" > Confira os termos e permissões</a>
+              <a href="/termos" > Confira os termos e permissões</a>
             </Grid>
           </Grid>
           <Button

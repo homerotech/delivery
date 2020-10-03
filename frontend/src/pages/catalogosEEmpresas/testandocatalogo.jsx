@@ -37,6 +37,7 @@ export default (props)=>{
         fechamen : '',
         endereco: '',
         valeRefeicao: '',
+        url: '',
         desc: '',
         cidade: '',
         frete:'',
@@ -46,7 +47,7 @@ export default (props)=>{
     })
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/produto/find/'+props.match.params.url)
+        axios.get('http://localhost:5000/api/produto/find/'+ props.match.params.url)
             .then(res => {
                 console.log(res.data)
                 setDados(res.data);
