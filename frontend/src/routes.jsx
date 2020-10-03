@@ -18,7 +18,7 @@ import cadastroDeCardapio from './pages/login/cadastroDeCardapio'
 import cadastrodeprodutos from './pages/login/cadastrodeprodutos';
 import testandocatalogo from './pages/catalogosEEmpresas/testandocatalogo';
 
- 
+import Planos from './pages/pagamento/Planos'
 
 function Routes(){
     return(
@@ -30,6 +30,7 @@ function Routes(){
         <Route path="/contato" component={contato}/>   
         <PrivateRoute path="/cadastroRestaurante" component={restaurantecadastro}/> 
         <PrivateRoute path="/dashboard" component={dashboard}/> 
+        <PrivateRoute path="/Planos" component={Planos}/> 
         <Route path="/pgempresas" component={pgempresas}/>     
         
         <Route path="/cardapio" component={catalogo}/> 
