@@ -1,70 +1,87 @@
-import React, { useState, useEffect } from "react";
-import logorestaurante from "../../img/logo-restaurante.png";
-import CountProvider, { useCount } from "../../Context/Context";
-import "./catalogo.css";
-import Produto from "./produtos";
-import AlertOpen from "./AlertOpen";
-import AlertClose from "./AlertClose";
 
-import { Link } from "react-router-dom";
+import React, {useState, useEffect} from 'react';
+import logorestaurante from '../../img/logo-restaurante.png';
+import CountProvider, {useCount} from '../../Context/Context'
+import './catalogo.css';
+import Produto from './produtos'
+import AlertOpen from './AlertOpen';
+import AlertClose from './AlertClose';
 
-import axios from "axios";
+import {Link} from 'react-router-dom'
 
-import logo3 from "../../img/download (2).jpeg";
+import axios from 'axios'
 
-import dateStore from "./dataStore";
-import date from "./datacatalog";
+import logo3 from '../../img/download (2).jpeg';
 
-import RoomIcon from "@material-ui/icons/Room";
-import Pagamento from "./pagamentosNaHora";
-import WhatsAppIcon from "@material-ui/icons/WhatsApp";
+import dateStore from './dataStore';
+import date from './datacatalog';
 
-export default (props) => {
-  const { produtos, setProdutos } = useCount();
+import RoomIcon from '@material-ui/icons/Room';
+import Pagamento from './pagamentosNaHora';
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
-  const [load, setLoad] = useState(false);
-  const [error, setError] = useState("");
+export default (props)=>{
 
-  const [dados, setDados] = useState({
-    _id: "",
-    nome: "",
-    telefone: "",
-    abertura: "",
-    fechamen: "",
-    endereco: "",
-    valeRefeicao: "",
-    desc: "",
-    cidade: "",
-    frete: "",
-    token: "",
-    estado: "",
-    CEP: "",
-  });
+  const {produtos, setProdutos} = useCount()
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/restaurante/" + props.match.params.id)
-      .then((res) => {
-        setDados(res.data);
-        setLoad(true);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoad(true);
-      });
-  }, []);
+    const [load, setLoad] = useState(false);
+    const [error, setError] = useState('');
 
-  var pago = produtos.map((elistop) => {
-    return (
-      <li
-        class="list-group-item d-flex justify-content-between align-items-center"
-        key={elistop}
-      >
-        {elistop[0]}
-        <span class="badge badge-primary badge-pill">R$ {elistop[1]}</span>
-      </li>
-    );
-  });
+
+
+
+    const [dados, setDados]=useState({
+        _id: '',
+        nome: '',
+        telefone: '',
+        abertura: '',
+        fechamen : '',
+        endereco: '',
+        valeRefeicao: '',
+        url: '',
+        desc: '',
+        cidade: '',
+        frete:'',
+        token: '',
+        estado: '',
+        CEP: '',
+    })
+
+
+    // const []
+    useEffect(() => {
+        axios.get('http://localhost:5000/api/produto/find/'+ props.match.params.url)
+            .then(res => {
+                console.log(res.data);
+                setDados(res.data);
+                setLoad(true);
+            })
+            .catch(err => {
+                setError(err.message);
+                setLoad(true)
+            })
+    }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+var pago = produtos.map((elistop)=>{
+  return(
+    <li class="list-group-item d-flex justify-content-between align-items-center" key={elistop}>
+    {elistop[0]}
+  <span class="badge badge-primary badge-pill">R$ {elistop[1]}</span></li>
+  )
+})
+
 
   const lis = date.map((date) => {
     return (
@@ -95,6 +112,7 @@ export default (props) => {
   //aberto ou fechado component
   var d = new Date();
   var now = d.getHours() + "." + d.getMinutes();
+
   function aberto() {
     if (now < dados.abertura || now > dados.fechamen) {
       return <AlertClose />;
@@ -194,3 +212,4 @@ export default (props) => {
     </CountProvider>
   );
 };
+

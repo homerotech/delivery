@@ -100,7 +100,7 @@ console.log(customerSignUp)
                 <input type="number" name="preco" value={customerSignUp.preco} onChange={handleChange} required class="form-control" id="inputAddress" placeholder="2.55"/>
                 <div className="botoesfinais">
                 <button href="/cadastroDeProdutos" type="send" class="btn btn-primary">Cadastrar outro produto</button>
-                <a href="/checkout" type="submit" class="btn btn-primary">Finalizar</a>
+                <a href="/Dashboard" type="submit" class="btn btn-primary">Finalizar</a>
                 </div>
                 </div>
               <br/>  

@@ -52,7 +52,7 @@ class cadastroCardapio extends React.Component {
       CEP:null,
       telefone:null,
       cidade:"",
-      token:"",
+      frete:"",
       estado:"",
       valeRefeicao: null,
       url:"",
@@ -104,10 +104,10 @@ handleChange(event){
       valeRefeicao: this.state.valeRefeicao,
       desc:this.state.desc,
       cidade:this.state.cidade,
-      token:this.state.token,
+      frete:this.state.frete,
       estado:this.state.estado,
       CEP:this.state.CEP,
-      url:this.state.URL
+      url:this.state.url
     }
 
     data = JSON.stringify(data)
@@ -119,7 +119,7 @@ handleChange(event){
         body:data
     }).then(alert('Catálogo Cadastrado com sucesso'))
     .catch(err => alert(err))
-    window.location.href='/dashboard'
+    window.location.href='/Checkout'
     }
     else{
       fetch('http://localhost:5000/api/restaurante/'+this.props.id,{
@@ -174,8 +174,8 @@ handleChange(event){
 </div>
 <div class="form-row">
 <div class="form-group col-md-6">
-    <label for="inputCity"><h5>Token mercado pago</h5></label>
-    <input name="token" type="text" class="form-control" onChange={this.handleChange} value={this.state.token} id="inputToken"/>
+    <label for="inputCity"><h5>Preço do Frete</h5></label>
+    <input name="frete" type="text" class="form-control" onChange={this.handleChange} value={this.state.frete} id="inputToken"/>
   </div>
   <div class="form-group col-md-6">
     <label for="inputCity"><h5>Cidade</h5></label>
@@ -183,7 +183,7 @@ handleChange(event){
   </div>
   <div class="form-group col-md-6">
     <label for="inputCity"><h5>Número</h5></label>
-    <input name="telefone" type="tel" class="form-control" id="inputCity" onChange={this.handleChange} value={this.state.telefone} placeholder="55(__) ______ ____"/>
+    <input name="telefone" type="tel" class="form-control" id="inputCity" onChange={this.handleChange} value={this.state.telefone} placeholder="(__) ______ ____"/>
   </div>
   <div class="form-group col-md-4">
     <label for="inputState"><h5>Estado</h5></label>

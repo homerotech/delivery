@@ -16,11 +16,12 @@ const restauranteSchema = mongoose.Schema(
     refresh: String,
     estado: String,
     CEP: String,
-    url: String,
-  },
-  {
-    timestamps: true,
-  }
-);
+
+    frete: Number,
+    url:String
+}, {
+    timestamps: true
+});
+
 
 module.exports = mongoose.model("restaurante", restauranteSchema);

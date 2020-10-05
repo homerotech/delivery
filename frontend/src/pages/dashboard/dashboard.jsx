@@ -28,6 +28,7 @@ class dashboard extends React.Component {
     window.location.href = "/";
   }
 
+
   constructor(props) {
     super(props);
     this.state = {
@@ -36,6 +37,7 @@ class dashboard extends React.Component {
     };
     this.logout = this.logout.bind(this);
   }
+
 
   componentDidMount() {
     fetch("http://localhost:5000/api/cliente/" + this.props.id)

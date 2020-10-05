@@ -110,13 +110,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
             <div class="input-group">
-  <select class="custom-select" id="inputGroupSelect04">
-    <label>forma de pagamento</label>
-    <option value="1">Pic-pay</option>
-    <option value="2">PagSeguro</option>
-    <option value="3">Mercado Pago</option>
-    <option value="3">Pagamento em dinheiro</option>
-  </select>
+ 
   
 </div>
             </Grid>
@@ -136,7 +130,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            href="/cadastroDeCardapio"
+            href={"/cadastroDeCardapio"}
           >
             Cadastre-se
           </Button>

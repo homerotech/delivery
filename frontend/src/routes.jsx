@@ -18,6 +18,8 @@ import Dash from "./dashboardMAGNUM/Components/Main";
 import cadastroDeCardapio from "./pages/login/cadastroDeCardapio";
 import cadastrodeprodutos from "./pages/login/cadastrodeprodutos";
 import testandocatalogo from "./pages/catalogosEEmpresas/testandocatalogo";
+import Planos from './pages/pagamento/Planos'
+import Mensalidade from './pages/pagamento/Mensalidade'
 
 function Routes() {
   return (
@@ -34,9 +36,12 @@ function Routes() {
         <PrivateRoute path="/dashboard" component={dashboard} />
         <Route path="/authpage" component={authpage} />
         <Route path="/pgempresas" component={pgempresas} />
-
+        <PrivateRoute path="/Planos" component={Planos}/> 
+        <PrivateRoute path="/Mensalidade" component={Mensalidade}/>
+        <Route path="/pgempresas" component={pgempresas}/>     
+        
         <Route path="/cardapio" component={catalogo} />
-        <Route path="/t/:id" component={testandocatalogo} />
+        <Route path="/t/:url" component={testandocatalogo} />
         <Route path="/loginpag" component={loginPag} />
         <Route path="/cadastropag" component={cadastropag} />
         <Route path="/Checkout/:id" component={Checkout} />

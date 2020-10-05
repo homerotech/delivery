@@ -12,7 +12,7 @@ module.exports = (app) => {
 
     //Resgatar produto pelo id
     app.get('/api/restaurante/:id',restaurante.findID);
-
+    
     //Atualizar dados produto
     app.put('/api/restaurante/:id',restaurante.update);
 
