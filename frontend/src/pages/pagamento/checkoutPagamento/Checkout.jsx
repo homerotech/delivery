@@ -25,7 +25,7 @@ var twilioText = `NOVO PEDIDO REALIZADO POR LOJASFACIL:
         endereco: ${adres};
         pedido: ${produtos}
 `;
-console.log(twilioText);
+
 
 const useStyles = makeStyles((theme) => ({
   appBar: {

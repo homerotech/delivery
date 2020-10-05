@@ -14,7 +14,7 @@ const {produtos, setProdutos} = useCount([]);
 
 
 
-
+console.log(produtos)
 
 function passadados(dados){
           return dados=produtos
@@ -35,7 +35,7 @@ function passadados(dados){
                 <h2 class="mt-0 mb-1">R$49,90</h2>
                 Pago trimestralmente
                 <Link to={{
-    pathname: "/Checkout",
+    pathname: "/Mensalidade",
     data: produtos // your data array of objects
   }}
 ><a class="btn btn-primary" onClick={()=>{setProdutos([["Plano Trimestral", 49.9, '3']])}} style={{backgroundColor: "#B8860B", border:"none",color: "white"}}>Trimestral</a>
@@ -52,7 +52,7 @@ function passadados(dados){
                   <h2 class="mt-0 mb-1">R$89,90</h2>
                   Pago semestralmente
                   <Link to={{
-    pathname: "/Checkout",
+    pathname: "/Mensalidade",
     data: produtos // your data array of objects
   }}
 ><a> <a  class="btn btn-primary" onClick={()=>{setProdutos([["Plano Semestra", 89.9, '6']])}} style={{backgroundColor: "#B8860B", border:"none", color: "white"}}>Semestral</a></a>
@@ -70,7 +70,7 @@ function passadados(dados){
                 <h2 class="mt-0 mb-1" >R$169,90</h2>
                 Pago anualmente
                 <Link to={{
-    pathname: "/Checkout",
+    pathname: "/Mensalidade",
     data: produtos // your data array of objects
   }}
 ><a class="btn btn-primary" onClick={()=>{setProdutos([['Plano Anual', 169.9, '12']])}} style={{backgroundColor: "#B8860B", border:"none",color: "white"}}>Anual</a>

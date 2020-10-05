@@ -19,11 +19,12 @@ import cadastrodeprodutos from './pages/login/cadastrodeprodutos';
 import testandocatalogo from './pages/catalogosEEmpresas/testandocatalogo';
 
 import Planos from './pages/pagamento/Planos'
-
+import Mensalidade from './pages/pagamento/Mensalidade'
 function Routes(){
     return(
  <BrowserRouter>
      <Switch>
+         
         <Route path="/" exact component={main}/>
         <Route path="/login" component={login}/>   
         <Route path="/cadastro" component={cadastro}/>     
@@ -31,6 +32,7 @@ function Routes(){
         <PrivateRoute path="/cadastroRestaurante" component={restaurantecadastro}/> 
         <PrivateRoute path="/dashboard" component={dashboard}/> 
         <PrivateRoute path="/Planos" component={Planos}/> 
+        <PrivateRoute path="/Mensalidade" component={Mensalidade}/>
         <Route path="/pgempresas" component={pgempresas}/>     
         
         <Route path="/cardapio" component={catalogo}/> 
