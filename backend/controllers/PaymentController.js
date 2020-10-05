@@ -1,10 +1,9 @@
+
 module.exports = (app) => {
   const mercadopago = require("mercadopago");
   const express = require("express");
   //REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel/credentials
-  mercadopago.configurations.setAccessToken(
-    "TEST-2745994227570117-090419-a1649a09cc2897951cf090fc28a08502-166811747"
-  );
+
   // TULIO
   const accountSid = "AC5b647eca9f12e86d325c40263a689677";
   const authToken = "[AuthToken]";
@@ -21,6 +20,7 @@ module.exports = (app) => {
   });
 
   app.post("/process_payment", (req, res) => {
+    mercadopago.configurations.setAccessToken(req.body.tokenV);
     var payment_data = {
       transaction_amount: Number(req.body.transactionAmount),
       token: req.body.token,
@@ -35,6 +35,7 @@ module.exports = (app) => {
           number: req.body.docNumber,
         },
       },
+      application_fee: 0.1,
     };
 
     mercadopago.payment
@@ -61,3 +62,4 @@ module.exports = (app) => {
       });
   });
 };
+

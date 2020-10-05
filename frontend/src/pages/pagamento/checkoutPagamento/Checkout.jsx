@@ -16,6 +16,8 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import { CountProvider, useCount } from "../../../Context/Context";
 import produtos from "../../catalogosEEmpresas/produtos";
+import axios from "axios";
+
 //name={nome} sobrenome={sobrenome} endereco={adres} cidade={cidade} cep={CEP} teln={tel_n}
 //nomecard={nome_c} numero={numcard} dataven={expmes} datavenca={expano} produtos={produtos}
 // var twilioprodutos = produtos.map((xan)=>{return(xan[1])})
@@ -63,14 +65,6 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
   },
 }));
-// KEY AQUI \/\/\/\/\/
-window.Mercadopago.setPublishableKey(
-  "TEST-d04f8d42-04e2-4b0e-a7fe-9076a52b1f07"
-);
-
-window.Mercadopago.getIdentificationTypes();
-
-// KEY AQUI ^^^^^^^
 
 const steps = ["Dados do Cliente", "Dados do pagamento", "Revisão do pedido"];
 
@@ -206,6 +200,76 @@ function testeNullInput(step) {
 var total;
 console.log(total);
 export default function Checkout(props) {
+  // KEY AQUI \/\/\/\/\/
+  window.Mercadopago.setPublishableKey(
+    "TEST-d04f8d42-04e2-4b0e-a7fe-9076a52b1f07"
+  );
+  var tokenclient = "colocar token aqui";
+
+  window.Mercadopago.getIdentificationTypes();
+  var tokenV = "";
+  var refreshV = "";
+
+  axios
+    .get("http://localhost:5000/api/restaurante/" + props.match.params.id)
+    .then((res) => {
+      tokenV = res.data.token;
+      refreshV = res.data.refresh;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+
+  document.getElementById("tokenV").value = tokenV;
+
+  var Vtoken = "";
+  var Vkey = "";
+  var Vrefresh = "";
+
+  var data = {
+    client_secret: tokenclient,
+    grant_type: "refresh_token",
+    refresh_token: refreshV,
+  };
+  async function postData(url = "", data = {}) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, *cors, same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        accept: "application/json",
+      },
+
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+    });
+    return response.json();
+    var resposta = response.json();
+    Vtoken = resposta.access_token;
+    Vkey = resposta.public_key;
+    Vrefresh = resposta.refresh_token;
+    var dataV = {
+      token: Vtoken,
+      chave: Vkey,
+      refresh: Vrefresh,
+    };
+    axios("http://localhost:5000/api/restaurante" + props.match.params.id, {
+      method: "PUT",
+      body: JSON.stringify(dataV),
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log("caraio" + error);
+      });
+  }
+  postData("https://api.mercadopago.com/oauth/token", data);
+
+  // KEY AQUI ^^^^^^^
+
   const { produtos, setProdutos } = useCount();
   console.log(produtos);
 
