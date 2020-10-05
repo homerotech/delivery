@@ -233,7 +233,7 @@ class Mensalidade extends Component {
               type="hidden"
               name="paymentMethodId"
             />
-            <input type="submit" value="Do Payment" />
+            <input type="submit" value="Realizar o pagamento" />
           </fieldset>
         </form>
       </div>
