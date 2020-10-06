@@ -27,7 +27,12 @@ export default (props)=>{
     const [load, setLoad] = useState(false);
     const [error, setError] = useState('');
 
-
+const [showProducts, setShowProducts] = useState([{
+                    nome: '',
+                    preco: '',
+                    img: '',
+                    descricao: '',
+}])
 
 
     const [dados, setDados]=useState({
@@ -53,7 +58,7 @@ export default (props)=>{
         axios.get('http://localhost:5000/api/produto/find/'+ props.match.params.url)
             .then(res => {
                 console.log(res.data);
-                setDados(res.data);
+                setShowProducts([...showProducts, res.data]);
                 setLoad(true);
             })
             .catch(err => {
@@ -61,6 +66,21 @@ export default (props)=>{
                 setLoad(true)
             })
     }, []);
+
+    useEffect(() => {
+      axios.get('http://localhost:5000/api/restaurante'+ props.match.params.url)
+          .then(res => {
+              console.log(res.data);
+              setDados(res.data);
+              setLoad(true);
+          })
+          .catch(err => {
+              setError(err.message);
+              setLoad(true)
+          })
+  }, []);
+
+
 
 
 
@@ -74,7 +94,7 @@ export default (props)=>{
 
 
  
-var pago = produtos.map((elistop)=>{
+var pago = showProducts.map((elistop)=>{
   return(
     <li class="list-group-item d-flex justify-content-between align-items-center" key={elistop}>
     {elistop[0]}
@@ -104,7 +124,7 @@ var pago = produtos.map((elistop)=>{
   console.log(dados.token);
   //pagamento na hora
 
-  const pag = dateStore.map((dateStore) => {
+  const pag = dados.map(() => {
     if (dados.valeRefeicao === true) {
       return <Pagamento />;
     }
@@ -122,7 +142,7 @@ var pago = produtos.map((elistop)=>{
   }
   //botao do zap
 
-  var WhatsApp = dateStore.map((zap) => {
+  var WhatsApp = dados.map((zap) => {
     return (
       <a
         className="btn btn-outline-success botaozap"
