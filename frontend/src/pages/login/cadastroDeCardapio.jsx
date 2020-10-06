@@ -24,8 +24,10 @@ class cadastroCardapio extends React.Component {
               endereco:data.endereco,
               CEP:data.CEP,
               telefone:data.telefone,
+              url: data.url,
               cidade:data.cidade,
               token:data.token,
+              frete: data.frete,
               estado:data.estado,
               valeRefeicao: data.valeRefeicao,
               isUpdate: true

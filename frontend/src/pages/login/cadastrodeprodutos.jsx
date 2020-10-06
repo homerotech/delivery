@@ -7,26 +7,37 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import { Button } from '@material-ui/core';
 
 export default (props)=>{
     const [value, setValue] = React.useState('cadastro');
-    
 
-
+    useEffect(() => {
+        async function fetchData(){
+        const result = await axios(
+          'http://localhost:5000/api/restaurante/'+props.id,
+        );
+        setCustomerSignUp({...customerSignUp, cardapio:result.data.url})
+        }
+        fetchData();
+      },[]);
 
     const [customerSignUp, setCustomerSignUp] = useState(
-        { nome: '', img: '', descricao: '', preco: ''}
+        { nome: '', img: '', descricao: '', preco: '',cardapio:''}
     );
+
+
 
     const handleChange = (event) => {
         setCustomerSignUp({...customerSignUp, [event.target.name]: event.target.value})
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        axios('http://localhost:5000/api/produto', {
-            method: 'POST',
-            body: JSON.stringify(customerSignUp)
+        console.log(JSON.stringify(customerSignUp))
+        axios.post('http://localhost:5000/api/produto/'+customerSignUp.cardapio, JSON.stringify(customerSignUp),{
+            headers: {
+                'Content-Type': 'application/json'
+            },
         })
           .then(function (response) {
               console.log(response)
@@ -34,7 +45,7 @@ export default (props)=>{
           .catch(function (error) {
               console.log("caraio" +error)
           }) 
-
+          window.location.href='/dashboard'
 
 
 
@@ -100,7 +111,7 @@ console.log(customerSignUp)
                 <input type="number" name="preco" value={customerSignUp.preco} onChange={handleChange} required class="form-control" id="inputAddress" placeholder="2.55"/>
                 <div className="botoesfinais">
                 <button href="/cadastroDeProdutos" type="send" class="btn btn-primary">Cadastrar outro produto</button>
-                <a href="/Dashboard" type="submit" class="btn btn-primary">Finalizar</a>
+                <Button class="btn btn-primary" onClick={handleSubmit}>Finalizar</Button>
                 </div>
                 </div>
               <br/>  

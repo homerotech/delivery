@@ -2,7 +2,7 @@ module.exports = (app) => {
     const produto = require('../controllers/produtoController');
     
     //Cadastrar produto
-    app.post('/api/produto',produto.create);
+    app.post('/api/produto/:url',produto.create);
 
     //Deletar produto
     app.delete('/api/produto/:id',produto.delete);
