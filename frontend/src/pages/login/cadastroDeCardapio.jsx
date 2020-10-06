@@ -119,7 +119,7 @@ handleChange(event){
         body:data
     }).then(alert('Catálogo Cadastrado com sucesso'))
     .catch(err => alert(err))
-    window.location.href='/Checkout'
+    window.location.href='/Planos'
     }
     else{
       fetch('http://localhost:5000/api/restaurante/'+this.props.id,{
