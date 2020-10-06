@@ -30,7 +30,8 @@ require('./backend/routes/produtoRoute')(app);
 require('./backend/routes/restauranteRoute')(app);
  require('./backend/routes/cadastroRoute')(app);
  require('./backend/routes/authRoute.js')(app);
-//  require('./backend/controllers/PaymentRoute')(app);
+ require('./backend/controllers/PaymentController')(app);
+ require('./backend/controllers/mensalidadeController')(app);
 // require('./api/routes/pedidoRoutes.js')(app);
 // require('./api/routes/uploadRoute.js')(app);
 

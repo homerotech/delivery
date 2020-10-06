@@ -1,23 +1,27 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-
-const restauranteSchema = mongoose.Schema({
+const restauranteSchema = mongoose.Schema(
+  {
     _id: Number,
     nome: String,
     telefone: Number,
     abertura: Number,
-    fechamen : Number,
+    fechamen: Number,
     endereco: String,
     valeRefeicao: Boolean,
-    frete : Number,
     desc: String,
     cidade: String,
     token: String,
+    chave: String,
+    refresh: String,
     estado: String,
     CEP: String,
+
+    frete: Number,
     url:String
 }, {
     timestamps: true
 });
 
-module.exports = mongoose.model('restaurante', restauranteSchema);
+
+module.exports = mongoose.model("restaurante", restauranteSchema);
