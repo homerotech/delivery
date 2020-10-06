@@ -14,7 +14,7 @@ import axios from 'axios'
 import logo3 from '../../img/download (2).jpeg';
 
 import dateStore from './dataStore';
-import date from './datacatalog';
+
 
 import RoomIcon from '@material-ui/icons/Room';
 import Pagamento from './pagamentosNaHora';
@@ -27,12 +27,7 @@ export default (props)=>{
     const [load, setLoad] = useState(false);
     const [error, setError] = useState('');
 
-const [showProducts, setShowProducts] = useState([{
-                    nome: '',
-                    preco: '',
-                    img: '',
-                    descricao: '',
-}])
+const [showProducts, setShowProducts] = useState([])
 
 
     const [dados, setDados]=useState({
@@ -58,7 +53,7 @@ const [showProducts, setShowProducts] = useState([{
         axios.get('http://localhost:5000/api/produto/find/'+ props.match.params.url)
             .then(res => {
                 console.log(res.data);
-                setShowProducts([...showProducts, res.data]);
+                setShowProducts(res.data);
                 setLoad(true);
             })
             .catch(err => {
@@ -94,7 +89,7 @@ const [showProducts, setShowProducts] = useState([{
 
 
  
-var pago = showProducts.map((elistop)=>{
+var pago = produtos.map((elistop)=>{
   return(
     <li class="list-group-item d-flex justify-content-between align-items-center" key={elistop}>
     {elistop[0]}
@@ -103,7 +98,7 @@ var pago = showProducts.map((elistop)=>{
 })
 
 
-  const lis = date.map((date) => {
+  const lis = showProducts.map((date) => {
     return (
       //Concertando codigos, tem de colocar a imagem no objeto
       <Produto
@@ -124,11 +119,11 @@ var pago = showProducts.map((elistop)=>{
   console.log(dados.token);
   //pagamento na hora
 
-  const pag = dados.map(() => {
+  const pag = () => {
     if (dados.valeRefeicao === true) {
       return <Pagamento />;
     }
-  });
+  };
   //aberto ou fechado component
   var d = new Date();
   var now = d.getHours() + "." + d.getMinutes();
@@ -142,13 +137,13 @@ var pago = showProducts.map((elistop)=>{
   }
   //botao do zap
 
-  var WhatsApp = dados.map((zap) => {
+  var WhatsApp =(dados, produtos) => {
     return (
       <a
         className="btn btn-outline-success botaozap"
         href={
           "https://api.whatsapp.com/send?phone=" +
-          zap.num +
+          dados.telefone +
           "&text=%20PEDIDO%20LOJAS%20FACIL" +
           produtos.map((elis) => {
             return ` ${elis[1]} %20 ${elis[0]}%0a`;
@@ -158,7 +153,7 @@ var pago = showProducts.map((elistop)=>{
         <WhatsAppIcon />
       </a>
     );
-  });
+  };
 
   return (
     <CountProvider>
