@@ -135,16 +135,13 @@ exports.delete = (req,res) => {
 //Atualizar dados do produtos
 
 exports.update = (req,res) => {
-
-    Restaurante.findByIdAndUpdate(req.params.id, req.body)
-
+    console.log(req.body)
+    Restaurante.findByIdAndUpdate({ _id: req.params.id }, { '$set': req.body })
     .then(restaurante => {
 
-        res.send("Restaurante atualizado com sucesso")
+        res.send("Restaurante atualizado com sucesso" +restaurante)
 
-    })
-
-    .catch(err => {
+    })    .catch(err => {
 
         return res.status(500).send({
 

@@ -106,6 +106,7 @@ handleChange(event){
       url:this.state.url,
       img: this.props.id
     }
+  
 
     data = JSON.stringify(data)
 
@@ -172,7 +173,7 @@ handleChange(event){
   </div>
   <form>
 <div class="form-group">
-  <label for="exampleFormControlFile1"><h5>Logo do restaurante</h5></label>
+  <label for="exampleFormControlFile1"><h5>Logo do estabelecimento</h5></label>
   <input type="file" class="form-control-file" id="exampleFormControlFile1" onChange={this.handleFileChange}/>
 </div>
 </form>
@@ -203,7 +204,7 @@ handleChange(event){
   </div>
   <div class="form-group col-md-6">
     <label for="inputCity"><h5>Fechamento</h5></label>
-    <input name="fechamen" type="text" class="form-control" placeholder="Hora a qual fecha seu comércio" id="inputCity" onChange={this.handleChange} value={this.state.fechamen}/>
+    <input name="fechamen" type="number" class="form-control" placeholder="Hora a qual fecha seu comércio" id="fechamen" onChange={this.handleChange} value={this.state.fechamen}/>
   </div>
 <div class="form-group col-md-6">
     <label for="inputCity"><h5>Preço do Frete</h5></label>
