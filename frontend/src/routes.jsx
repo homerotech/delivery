@@ -20,6 +20,7 @@ import cadastrodeprodutos from "./pages/login/cadastrodeprodutos";
 import testandocatalogo from "./pages/catalogosEEmpresas/testandocatalogo";
 import Planos from './pages/pagamento/Planos'
 import Mensalidade from './pages/pagamento/Mensalidade'
+import DeletarProdutos from "./pages/dashboard/deletarProdutos";
 
 function Routes() {
   return (
@@ -39,7 +40,7 @@ function Routes() {
         <PrivateRoute path="/Planos" component={Planos}/> 
         <PrivateRoute path="/Mensalidade" component={Mensalidade}/>
         <Route path="/pgempresas" component={pgempresas}/>     
-        
+        <PrivateRoute path="/deletarProdutos" component={DeletarProdutos}/>
         <Route path="/cardapio" component={catalogo} />
         <Route path="/t/:url" component={testandocatalogo} />
         <Route path="/loginpag" component={loginPag} />

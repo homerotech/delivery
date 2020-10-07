@@ -132,22 +132,14 @@ handleChange(event){
 
     if(!this.state.isUpdate){
     
-    //   if(files !== null){
-    //     const formData = new FormData()
-    //     formData.append('file',files)
-    //     fetch('http://localhost:5000/api/upload/produtos/'+this.props.id+this.props.catalogo,{
-    //         method:"POST",
-    //         body:formData
-    //     });
-    // }
-
-      fetch('http://localhost:5000/api/restaurante',{
-        method:"POST",
-        headers: {'Content-Type': 'application/json'},
-        body:data
-    }).then(alert('Catálogo Cadastrado com sucesso'))
-    .catch(err => alert(err))
-    window.location.href='/Planos'
+      if(files !== null){
+        const formData = new FormData()
+        formData.append('file',files)
+        fetch('http://localhost:5000/api/upload/produtos/'+this.props.id+this.props.catalogo,{
+            method:"POST",
+            body:formData
+        });
+    }
     }
     else{
  
@@ -160,6 +152,7 @@ handleChange(event){
   
 
     handleSubmit = (e) => {
+        
         console.log(JSON.stringify(this.state))
         axios.post('http://localhost:5000/api/produto/'+this.state.catalogo, JSON.stringify(this.state),{
             headers: {
@@ -221,8 +214,8 @@ render(){
                 <label for="inputAddress"><strong>Preço</strong></label>
                 <input type="number" name="preco" value={this.state.preco} onChange={this.handleChange} required class="form-control" id="inputAddress" placeholder="2.55"/>
                 <div className="botoesfinais">
-                <button href="/cadastroDeProdutos" type="send" class="btn btn-primary">Cadastrar outro produto</button>
-                <Button class="btn btn-primary" onClick={this.handleSubmit}>Finalizar</Button>
+                <button href="/cadastroDeProdutos" type="send" class="btn btn-primary"><a href="/cadastroDeProduto" style={{color: "white"}}>Cadastrar outro produto</a></button>
+                <Button class="btn btn-primary" onClick={this.handleSubmit}><a href="/dashboard" style={{color: "white"}}>Finalizar</a></Button>
                 </div>
                 </div>
               <br/>  

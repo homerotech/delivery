@@ -30,6 +30,28 @@ const storage = multer.diskStorage({
     }
 });
 });
+app.post('/api/upload/produtos/:id:url',
+(req,res) => {
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './frontend/public/uploads/produtos')
+    },
+    filename: function (req, file, cb) {
+        cb(null, req.params.id+req.params.url+'.png');
+    }
+ });
+ var upload = multer({ storage : storage}).any();
+ upload(req,res,function(err) {
+    if(err) {
+        console.log(err);
+        return res.end("Error uploading file.");
+    } else {
+
+       res.end("sucesso");
+    }
+});
+});
 
 //Deletar arquivo
 
