@@ -21,7 +21,7 @@ app.post('/pay', function (req, res) {
         transaction_amount: Number(req.body.plano[1]),
         token: req.body.token,
         description: req.body.plano[0],
-        installments: 1,
+        installments: Number(req.body.installments),
         payment_method_id: req.body.paymentMethodId,
         issuer_id: req.body.issuer,
         payer: {

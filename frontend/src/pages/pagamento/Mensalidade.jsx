@@ -101,8 +101,8 @@ class Mensalidade extends Component {
    */
   sdkResponseHandler(status, response) {
     if (status !== 200 && status !== 201) {
-      alert("verify filled data");
-
+      alert("verify filled data" +status);
+      console.log(status)
       this.setState({
         submit: false,
       });
