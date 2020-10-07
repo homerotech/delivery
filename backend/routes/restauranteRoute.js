@@ -11,6 +11,8 @@ module.exports = (app) => {
     app.get('/api/restaurante',restaurante.findAll);
 
     //Resgatar produto pelo id
+    app.get('/api/restaurante/find/:url',restaurante.findURL);
+
     app.get('/api/restaurante/:id',restaurante.findID);
     
     //Atualizar dados produto

@@ -16,22 +16,24 @@ class cadastroCardapio extends React.Component {
         }
         else{
           res.json().then(
-            data => {this.setState({
-              _id:this.props.id,
-              isLoading: false,
-              nome:data.nome,
-              desc:data.desc,
-              endereco:data.endereco,
-              CEP:data.CEP,
-              telefone:data.telefone,
-              url: data.url,
-              cidade:data.cidade,
-              token:data.token,
-              frete: data.frete,
-              estado:data.estado,
-              valeRefeicao: data.valeRefeicao,
-              isUpdate: true
-            })}
+          data => {this.setState([{
+            _id:this.props.id,
+            isLoading: false,
+            nome:data.nome,
+            desc:data.desc,
+            endereco:data.endereco,
+            CEP:data.CEP,
+            abertura: data.abertura,
+            fechamen: data.fechamen,
+            telefone:data.telefone,
+            url: data.url,
+            cidade:data.cidade,
+            token:data.token,
+            frete: data.frete,
+            estado:data.estado,
+            valeRefeicao: data.valeRefeicao,
+            isUpdate: true
+          }])}
           )
         }
       }
@@ -93,6 +95,8 @@ handleChange(event){
       telefone:this.state.telefone,
       endereco:this.state.endereco,
       valeRefeicao: this.state.valeRefeicao,
+      abertura: this.state.abertura,
+      fechamen: this.state.fechamen,
       desc:this.state.desc,
       cidade:this.state.cidade,
       frete:this.state.frete,
@@ -165,8 +169,8 @@ handleChange(event){
     <label for="inputState"><h5>Aceita Vale alimentação</h5></label>
     </div>
     <div className="justify-content-center" style={{width:"100%",display:"flex"}}>
-    <input name="valeRefeicao" type="radio" value="true" onChange={this.handleChange}/> Sim
-    <input name="valeRefeicao" type="radio" value="false" onChange={this.handleChange}/> Não
+    <input name="valeRefeicao" type="radio" value="true" onChange={this.handleChange} /><label>Sim</label> 
+    <label>Não</label> <input name="valeRefeicao" type="radio" value="false" onChange={this.handleChange}/> 
     </div>
     </div>
 <div class="form-group">
@@ -183,8 +187,16 @@ handleChange(event){
 </div>
 <div class="form-row">
 <div class="form-group col-md-6">
+    <label for="inputCity"><h5>Abertura</h5></label>
+    <input name="abertura" type="number" placeholder="Hora a qual abre seu comércio" class="form-control" onChange={this.handleChange} value={this.state.abertura} />
+  </div>
+  <div class="form-group col-md-6">
+    <label for="inputCity"><h5>Fechamento</h5></label>
+    <input name="fechamen" type="text" class="form-control" placeholder="Hora a qual fecha seu comércio" id="inputCity" onChange={this.handleChange} value={this.state.fechamen}/>
+  </div>
+<div class="form-group col-md-6">
     <label for="inputCity"><h5>Preço do Frete</h5></label>
-    <input name="frete" type="text" class="form-control" onChange={this.handleChange} value={this.state.frete} id="inputToken"/>
+    <input name="frete" type="number" class="form-control" onChange={this.handleChange} value={this.state.frete} id="inputToken"/>
   </div>
   <div class="form-group col-md-6">
     <label for="inputCity"><h5>Cidade</h5></label>

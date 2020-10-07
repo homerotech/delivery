@@ -30,23 +30,7 @@ export default (props)=>{
 const [showProducts, setShowProducts] = useState([])
 
 
-    const [dados, setDados]=useState({
-        _id: '',
-        nome: '',
-        telefone: '',
-        abertura: '',
-        fechamen : '',
-        endereco: '',
-        valeRefeicao: '',
-        url: '',
-        desc: '',
-        cidade: '',
-        frete:'',
-        token: '',
-        estado: '',
-        img: '',
-        CEP: '',
-    })
+    const [dados, setDados]=useState([])
 
 
     // const []
@@ -62,9 +46,9 @@ const [showProducts, setShowProducts] = useState([])
                 setLoad(true)
             })
     }, []);
-
+console.log(showProducts)
     useEffect(() => {
-      axios.get('http://localhost:5000/api/restaurante'+ props.match.params.url)
+      axios.get('http://localhost:5000/api/restaurante/find/'+ props.match.params.url)
           .then(res => {
               console.log(res.data);
               setDados(res.data);
@@ -77,13 +61,13 @@ const [showProducts, setShowProducts] = useState([])
   }, []);
 
 
+console.log(dados[0])
 
 
 
 
 
-
-
+console.log(dados.map(it=>it.nome))
 
 
 
@@ -104,11 +88,11 @@ var pago = produtos.map((elistop)=>{
       //Concertando codigos, tem de colocar a imagem no objeto
       <Produto
         img={logo3}
-        title={date.title}
+        title={date.nome}
         preco={date.preco}
-        codigo={date.codigo}
+        codigo={date._id}
         click={() => {
-          setProdutos([...produtos, [date.title, date.preco, date.codigo]]);
+          setProdutos([...produtos, [date.nome, date.preco, date._id]]);
         }}
       />
     );
@@ -116,8 +100,9 @@ var pago = produtos.map((elistop)=>{
 
   //tem token?
 
-  const temToken = dados.token != undefined;
-  console.log(dados.token);
+  const temToken = dados.map((i1)=>i1.token)[0] !=undefined;
+  console.log(temToken)
+  console.log(dados.map((i2)=>i2.telefone)[0]);
   //pagamento na hora
 
   const pag = () => {
@@ -144,10 +129,10 @@ var pago = produtos.map((elistop)=>{
         className="btn btn-outline-success botaozap"
         href={
           "https://api.whatsapp.com/send?phone=" +
-          dados.telefone +
-          "&text=%20PEDIDO%20LOJAS%20FACIL" +
+          dados.map((i2)=>i2.telefone) +
+          "&text=%20PEDIDO%20LOJAS%20FACIL%0a" +
           produtos.map((elis) => {
-            return ` ${elis[1]} %20 ${elis[0]}%0a`;
+            return ` ${elis[1]} %20 ${elis[0]},%0a`;
           })
         }
       >
@@ -162,8 +147,9 @@ var pago = produtos.map((elistop)=>{
         {aberto(dados.aberto, dados.fechamen)}
         <div class="jumbotron p-0">
           <div class="view overlay rounded-top">
+          {/* require('../../uploads/restaurantes/'+dados.img+'.png') */}
             <img
-              src={require('../../uploads/restaurantes'+dados.img+'.png')}
+              src={logorestaurante}
               class="img-fluid logoRestaurante"
               alt="Sample image"
             />
@@ -171,13 +157,13 @@ var pago = produtos.map((elistop)=>{
 
           <div class="textoAtras card-body text-center mb-3">
             <h3 class="card-title h3 my-4">
-              <strong>{dados.nome}</strong>
+              <strong>{dados.map((i3)=>i3.nome)}</strong>
             </h3>
 
-            <p class="card-text py-2">{dados.desc}</p>
+            <p class="card-text py-2">{dados.map((i2)=>i2.desc)}</p>
             <small>
               <RoomIcon />
-              {dados.endereco}
+              {dados.map((i2)=>i2.endereco)}
             </small>
           </div>
 
@@ -205,7 +191,9 @@ var pago = produtos.map((elistop)=>{
                 setProdutos([...produtos]);
               }}
             >
-              Realizar pedido
+             <a onClick={() => {
+                setProdutos([...produtos,['frete', dados.map((i3)=>i3.frete), '456']]);
+              }}> Realizar pedido</a>
             </button>
           </Link>
         ) : (
@@ -220,7 +208,7 @@ var pago = produtos.map((elistop)=>{
             <h5>Será acrescido R$0,10 por pedido</h5>
             Qualquer alteração fale direto com o WhatsApp do fornecedor.
           </p>
-          {WhatsApp}
+          {WhatsApp(dados, produtos)}
         </div>
         <br />
         <br />

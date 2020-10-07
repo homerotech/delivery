@@ -47,6 +47,17 @@ exports.findAll = (req,res) => {
     }) 
 
 }
+exports.findURL = (req,res) => {
+    Restaurante.find({url: req.params.url})
+.then(restaurante => {
+        res.send(restaurante);
+    })
+.catch(err => {
+    res.status(500).send({
+        message: err.message || "Erro ao resgatar restaurante"
+    })
+}) 
+}
 
 //Upload Image
 
