@@ -139,6 +139,9 @@ handleChange(event){
     else{
       const formData = new FormData()
       formData.append('file',files)
+      fetch('http://191.252.177.239//api/upload/del/'+this.state.id,{
+        method:"DELETE"
+        });
       fetch('http://localhost:5000/api/upload/'+this.props.id,{
         method:"POST",
         body:formData
