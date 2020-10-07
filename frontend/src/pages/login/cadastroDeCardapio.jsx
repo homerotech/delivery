@@ -16,24 +16,26 @@ class cadastroCardapio extends React.Component {
         }
         else{
           res.json().then(
-          data => {this.setState([{
+          dados => {
+            console.log(dados)
+            this.setState({
             _id:this.props.id,
             isLoading: false,
-            nome:data.nome,
-            desc:data.desc,
-            endereco:data.endereco,
-            CEP:data.CEP,
-            abertura: data.abertura,
-            fechamen: data.fechamen,
-            telefone:data.telefone,
-            url: data.url,
-            cidade:data.cidade,
-            token:data.token,
-            frete: data.frete,
-            estado:data.estado,
-            valeRefeicao: data.valeRefeicao,
+            nome:dados.nome,
+            desc:dados.desc,
+            endereco:dados.endereco,
+            CEP:dados.CEP,
+            abertura: dados.abertura,
+            fechamen: dados.fechamen,
+            telefone:dados.telefone,
+            url: dados.url,
+            cidade:dados.cidade,
+            token:dados.token,
+            frete: dados.frete,
+            estado:dados.estado,
+            valeRefeicao: dados.valeRefeicao,
             isUpdate: true
-          }])}
+          })}
           )
         }
       }
@@ -60,7 +62,6 @@ class cadastroCardapio extends React.Component {
       estado:"",
       valeRefeicao: null,
       url:"",
-      img_link: '',
       isUpdate: true
     }
     this.handleChange = this.handleChange.bind(this);
@@ -103,7 +104,7 @@ handleChange(event){
       estado:this.state.estado,
       CEP:this.state.CEP,
       url:this.state.url,
-      img_link: this.state.img_link
+      img: this.props.id
     }
 
     data = JSON.stringify(data)
@@ -118,14 +119,15 @@ handleChange(event){
 
     if(!this.state.isUpdate){
     
+      if(files !== null){
+        const formData = new FormData()
+        formData.append('file',files)
+        fetch('http://localhost:5000/api/upload/'+this.props.id,{
+            method:"POST",
+            body:formData
+        });
+    }
 
-
-      fetch('http://localhost:5000/api/upload/restaurantes/'+this.state.url,{
-          method:"POST",
-          body:formData
-      }).then( this.setState({
-          img_link: this.state.url+'.png'
-      }))
       fetch('http://localhost:5000/api/restaurante',{
         method:"POST",
         headers: {'Content-Type': 'application/json'},
@@ -135,6 +137,12 @@ handleChange(event){
     window.location.href='/Planos'
     }
     else{
+      const formData = new FormData()
+      formData.append('file',files)
+      fetch('http://localhost:5000/api/upload/'+this.props.id,{
+        method:"POST",
+        body:formData
+        });
       fetch('http://localhost:5000/api/restaurante/'+this.props.id,{
         method:"PUT",
         headers: {'Content-Type': 'application/json'},
@@ -162,7 +170,7 @@ handleChange(event){
   <form>
 <div class="form-group">
   <label for="exampleFormControlFile1"><h5>Logo do restaurante</h5></label>
-  <input type="file" class="form-control-file" id="exampleFormControlFile1" onChange={this.handleFileChange} value={this.state.nome}/>
+  <input type="file" class="form-control-file" id="exampleFormControlFile1" onChange={this.handleFileChange}/>
 </div>
 </form>
 <div class="form-group col-md-12">

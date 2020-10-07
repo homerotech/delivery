@@ -87,8 +87,9 @@ var pago = produtos.map((elistop)=>{
     return (
       //Concertando codigos, tem de colocar a imagem no objeto
       <Produto
-        img={logo3}
+        img={date.img}
         title={date.nome}
+        descricao={date.descricao}
         preco={date.preco}
         codigo={date._id}
         click={() => {
@@ -149,7 +150,7 @@ var pago = produtos.map((elistop)=>{
           <div class="view overlay rounded-top">
           {/* require('../../uploads/restaurantes/'+dados.img+'.png') */}
             <img
-              src={logorestaurante}
+              src={process.env.PUBLIC_URL + "/uploads/"+dados.map((i3)=>i3._id)[0] +".png"}
               class="img-fluid logoRestaurante"
               alt="Sample image"
             />
