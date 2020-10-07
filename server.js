@@ -1,5 +1,19 @@
 const dbConfig = require('./backend/config/dbConfig')
 const mongoose = require('mongoose')
+const https = require('https');
+const fs = require('fs');
+
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/lojasfacil.com/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/lojasfacil.com/cert.pem', 'utf8');
+const ca = fs.readFileSync('/etc/letsencrypt/live/lojasfacil.com/chain.pem', 'utf8');
+
+const credentials = {
+  key: privateKey,
+  cert: certificate,
+  ca: ca
+};
+
+
 
 mongoose.Promise = global.Promise;
 
@@ -35,4 +49,11 @@ require('./backend/routes/restauranteRoute')(app);
 // require('./api/routes/pedidoRoutes.js')(app);
 // require('./api/routes/uploadRoute.js')(app);
 
-app.listen(5000, () => console.log(`Listening on port ${port}`));
+const httpsServer = https.createServer(credentials, app);
+
+httpsServer.listen(port, () => {
+        console.log('HTTPS Server running on port 5000');
+});
+
+
+
