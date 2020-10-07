@@ -16,7 +16,7 @@ const restauranteSchema = mongoose.Schema(
     refresh: String,
     estado: String,
     CEP: String,
-
+    img: String,
     frete: Number,
     url:String
 }, {

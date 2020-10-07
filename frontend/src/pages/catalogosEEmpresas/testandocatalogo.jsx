@@ -44,6 +44,7 @@ const [showProducts, setShowProducts] = useState([])
         frete:'',
         token: '',
         estado: '',
+        img: '',
         CEP: '',
     })
 
@@ -162,7 +163,7 @@ var pago = produtos.map((elistop)=>{
         <div class="jumbotron p-0">
           <div class="view overlay rounded-top">
             <img
-              src={logorestaurante}
+              src={require('../../uploads/restaurantes'+dados.img+'.png')}
               class="img-fluid logoRestaurante"
               alt="Sample image"
             />

@@ -58,6 +58,7 @@ class cadastroCardapio extends React.Component {
       estado:"",
       valeRefeicao: null,
       url:"",
+      img_link: '',
       isUpdate: true
     }
     this.handleChange = this.handleChange.bind(this);
@@ -84,20 +85,8 @@ handleChange(event){
 }
 
   cadastrarProduto(){
-    // const files = this.state.img;
-    // if(files !== null){
-    // const formData = new FormData()
-    // formData.append('file',files)
-    // fetch('http://localhost:5000/api/upload/del/'+this.state.id,{
-    //     method:"DELETE"
-    // });
-    // fetch('http://localhost:5000:5000/api/upload/'+this.state.id,{
-    //     method:"POST",
-    //     body:formData
-    // }).then( this.setState({
-    //     img_link: this.state.id+'.png'
-    // }))
-    //     }
+
+        
     var data = { 
       _id:this.props.id,
       nome:this.state.nome,
@@ -109,12 +98,30 @@ handleChange(event){
       frete:this.state.frete,
       estado:this.state.estado,
       CEP:this.state.CEP,
-      url:this.state.url
+      url:this.state.url,
+      img_link: this.state.img_link
     }
 
     data = JSON.stringify(data)
+
+      const files = this.state.img;
+      if(files !== null){
+      const formData = new FormData()
+      formData.append('file',files)
     console.log(data)
+
+
+
     if(!this.state.isUpdate){
+    
+
+
+      fetch('http://localhost:5000/api/upload/restaurantes/'+this.state.url,{
+          method:"POST",
+          body:formData
+      }).then( this.setState({
+          img_link: this.state.url+'.png'
+      }))
       fetch('http://localhost:5000/api/restaurante',{
         method:"POST",
         headers: {'Content-Type': 'application/json'},
@@ -132,7 +139,7 @@ handleChange(event){
     .catch(err => alert(err))
     window.location.href='/dashboard'
     }
-    }
+  }}
 
 
   render(){
@@ -151,7 +158,7 @@ handleChange(event){
   <form>
 <div class="form-group">
   <label for="exampleFormControlFile1"><h5>Logo do restaurante</h5></label>
-  <input type="file" class="form-control-file" id="exampleFormControlFile1"/>
+  <input type="file" class="form-control-file" id="exampleFormControlFile1" onChange={this.handleFileChange} value={this.state.nome}/>
 </div>
 </form>
 <div class="form-group col-md-12">
