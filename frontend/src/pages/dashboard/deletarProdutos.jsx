@@ -13,7 +13,29 @@ class cadastroDeProdutos extends React.Component {
     // const [value, setValue] = React.useState('cadastro');
 
     
-  
+    componentDidMount(){
+        fetch('http://localhost:5000/api/restaurante/'+this.props.id).then(
+            res=>{
+              if (res.status===404) {
+                this.catalogo({
+                  isUpdate: false
+                })
+              }
+              else{
+                res.json().then(
+                dados => {
+                  console.log(dados)
+                  this.setState({
+                  
+                  cardapio: dados.url,
+     
+                  isUpdate: true
+                })}
+                )
+              }
+            }
+          )
+        }
 
   
 
@@ -22,7 +44,8 @@ class cadastroDeProdutos extends React.Component {
 
     this.state={
 
-        id: ''
+        id: '',
+        catalogo: ''
     }
     this.handleChange = this.handleChange.bind(this);
   }

@@ -216,7 +216,7 @@ handleChange(event){
   </div>
   <div class="form-group col-md-6">
     <label for="inputCity"><h5>Número</h5></label>
-    <input name="telefone" type="tel" class="form-control" id="inputCity" onChange={this.handleChange} value={this.state.telefone} placeholder="(__) ______ ____"/>
+    <input name="telefone" type="tel" class="form-control" id="inputCity" onChange={this.handleChange} value={'55'+this.state.telefone} placeholder="(__) ______ ____"/>
   </div>
   <div class="form-group col-md-4">
     <label for="inputState"><h5>Estado</h5></label>
