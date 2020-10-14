@@ -39,7 +39,7 @@ class Mensalidade extends Component {
 
   componentDidMount() {
 
-    window.Mercadopago.setPublishableKey('TEST-42140817-bcf9-4d00-8a19-f6dd8b08f9e3');
+    window.Mercadopago.setPublishableKey('APP_USR-c71a56f2-e533-4880-8e86-6afb559a19d9');
     window.Mercadopago.getIdentificationTypes();
     
 
@@ -153,13 +153,13 @@ class Mensalidade extends Component {
             
             <ul>
             <li>
-                <label htmlFor="email">
+                <label >
                   ID Restaurante
                 </label>
                 <input
-                  id="email"
+                  
                   name="id"
-                  defaultValue="test_user_71425066@testuser.com"
+                  
                   value={this.state.id}
                   type="number"
                   placeholder="sua ID"

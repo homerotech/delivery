@@ -5,41 +5,44 @@ const bodyParser = require('body-parser');
 const mercadopago = require('mercadopago');
 var preco;
 var meses;
-var planos= req.body.plano;
-switch (planos) {
-  case 'plano1':
-    preco = 49.9;
-    meses = 3;
-    break;
-  case 'plano2':
-    preco = 89.9;
-    meses = 6;
-    break;
-  case 'plano3':
-    preco = 169.9;
-    meses = 12;
-    break;
-  
-  default:
-    console.log("Irreconhecivel " + planos + ".");
-}
+
 var expires
+var parcelas = 1;
 // Set the mercadopago credentials
-mercadopago.configurations.setAccessToken('TEST-169606388010973-082414-1c20929a9443e6f84e4f7a855affe0a8-464359136');
+mercadopago.configurations.setAccessToken('APP_USR-1922384788759927-100402-8698a73788e5593c16ed1af40a5e6e2d-443219219');
 
 // Attach the body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post('/pay', function (req, res) {
   console.log(`Parameters receive ${JSON.stringify(req.body)}`);
-
+  var planos= req.body.plano;
+  
+  switch (planos) {
+    case 'plano1':
+      preco = 49.9;
+      meses = 3;
+      break;
+    case 'plano2':
+      preco = 89.9;
+      meses = 6;
+      break;
+    case 'plano3':
+      preco = 169.9;
+      meses = 12;
+      break;
+    
+    default:
+      console.log("Irreconhecivel " + planos + ".");
+  }
+  //5031433215406351
   // Creating payment payload
   const paymentData = {
  
-        transaction_amount: Number(planos),
+        transaction_amount: 10,
         token: req.body.token,
         description: req.body.plano,
-        installments: Number(req.body.installments),
+        installments: parcelas,
         payment_method_id: req.body.paymentMethodId,
         issuer_id: req.body.issuer,
         payer: {
