@@ -7,6 +7,16 @@ import { CountProvider, useCount } from "../../Context/Context";
 
 class Mensalidade extends Component {
 
+  
+
+   
+    
+  
+
+  
+
+
+
   constructor(props){
     super(props);
 
@@ -17,6 +27,7 @@ class Mensalidade extends Component {
     
     this.state = {
       submit: false,
+      id: this.props.id,
       plano: []
     };
   }
@@ -30,6 +41,7 @@ class Mensalidade extends Component {
 
     window.Mercadopago.setPublishableKey('TEST-42140817-bcf9-4d00-8a19-f6dd8b08f9e3');
     window.Mercadopago.getIdentificationTypes();
+    
 
   }
 
@@ -136,10 +148,23 @@ class Mensalidade extends Component {
                   <option value={[["Plano Anual", 169.9, '12']]}>Plano Anual</option>
                   </select>
           </ul>
-          {console.log(this.state.plano)}
+          {console.log(this.state.id)}
           <fieldset>
             
             <ul>
+            <li>
+                <label htmlFor="email">
+                  ID Restaurante
+                </label>
+                <input
+                  id="email"
+                  name="id"
+                  defaultValue="test_user_71425066@testuser.com"
+                  value={this.state.id}
+                  type="number"
+                  placeholder="sua ID"
+                />
+              </li>
               <li>
                 <label htmlFor="email">
                   Email

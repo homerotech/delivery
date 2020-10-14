@@ -30,9 +30,19 @@ function Routes() {
         <Route path="/login" component={login} />
         <Route path="/cadastro" component={cadastro} />
         <Route path="/contato" component={contato} />
+
+
+        
         <PrivateRoute
           path="/cadastroRestaurante"
           component={restaurantecadastro}
+        />  <PrivateRoute
+          path="/cadastroDeCardapio"
+          component={cadastroDeCardapio}
+        />
+        <PrivateRoute
+          path="/cadastroDeProdutos"
+          component={cadastrodeprodutos}
         />
         <PrivateRoute path="/dashboard" component={dashboard} />
         <Route path="/authpage" component={authpage} />
@@ -46,14 +56,7 @@ function Routes() {
         <Route path="/loginpag" component={loginPag} />
         <Route path="/cadastropag" component={cadastropag} />
         <Route path="/Checkout/:id" component={Checkout} />
-        <PrivateRoute
-          path="/cadastroDeCardapio"
-          component={cadastroDeCardapio}
-        />
-        <PrivateRoute
-          path="/cadastroDeProdutos"
-          component={cadastrodeprodutos}
-        />
+      
         <Route path="/termos" component={Termo} />
         <Route exact path="/dashadmin" component={Dash} />
       </Switch>

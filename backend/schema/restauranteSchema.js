@@ -18,8 +18,11 @@ const restauranteSchema = mongoose.Schema(
     CEP: String,
     img: String,
     frete: Number,
-    url:String
+    expires: Number,
+    url:String,
+    expire_at: {type: Date, default: timestamps, expires: 144000},
 }, {
+  
     timestamps: true
 });
 

@@ -97,7 +97,7 @@ render(){
             <Header/>
             <br/>
             <div className="container" style={{backgroundColor:"#f3f3f3"}}>
-            <h2 style={{color:"black"}}><strong>Cadastro de produtos</strong></h2>
+            <h2 style={{color:"black"}}><strong>Deletar de produtos</strong></h2>
           
            {    console.log(this.state)}
             <form style={{color:"black"}} className="container" method='POST' onSubmit={this.handleSubmit}>
