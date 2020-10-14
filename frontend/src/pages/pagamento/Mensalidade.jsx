@@ -28,7 +28,7 @@ class Mensalidade extends Component {
     this.state = {
       submit: false,
       id: this.props.id,
-      plano: []
+      plano: ''
     };
   }
 
@@ -143,9 +143,9 @@ class Mensalidade extends Component {
         <form action="http://localhost:5000/pay" method="post" id="pay" name="pay" onSubmit={this.onSubmit}>
           <ul>
           <select class="form-control form-control-lg" value={this.state.plano} onChange={(e) => this.setState({plano: e.target.value})}>
-                  <option value={[["Plano Trimestral", 49.9, '3']]}>Plano Trimestral</option>
-                  <option value={[["Plano Semestral", 89.9, '6']]}>Plano Semestral</option>
-                  <option value={[["Plano Anual", 169.9, '12']]}>Plano Anual</option>
+                  <option value={'plano1'}>Plano Trimestral</option>
+                  <option value={'plano2'}>Plano Semestral</option>
+                  <option value={'plano3'}>Plano Anual</option>
                   </select>
           </ul>
           {console.log(this.state.id)}

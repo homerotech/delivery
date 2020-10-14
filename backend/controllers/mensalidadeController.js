@@ -3,8 +3,26 @@ module.exports = (app) => {
 
 const bodyParser = require('body-parser');
 const mercadopago = require('mercadopago');
-
-var MesSec
+var preco;
+var meses;
+var planos= req.body.plano;
+switch (planos) {
+  case 'plano1':
+    preco = 49.9;
+    meses = 3;
+    break;
+  case 'plano2':
+    preco = 89.9;
+    meses = 6;
+    break;
+  case 'plano3':
+    preco = 169.9;
+    meses = 12;
+    break;
+  
+  default:
+    console.log("Irreconhecivel " + planos + ".");
+}
 var expires
 // Set the mercadopago credentials
 mercadopago.configurations.setAccessToken('TEST-169606388010973-082414-1c20929a9443e6f84e4f7a855affe0a8-464359136');
@@ -18,9 +36,9 @@ app.post('/pay', function (req, res) {
   // Creating payment payload
   const paymentData = {
  
-        transaction_amount: Number(req.body.plano[1]),
+        transaction_amount: Number(planos),
         token: req.body.token,
-        description: req.body.plano[0],
+        description: req.body.plano,
         installments: Number(req.body.installments),
         payment_method_id: req.body.paymentMethodId,
         issuer_id: req.body.issuer,
@@ -40,7 +58,7 @@ app.post('/pay', function (req, res) {
   }).then(
    //multiplica meses por segundos
 
-    expires =  Number(req.body.plano[2])*2629800
+    expires =  meses*2629800
 
 
 
