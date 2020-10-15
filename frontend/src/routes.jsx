@@ -12,6 +12,7 @@ import cadastropag from "./pages/pagamento/cadastropag";
 import Checkout from "./pages/pagamento/checkoutPagamento/Checkout";
 import PrivateRoute from "./PrivateRoute";
 import dashboard from "./pages/dashboard/dashboard";
+import urlRetorno from "./pages/dashboard/urlRetorno";
 import authpage from "./pages/dashboard/authpage";
 import Termo from "./pdf/pdf";
 import Dash from "./dashboardMAGNUM/Components/Main";
@@ -31,7 +32,10 @@ function Routes() {
         <Route path="/cadastro" component={cadastro} />
         <Route path="/contato" component={contato} />
 
-
+        <PrivateRoute
+          path="/urlRetorno"
+          component={urlRetorno}
+        />
         
         <PrivateRoute
           path="/cadastroRestaurante"

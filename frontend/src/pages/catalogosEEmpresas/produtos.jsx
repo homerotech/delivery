@@ -10,7 +10,7 @@ export default (props)=>{
 
     
         <li class="media">
-            <div className="container-image"><img class="mr-3 imagemdoproduto" src={process.env.PUBLIC_URL +"/uploads/" + props.img + ".png"} alt="Generic placeholder image"/></div>
+            <div className="imagemdoproduto"><img class="imagemdoproduto" src={process.env.PUBLIC_URL +"/uploads/" + props.img + ".png"} alt="Generic placeholder image"/></div>
             <div class="media-body">
     <h5 class="mt-0 mb-1">{props.title}</h5>
             {props.descricao} 

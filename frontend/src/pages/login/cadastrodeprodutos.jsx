@@ -89,7 +89,7 @@ handleChange(event){
         _id: this.state._id,
         nome:this.state.nome,
         preco: this.state.preco,
-        descricao: this.state.desc,
+        descricao: this.state.descricao,
         categoria: this.state.categoria,
         opcionais: this.state.opcionais,
         cardapio: this.state.cardapio,
