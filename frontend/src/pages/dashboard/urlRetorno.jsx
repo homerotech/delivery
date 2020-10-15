@@ -126,7 +126,7 @@ class dashboard extends React.Component {
         <Header />
         <div className="card">
           <h2 style={{ color: "black" }}>Estamos processando seu Token</h2>
-          <button className="btn btn-success" onClick={this.cadastrarProduto}>Finalizar</button>
+          <button className="btn btn-success" onClick={this.cadastrarProduto}><a href="/dashboard">Finalizar</a></button>
         {  console.log(this.state)}
          {c}{d}
         </div>
