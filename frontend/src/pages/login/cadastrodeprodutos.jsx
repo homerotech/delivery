@@ -9,6 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { Button } from '@material-ui/core';
 var cat={};
+var now = new Date().getTime();
 class cadastroDeProdutos extends React.Component {
     // const [value, setValue] = React.useState('cadastro');
 
@@ -28,10 +29,9 @@ class cadastroDeProdutos extends React.Component {
             dados => {
               console.log(dados)
               this.setState({
-              
+              _id: dados._id+now,
               cardapio: dados.url,
- 
-              isUpdate: true
+           
             })}
             )
           }
@@ -55,24 +55,9 @@ class cadastroDeProdutos extends React.Component {
       descricao:"",
       preco:"",
       img: "",
-      cardapio: "",
-      isUpdate: true
+      cardapio: ""
     }
-    this.catalogo={
-        _id:"",
-        isLoading: true,
-        nome:"",
-        desc:"",
-        endereco:"",
-        CEP:null,
-        telefone:null,
-        cidade:"",
-        frete:"",
-        estado:"",
-        valeRefeicao: null,
-        url:"",
-        isUpdate: true
-      }
+    
     this.handleChange = this.handleChange.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
     this.cadastrarProduto = this.cadastrarProduto.bind(this);
@@ -96,59 +81,88 @@ handleChange(event){
 
 }
     dadosCadastro;
-  cadastrarProduto(){
+    cadastrarProduto(){
 
-        
-    var data = { 
-      _id:this.state.id,
-      nome:this.state.nome,
-      preco: this.state.preco,
-      img: this.state._id + this.props.url,
-      descricao: this.props.descricao,
-      url: this.props.url
-    }
-
-//     _id: Number,
-//     nome: String,
-//     preco: Number,
-//     img: String,
-//     descricao: String,
-//     cardapio: String
-
-// }, {
-//     timestamps: true,
-//     collection: 'Produto'
-// });
-
-    data = JSON.stringify(this.state)
-
-      const files = this.state.img;
-      if(files !== null){
-      const formData = new FormData()
-      formData.append('file',files)
+      var now = new Date().getTime();  
+      console.log(data)
+      var data = { 
+        _id: this.state._id,
+        nome:this.state.nome,
+        preco: this.state.preco,
+        descricao: this.state.desc,
+        categoria: this.state.categoria,
+        opcionais: this.state.opcionais,
+        cardapio: this.state.cardapio,
+        img: this.state._id
+      }
+    
+    //     _id: Number,
+    //     nome: String,
+    //     preco: Number,
+    //     img: String,
+    //     descricao: String,
+    //     cardapio: String
+    
+    // }, {
+    //     timestamps: true,
+    //     collection: 'Produto'
+    // });
+    
+    
+    data = JSON.stringify(data)
+    
+    const files = this.state.img;
+    if(files !== null){
+    const formData = new FormData()
+    formData.append('file',files)
     console.log(data)
-
-
-
+    
+    
+    
     if(!this.state.isUpdate){
     
-      if(files !== null){
-        const formData = new FormData()
-        formData.append('file',files)
-        fetch('http://localhost:5000/api/upload/produtos/'+this.props.id+this.props.catalogo,{
-            method:"POST",
-            body:formData
-        });
+    if(files !== null){
+      const formData = new FormData()
+      formData.append('file',files)
+      fetch('http://localhost:5000/api/upload/'+this.state._id,{
+          method:"POST",
+          body:formData
+      }).then(alert(this.state.id + now)).catch((err)=>{alert(err)});
     }
+    
+    fetch('http://localhost:5000/api/produto/'+this.state.cardapio,{
+      method:"POST",
+      headers: {'Content-Type': 'application/json'},
+      body:data
+    }).then(alert('Catálogo Cadastrado com sucesso'+this.state.cardapio))
+    .catch(err => alert(err))
+    window.location.href='/Planos'
     }
     else{
- 
+      const formData = new FormData()
+      formData.append('file',files)
+      fetch('http://191.252.177.239//api/upload/del/'+this.state.id,{
+        method:"DELETE"
+        });
+      fetch('http://localhost:5000/api/upload/'+this.props.id,{
+        method:"POST",
+        body:formData
+        });
+      fetch('http://localhost:5000/api/restaurante/'+this.props.id,{
+        method:"PUT",
+        headers: {'Content-Type': 'application/json'},
+        body:data
+      }).then(alert('Catálogo alterado com sucesso'))
+      .catch(err => alert(err))
+      window.location.href='/dashboard'
     }
-  }}
-
-
-
-
+    }}
+    
+    
+    
+    
+    
+    
   
 
     handleSubmit = (e) => {
@@ -192,8 +206,7 @@ render(){
            {    console.log(this.state)}
             <form style={{color:"black"}} className="container" method='POST' onSubmit={this.handleSubmit}>
             <div class="form-group">
-                <label for="inputAddress"><strong>Código do produto</strong></label>
-                <input type="number" name="_id" class="form-control" id="inputAddress" value={this.state._id} onChange={this.handleChange} placeholder="Números que não foram utilizados"/>
+    
                 
                 </div>
                 <div class="form-group">
@@ -203,7 +216,7 @@ render(){
                 <br/><br/>
                 <div class="form-group">
                 <label for="exampleFormControlFile1"><strong>Imagem do produto</strong></label>
-                <input type="file" class="form-control-file" name="img" value={this.state.img} onChange={this.handleFileChange} id="exampleFormControlFile1"/>
+                <input type="file" class="form-control-file" name="img" onChange={this.handleFileChange} id="exampleFormControlFile1"/>
                 </div>
                 <br/><br/>
                 <div class="form-group">
@@ -214,7 +227,7 @@ render(){
                 <label for="inputAddress"><strong>Preço</strong></label>
                 <input type="number" name="preco" value={this.state.preco} onChange={this.handleChange} required class="form-control" id="inputAddress" placeholder="2.55"/>
                 <div className="botoesfinais">
-                <button href="/cadastroDeProdutos" type="send" class="btn btn-primary"><a href="/cadastroDeProduto" style={{color: "white"}}>Cadastrar outro produto</a></button>
+                <button href="/cadastroDeProdutos" onClick={this.cadastrarProduto} type="send" class="btn btn-primary"><a href="/cadastroDeProdutos" style={{color: "white"}}>Cadastrar outro produto</a></button>
                 <Button class="btn btn-primary" onClick={this.handleSubmit}><a href="/dashboard" style={{color: "white"}}>Finalizar</a></Button>
                 </div>
                 </div>
