@@ -4,17 +4,14 @@ import Cookies from "js-cookie";
 import Token from "./inserirToken";
 // clietid e appid
 var client_id = "3110758028081820";
-var APP_ID = "3110758028081820";
+var APP_ID = "AlexandreMKT";
 var redirect_uri = "https://www.lojasfacil.com/dashboard";
 // ^^^^
 var linkauth = "";
 
 class dashboard extends React.Component {
   linkauth =
-    "https://auth.mercadopago.com.br/authorization?" +
-    client_id +
-    "=" +
-    APP_ID +
+    "https://auth.mercadopago.com.br/authorization?client_id=" +APP_ID +
     "&response_type=code&platform_id=mp&state=id=" +
     this.props.id +
     "=redirect_uri=" +
