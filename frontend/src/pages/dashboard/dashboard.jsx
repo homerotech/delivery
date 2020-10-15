@@ -5,7 +5,7 @@ import Token from "./inserirToken";
 // clietid e appid
 var client_id = "3110758028081820";
 var APP_ID = "AlexandreMKT";
-var redirect_uri = "https://www.lojasfacil.com/urlRetorno";
+var redirect_uri = "http://localhost:300/urlRetorno";
 // ^^^^
 var linkauth = "";
 ///https://auth.mercadopago.com.br/authorization?3110758028081820=AlexandreMKT&response_type=code&platform_id=mp&redirect_uri=https://www.lojasfacil.com

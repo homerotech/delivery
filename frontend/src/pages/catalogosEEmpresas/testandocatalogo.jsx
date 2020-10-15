@@ -1,6 +1,6 @@
 
 import React, {useState, useEffect} from 'react';
-import logorestaurante from '../../img/logo-restaurante.png';
+import Header from '../../components/header'
 import CountProvider, {useCount} from '../../Context/Context'
 import './catalogo.css';
 import Produto from './produtos'
@@ -11,9 +11,6 @@ import {Link} from 'react-router-dom'
 
 import axios from 'axios'
 
-import logo3 from '../../img/download (2).jpeg';
-
-import dateStore from './dataStore';
 
 
 import RoomIcon from '@material-ui/icons/Room';
@@ -61,13 +58,14 @@ console.log(showProducts)
   }, []);
 
 
-console.log(dados[0])
 
 
+var t =dados.map(it=>it.expires)
+var g =new Date(t)
 
+var temporizante = g.getTime() >= Date.now()
 
-
-console.log(dados.map(it=>it.nome))
+console.log(t)
 
 
 
@@ -141,7 +139,7 @@ var pago = produtos.map((elistop)=>{
       </a>
     );
   };
-
+if(temporizante === true){
   return (
     <CountProvider>
       <div>
@@ -215,6 +213,14 @@ var pago = produtos.map((elistop)=>{
         <br />
       </div>
     </CountProvider>
-  );
+  );}
+  else{
+    return(<div>
+          <Header/>
+
+<h5 style={{ color: "black" }}>Esta URL não está no ar ou Não foi cadastrada</h5>
+
+    </div>)
+  }
 };
 

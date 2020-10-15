@@ -28,7 +28,7 @@ class Mensalidade extends Component {
     this.state = {
       submit: false,
       id: this.props.id,
-      plano: ''
+      plano: 0
     };
   }
 
@@ -39,7 +39,7 @@ class Mensalidade extends Component {
 
   componentDidMount() {
 
-    window.Mercadopago.setPublishableKey('APP_USR-8428c02d-0812-47b2-9d26-2d3a1ea5d891');
+    window.Mercadopago.setPublishableKey('TEST-617672f4-1157-4b20-84f4-01d9cb535e5a');
     window.Mercadopago.getIdentificationTypes();
     
 
@@ -142,13 +142,14 @@ class Mensalidade extends Component {
         <h1 style={{color: 'black'}}>Checkout</h1>
         <form action="http://localhost:5000/pay" method="post" id="pay" name="pay" onSubmit={this.onSubmit}>
           <ul>
-          <select class="form-control form-control-lg" value={this.state.plano} onChange={(e) => this.setState({plano: e.target.value})}>
+          <select    id="plano"
+                  name="plano" class="form-control form-control-lg" value={this.state.plano} onChange={(e) => this.setState({plano: e.target.value})}>
                   <option value={'plano1'}>Plano Trimestral</option>
                   <option value={'plano2'}>Plano Semestral</option>
                   <option value={'plano3'}>Plano Anual</option>
                   </select>
           </ul>
-          {console.log(this.state.id)}
+          {console.log(this.state.plano)}
           <fieldset>
             
             <ul>

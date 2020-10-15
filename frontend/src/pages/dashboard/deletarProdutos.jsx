@@ -70,7 +70,10 @@ class cadastroDeProdutos extends React.Component {
         console.log(JSON.stringify(this.state))
         axios.delete('http://localhost:5000/api/produto/'+this.state.id)
           .then(function (response) {
-              console.log(response)
+            axios.delete('http://localhost:5000/api/upload/del/'+this.state.id)
+            .then(function (response) {
+                console.log(response)
+            })
           })
           .catch(function (error) {
               console.log("caraio" +error)
