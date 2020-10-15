@@ -20,7 +20,7 @@ module.exports = (app) => {
   });
 
   app.post("/process_payment", (req, res) => {
-    mercadopago.configurations.setAccessToken(req.body.tokenV);
+    mercadopago.configurations.setAccessToken(APP_USR-3110758028081820-101500-a7c58c7fde98410946a32629021c47f2-443219219);
     var payment_data = {
       transaction_amount: Number(req.body.transactionAmount),
       token: req.body.token,

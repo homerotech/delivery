@@ -9,7 +9,7 @@ var meses;
 var expires
 var parcelas = 1;
 // Set the mercadopago credentials
-mercadopago.configurations.setAccessToken('APP_USR-1922384788759927-100402-8698a73788e5593c16ed1af40a5e6e2d-443219219');
+mercadopago.configurations.setAccessToken('APP_USR-3110758028081820-101500-a7c58c7fde98410946a32629021c47f2-443219219');
 
 // Attach the body-parser
 app.use(bodyParser.urlencoded({ extended: false }));

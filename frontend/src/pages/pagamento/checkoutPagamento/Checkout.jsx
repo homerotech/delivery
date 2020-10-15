@@ -202,7 +202,7 @@ console.log(total);
 export default function Checkout(props) {
   // KEY AQUI \/\/\/\/\/
   window.Mercadopago.setPublishableKey(
-    "TEST-d04f8d42-04e2-4b0e-a7fe-9076a52b1f07"
+    "APP_USR-8428c02d-0812-47b2-9d26-2d3a1ea5d891"
   );
   var tokenclient = "colocar token aqui";
 

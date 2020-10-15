@@ -3,9 +3,9 @@ import Header from "../../components/header";
 import Cookies from "js-cookie";
 import Token from "./inserirToken";
 // clietid e appid
-var client_id = " colocar clientid do app aki";
-var APP_ID = "colocar appid aqui";
-var redirect_uri = "https://www.URL_de_retorno.com";
+var client_id = "3110758028081820";
+var APP_ID = "3110758028081820";
+var redirect_uri = "https://www.lojasfacil.com/dashboard";
 // ^^^^
 var linkauth = "";
 

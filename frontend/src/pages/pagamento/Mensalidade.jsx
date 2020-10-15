@@ -39,7 +39,7 @@ class Mensalidade extends Component {
 
   componentDidMount() {
 
-    window.Mercadopago.setPublishableKey('APP_USR-c71a56f2-e533-4880-8e86-6afb559a19d9');
+    window.Mercadopago.setPublishableKey('APP_USR-8428c02d-0812-47b2-9d26-2d3a1ea5d891');
     window.Mercadopago.getIdentificationTypes();
     
 
