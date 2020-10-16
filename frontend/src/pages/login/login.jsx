@@ -17,18 +17,9 @@ import Cookies from 'js-cookie'
 
 
 
-class SignIn extends React.Component {
+const SignIn= ()=> {
 
-  constructor(){
-    super()
-    this.state={
-      email:"",
-      senha:""
-    }
-    this.handleChange = this.handleChange.bind(this);
-    this.login = this.login.bind(this);
-  }
-
+ 
   login(event){
     var data = {
       email: this.state.email,
@@ -66,7 +57,7 @@ class SignIn extends React.Component {
     });
 }
 
-  render(){
+
     return (
       <div>
         <Header/>
@@ -127,6 +118,6 @@ class SignIn extends React.Component {
     );
   }
 
-}
+
 
 export default SignIn

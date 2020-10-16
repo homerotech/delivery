@@ -1,11 +1,13 @@
 import Cookies from 'js-cookie'
+import { jwt } from 'twilio'
 
 var session = Cookies.get("session")
 
 var params = {
     method: 'POST',
     headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Autorization": "Bearer " +jwt
     },
     body: JSON.stringify(session)
 }

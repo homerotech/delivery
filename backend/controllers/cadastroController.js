@@ -1,17 +1,42 @@
 const Cliente = require('../schema/cadastroSchema');
 
     //Cadastrar cliente
-    exports.create = (req,res) => {
-        Cliente.create(req.body)
-        .then(cliente => {
-            res.send("Cliente cadastrado com sucesso")
-        })
-        .catch(err => {
-            return res.status(500).send({
-                message: err.message || "Erro ao se cadastrar"
-            })
-        })
-    }
+    function generateToken(params={}){
+        return jwt.sign({params
+        }, authConfig.secret, {
+            expiresIn: 864000,
+        })}
+    exports.create =async (req,res) => {
+        async (req,res) => {
+            const { email } = req.body;
+    
+            try {
+              if (await Cliente.findOne({ email })) {
+                return res.status(400).send({ error: "User already exists" });
+              }
+          
+              const user = await Cliente.create(req.body);
+          
+              user.senha = undefined;
+          
+              return res.send({
+                user,
+                token: generateToken({ id: user.id })
+              });
+            } catch (err) {
+              return res.status(400).send({ error: "Registration failed " });
+            }
+        }}
+    //     Cliente.create(req.body)
+    //     .then(cliente => {
+    //         res.send("Cliente cadastrado com sucesso")
+    //     })
+    //     .catch(err => {
+    //         return res.status(500).send({
+    //             message: err.message || "Erro ao se cadastrar"
+    //         })
+    //     })
+    // }
     //Achar todos clientes
     exports.findAll = (req,res) => {
         Cliente.find()
