@@ -13,6 +13,7 @@ import Checkout from "./pages/pagamento/checkoutPagamento/Checkout";
 import PrivateRoute from "./PrivateRoute";
 import dashboard from "./pages/dashboard/dashboard";
 import urlRetorno from "./pages/dashboard/urlRetorno";
+import acessarCatalogo from "./pages/dashboard/acessarCatalogo";
 import authpage from "./pages/dashboard/authpage";
 import Termo from "./pdf/pdf";
 import Dash from "./dashboardMAGNUM/Components/Main";
@@ -60,7 +61,7 @@ function Routes() {
         <Route path="/loginpag" component={loginPag} />
         <Route path="/cadastropag" component={cadastropag} />
         <Route path="/Checkout/:id" component={Checkout} />
-      
+        <PrivateRoute path="/acessarCatalogo" component={acessarCatalogo}/>
         <Route path="/termos" component={Termo} />
         <Route exact path="/dashadmin" component={Dash} />
       </Switch>

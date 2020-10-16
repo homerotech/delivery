@@ -66,11 +66,15 @@ class dashboard extends React.Component {
             Alterar dados pessoais
           </a>
           <br />
-          <a className="btn-success btn" href="/deletarProdutos">
+          <a className="btn-info btn" href="/acessarCatalogo">
+            Acessar Catálogo
+          </a>
+          <br />
+          <a className="btn-danger btn" href="/deletarProdutos">
             Deletar produtos
           </a>
           <br />
-          <a className="btn-success btn" href={linkauth}>
+          <a className="btn-info btn" href={linkauth}>
             Vincular Conta do Mercado Pago
           </a>
           <br />
