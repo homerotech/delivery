@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import "aos/dist/aos.css"
-import StoreProvider from './Context/contextLogin';
+import StoreProvider from './Context/StoreProvider';
 
 ReactDOM.render(
 

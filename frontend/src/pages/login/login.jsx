@@ -19,43 +19,48 @@ import Cookies from 'js-cookie'
 
 const SignIn= ()=> {
 
+const
+
+
+
+
  
-  login(event){
-    var data = {
-      email: this.state.email,
-      senha: this.state.senha,
-    }
-    data = JSON.stringify(data)
-    event.preventDefault();
+//   login(event){
+//     var data = {
+//       email: this.state.email,
+//       senha: this.state.senha,
+//     }
+//     data = JSON.stringify(data)
+//     event.preventDefault();
 
-    fetch("http://localhost:5000/api/login",{
-      method:"POST",
-      headers: {'Content-Type': 'application/json'},
-      body:data
-        }).then(
-          async res =>{
-            if(res.status===401){
-              document.getElementById("incorrect").innerHTML = "E-mail ou senha incorretos"
-            }
-            else{
-              const object = await res.json()
-              Cookies.set('name', object.session, { expires: 7 })
-              window.location.href='/dashboard'
-            }
-          }
-        )
+//     fetch("http://localhost:5000/api/login",{
+//       method:"POST",
+//       headers: {'Content-Type': 'application/json'},
+//       body:data
+//         }).then(
+//           async res =>{
+//             if(res.status===401){
+//               document.getElementById("incorrect").innerHTML = "E-mail ou senha incorretos"
+//             }
+//             else{
+//               const object = await res.json()
+//               Cookies.set('name', object.session, { expires: 7 })
+//               window.location.href='/dashboard'
+//             }
+//           }
+//         )
       
-  }
+//   }
 
-  handleChange(event){
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
+//   handleChange(event){
+//     const target = event.target;
+//     const value = target.value;
+//     const name = target.name;
 
-    this.setState({
-        [name]:value
-    });
-}
+//     this.setState({
+//         [name]:value
+//     });
+// }
 
 
     return (
