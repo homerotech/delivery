@@ -16,6 +16,8 @@ export default function Checkout(props) {
 
   var data = {
     client_secret: token,
+
+    ///
     grant_type: "authorization_code",
     code: code,
     redirect_uri: uri,

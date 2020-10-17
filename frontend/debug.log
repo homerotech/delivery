@@ -49,3 +49,51 @@
 [1015/004933.775:ERROR:crash_report_database_win.cc(457)] unexpected header
 [1015/162631.160:ERROR:crash_report_database_win.cc(457)] unexpected header
 [1015/222428.716:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/144705.989:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/145706.267:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/145706.267:ERROR:directory_reader_win.cc(43)] FindFirstFile: O sistema não pode encontrar o caminho especificado. (0x3)
+[1016/145706.268:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/145706.268:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/150205.996:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/151706.004:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/153206.014:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/154706.025:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/160206.031:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/161706.044:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/163206.051:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/164706.064:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/170206.076:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/171706.091:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/173206.104:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/174706.119:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/180206.134:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/181706.143:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/181808.212:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/183206.157:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/184706.163:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/190206.166:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/191706.173:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/193206.182:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/194706.188:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/200206.204:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/201706.206:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/203206.381:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/204706.478:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/210206.482:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/211706.494:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/213720.253:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/215220.260:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/220720.272:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/222220.399:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/223720.402:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/225225.665:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/230725.672:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/232225.674:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1016/233725.698:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1017/025639.656:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1017/031139.661:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1017/031902.960:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[1017/031903.007:ERROR:exception_snapshot_win.cc(99)] thread ID 5212 not found in process
+[1017/031903.194:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
+[1017/031903.194:ERROR:exception_snapshot_win.cc(99)] thread ID 12368 not found in process
+[1017/031903.194:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Tentou-se acessar um processo de saída. (0xc000010a)
