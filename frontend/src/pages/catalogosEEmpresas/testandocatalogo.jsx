@@ -98,8 +98,8 @@ var pago = produtos.map((elistop)=>{
   });
 
   //tem token?
-
-  const temToken = dados.map((i1)=>i1.token)[0] !=undefined;
+const fff=dados.map((i1)=>i1.token)[0] 
+  const temToken = Object.keys(fff).length !== 0;
   console.log(temToken)
   console.log(dados.map((i2)=>i2.telefone)[0]);
   //pagamento na hora

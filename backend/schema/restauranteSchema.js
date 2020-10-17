@@ -11,7 +11,7 @@ const restauranteSchema = mongoose.Schema(
     valeRefeicao: Boolean,
     desc: String,
     cidade: String,
-    token: String,
+    dataV: Object,
     chave: String,
     refresh: String,
     estado: String,
