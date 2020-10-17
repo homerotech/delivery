@@ -58,7 +58,7 @@ export default function Checkout(props) {
        resposta2 = "Vinculado om sucesso"
       })
       .catch(function (error) {
-        resposta2 = "Erro ao vincular Token"
+        resposta2 = "Erro ao vincular Token"+error
       });
   }
 
@@ -67,7 +67,7 @@ export default function Checkout(props) {
   return (
     <div>
       <div className="card">
-        <h2 style={{ color: "black" }}> Vinculado com Sucesso </h2>
+        <h2 style={{ color: "black" }}> {resposta2} </h2>
         <a className="btn btn-info">Voltar para pagina inicial</a>
       </div>
     </div>
