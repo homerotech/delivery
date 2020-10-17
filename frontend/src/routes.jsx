@@ -50,7 +50,7 @@ function Routes() {
           component={cadastrodeprodutos}
         />
         <PrivateRoute path="/dashboard" component={dashboard} />
-        <Route path="/authpage" component={authpage} />
+        <PrivateRoute path="/authpage" component={authpage} />
         <Route path="/pgempresas" component={pgempresas} />
         <PrivateRoute path="/Planos" component={Planos}/> 
         <PrivateRoute path="/Mensalidade" component={Mensalidade}/>

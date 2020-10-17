@@ -36,7 +36,7 @@ export default function Checkout(props) {
 
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
-    return response.json();
+    
     var resposta = response.json();
     Vtoken = resposta.access_token;
     Vkey = resposta.public_key;
