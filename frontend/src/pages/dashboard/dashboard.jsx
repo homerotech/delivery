@@ -5,17 +5,12 @@ import Token from "./inserirToken";
 // clietid e appid
 var client_id = "3110758028081820";
 var APP_ID = "AlexandreMKT";
-var redirect_uri = "http://localhost:300/urlRetorno";
+var redirect_uri = "http://localhost:300/";
 // ^^^^
 var linkauth = "";
 ///https://auth.mercadopago.com.br/authorization?3110758028081820=AlexandreMKT&response_type=code&platform_id=mp&redirect_uri=https://www.lojasfacil.com
 class dashboard extends React.Component {
-  linkauth =
-    "https://auth.mercadopago.com.br/authorization?client_id=" +client_id +
-    "&response_type=code&platform_id=mp&state=id=" +
-    this.props.id +
-    "=redirect_uri=" +
-    redirect_uri;
+ 
 
   logout() {
     fetch("http://localhost:5000/api/logout/" + this.props.id, {
@@ -32,7 +27,14 @@ class dashboard extends React.Component {
       isLoading: true,
       Dados: {},
     };
+    this.linkauth =
+    "https://auth.mercadopago.com.br/authorization?client_id=" +client_id +
+    "&response_type=code&platform_id=mp&state=id=" +
+    this.props.id +
+    "=redirect_uri=" +
+    redirect_uri;
     this.logout = this.logout.bind(this);
+    
   }
 
 
@@ -74,7 +76,7 @@ class dashboard extends React.Component {
             Deletar produtos
           </a>
           <br />
-          <a className="btn-info btn" href={linkauth}>
+          <a className="btn-info btn" href={this.linkauth}>
             Vincular Conta do Mercado Pago
           </a>
           <br />

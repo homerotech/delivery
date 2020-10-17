@@ -97,3 +97,4 @@
 [1017/031903.194:ERROR:process_reader_win.cc(123)] NtOpenThread: {Acesso Negado} Um processo solicitou acesso a um objeto, mas o direito de acesso não lhe foi concedido. (0xc0000022)
 [1017/031903.194:ERROR:exception_snapshot_win.cc(99)] thread ID 12368 not found in process
 [1017/031903.194:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Tentou-se acessar um processo de saída. (0xc000010a)
+[1017/170224.493:ERROR:crash_report_database_win.cc(457)] unexpected header
