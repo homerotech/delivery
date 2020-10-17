@@ -7,6 +7,10 @@ export default function Checkout(props) {
   console.log(code);
   console.log(id);
   //
+
+
+
+  
   var token = "colocar token aqui";
   var uri = "http://localhost:3000/authpage";
   //
@@ -36,7 +40,7 @@ export default function Checkout(props) {
 
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
-    
+    var resposta2;
     var resposta = response.json();
     Vtoken = resposta.access_token;
     Vkey = resposta.public_key;
@@ -46,15 +50,15 @@ export default function Checkout(props) {
       chave: Vkey,
       refresh: Vrefresh,
     };
-    axios("http://localhost:5000/api/restaurante" + id, {
-      method: "PUT",
+    axios.put("http://localhost:5000/api/restaurante/" + id, {
+      
       body: JSON.stringify(dataV),
     })
       .then(function (response) {
-        console.log(response);
+       resposta2 = "Vinculado om sucesso"
       })
       .catch(function (error) {
-        console.log("caraio" + error);
+        resposta2 = "Erro ao vincular Token"
       });
   }
 
@@ -64,6 +68,7 @@ export default function Checkout(props) {
     <div>
       <div className="card">
         <h2 style={{ color: "black" }}> Vinculado com Sucesso </h2>
+        <a className="btn btn-info">Voltar para pagina inicial</a>
       </div>
     </div>
   );
