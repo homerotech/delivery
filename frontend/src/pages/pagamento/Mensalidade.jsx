@@ -39,7 +39,7 @@ class Mensalidade extends Component {
 
   componentDidMount() {
 
-    window.Mercadopago.setPublishableKey('TEST-617672f4-1157-4b20-84f4-01d9cb535e5a');
+    window.Mercadopago.setPublishableKey('APP_USR-8428c02d-0812-47b2-9d26-2d3a1ea5d891');
     window.Mercadopago.getIdentificationTypes();
     
 
@@ -259,7 +259,7 @@ class Mensalidade extends Component {
               type="hidden"
               name="paymentMethodId"
             />
-            <input type="submit" value="Realizar o pagamento" />
+           <a href="/dashboard"> <input type="submit" value="Realizar o pagamento" /></a>
           </fieldset>
         </form>
       </div>
