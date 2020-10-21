@@ -24,7 +24,7 @@ import Planos from './pages/pagamento/Planos'
 import Mensalidade from './pages/pagamento/Mensalidade'
 import DeletarProdutos from "./pages/dashboard/deletarProdutos";
 
-import StoreProvider from './Context/StoreProvider'
+
 
 
 

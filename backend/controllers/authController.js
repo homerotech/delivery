@@ -3,9 +3,9 @@ const Cadastro = require('../schema/cadastroSchema');
 const express = require('express')
 const bcrypt = require('bcrypt');
 const  jwt  = require('jsonwebtoken')
-
+const jwtValidation = require('./auth/jwt-validation');
 const authConfig = require('../config/auth.json');
-
+const logic = require('./auth/logic');
 const router = express.Router();
 
 
@@ -44,7 +44,27 @@ router.use(authMiddleware)
     //     )
         
     // })
-    res.send({ id: req.userId,isAuth: true, user: req.userId})
+    const {
+        body: { email, password }
+    } = req;
+
+    logic
+        .authenticate(email, password)
+        .then(({ _id: id, email }) => {
+            const token = jwt.sign({ id }, authConfig.secret, {
+                expiresIn: 864000
+            });
+
+            res.json({
+                status: 'OK',
+                message: 'User authenticated succesfully',
+                user: { id, email },
+                token
+            });
+        })
+        .catch(({ message }) =>
+            res.status(403).json({ status: 'KO', message })
+        );
 }
 
     //Cadastrar cliente
@@ -55,7 +75,7 @@ router.use(authMiddleware)
     })}
     exports.login = async (req,res) => {
                const {email, senha} = req.body;
-          const user = await Cadastro.findOne({email}).select('+senha');
+          const user = await Cadastro.findOne({email}).select('+password');
             if(!user)
             return res.status(400).send({
                          message: "Email ou Senha Incorreta"

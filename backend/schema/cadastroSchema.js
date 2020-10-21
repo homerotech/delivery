@@ -3,32 +3,32 @@ const bcrypt = require('bcrypt')
 
 const cadastroSchema = mongoose.Schema({
     _id: Number,
-    nome: {
+    name: {
         type:String,
 
         required: true
     },
-    plano: String,
+
     sobrenome: String ,
     email: {
         type:String,
    
         required: true
     },
-    senha: {
+    password: {
         type:String,
         select: false,
         required: true
     },
-    documento: Number
+    doc: Number
     
     
 }, {
     timestamps: true
 });
 cadastroSchema.pre('save', async function(next){
-    const hash = await bcrypt.hash(this.senha, 10)
-    this.senha = hash;
+    const hash = await bcrypt.hash(this.password, 10)
+    this.password = hash;
     next();
 })
 module.exports = mongoose.model('cadastro', cadastroSchema)

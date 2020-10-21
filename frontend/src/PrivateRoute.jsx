@@ -1,42 +1,30 @@
-import React from 'react'
-import {Route,Redirect} from 'react-router-dom'
-import {isAuthenticated} from './Auth'
+import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
-async function asyncCall() {
-    return await isAuthenticated();
-  }
+import withState from './Context/withState';
 
-class PrivateRoute extends React.Component {
-    state = {
-      loading: true,
-      isAuthenticated: false,
-      id: null
-    }
-    componentDidMount() {
-      asyncCall().then((res) => {
-        this.setState({
-          loading: false,
-          isAuthenticated: res.isAuth,
-          id: res.id
-        });
-      });
-    }
+class PrivateRoute extends Component {
     render() {
-      const { component: Component, ...rest } = this.props;
-      if (this.state.loading) {
-        return <div>LOADING</div>;
-      } else {
-        return (
-          <Route {...rest} render={props => (
-            <div>
-              {!this.state.isAuthenticated && <Redirect to={{ pathname: '/login', state: { from: this.props.location } }} />}
-              <Component id={this.state.id} {...this.props} />
-            </div>
-            )} 
-          />
-        )
-      }
-    }
-  }
+        const {
+            store: { isLoggedIn },
+            component: Component,
+            redirectTo = '/',
+            ...rest
+        } = this.props;
 
-  export default PrivateRoute
+        return (
+            <Route
+                render={props =>
+                    isLoggedIn ? (
+                        <Component {...props} />
+                    ) : (
+                        <Redirect to={'/login'} />
+                    )
+                }
+                {...rest}
+            />
+        );
+    }
+}
+
+export default withState(PrivateRoute);

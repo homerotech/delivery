@@ -7,7 +7,7 @@ const Cliente = require('../schema/cadastroSchema');
             expiresIn: 864000,
         })}
     exports.create =async (req,res) => {
-        async (req,res) => {
+      
             const { email } = req.body;
     
             try {
@@ -17,7 +17,7 @@ const Cliente = require('../schema/cadastroSchema');
           
               const user = await Cliente.create(req.body);
           
-              user.senha = undefined;
+              user.password = undefined;
           
               return res.send({
                 user,
@@ -26,7 +26,7 @@ const Cliente = require('../schema/cadastroSchema');
             } catch (err) {
               return res.status(400).send({ error: "Registration failed " });
             }
-        }}
+        }
     //     Cliente.create(req.body)
     //     .then(cliente => {
     //         res.send("Cliente cadastrado com sucesso")

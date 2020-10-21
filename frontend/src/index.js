@@ -4,15 +4,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import "aos/dist/aos.css"
-import StoreProvider from './Context/StoreProvider';
+import AuthProvider from './Context/provider';
 
 ReactDOM.render(
 
     <React.StrictMode>
-    <StoreProvider>
+<AuthProvider>
       <App />
-
-      </StoreProvider>
+      </AuthProvider>
+   
     </React.StrictMode>,
 
   document.getElementById('root')

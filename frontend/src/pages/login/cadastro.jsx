@@ -41,11 +41,11 @@ class SignUp extends React.Component {
     var now = new Date().getTime();
     var data = {
       _id: now,
-      nome: this.state.Nome,
+      name: this.state.Nome,
       sobrenome: this.state.Sobrenome,
       email: this.state.Email,
-      senha: this.state.Senha,
-      documento: this.state.documento
+      password: this.state.Senha,
+      doc: this.state.documento
     }
     data = JSON.stringify(data)
         console.log(data)
