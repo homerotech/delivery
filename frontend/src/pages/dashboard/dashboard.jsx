@@ -50,12 +50,31 @@ class dashboard extends React.Component {
       .catch((err) => console.log(err));
   }
 
+  checkExpire(){
+    if(!this.state.expires){
+      return <div><span style={{color: "red"}}>EXPIRADA</span><a style={{marginLeft:"10px"}} className="btn-danger btn" href="/Planos">RENOVAR ASSINATURA</a></div>
+
+    }
+    else{
+      if(this.state.expires <= Date.now()){
+        return <div><span style={{color: "red"}}>EXPIRADA</span><a style={{marginLeft:"10px"}} className="btn-danger btn" href="/Planos">RENOVAR ASSINATURA</a></div>
+      }
+      else{
+        return <span style={{color: "green"}}>ATIVA</span>
+
+      }
+    }
+  }
+
   render() {
     return (
       <div>
         <Header />
         <div className="card">
           <h2 style={{ color: "black" }}>Bem vindo {this.state.Dados.nome}</h2>
+          <div>
+            <h3 style={{color:"black"}}>Status da assinatura: {this.checkExpire()}</h3>
+          </div>
           <a className="btn-success btn" href="/cadastroDeCardapio">
             Alterar Catálogo de Produtos
           </a>

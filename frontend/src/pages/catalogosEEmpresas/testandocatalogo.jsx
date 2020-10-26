@@ -99,9 +99,12 @@ var pago = produtos.map((elistop)=>{
 
   //tem token?
   const fff=dados.map((i1)=>i1.token)[0]
+  if(!fff){
+    const temToken=false
+  }
+  else{
   const temToken = Object.keys(fff).length !== 0;
-  console.log(temToken)
-  console.log(dados.map((i2)=>i2.telefone)[0]);
+  }
   //pagamento na hora
 
   const pag = () => {
@@ -176,7 +179,7 @@ if(temporizante === true){
           {pago}
         </ul>
         <br />
-        {temToken ? (
+        {this.temToken ? (
           <Link
             to={{
               pathname: "/Checkout/" + props.match.params.id,
