@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../../components/header";
 import Cookies from "js-cookie";
+import axios from 'axios'
 import Token from "./inserirToken";
 // clietid e appid
 var client_id = "3110758028081820";
@@ -8,6 +9,7 @@ var APP_ID = "AlexandreMKT";
 var redirect_uri = "http://localhost:300/authpage";
 // ^^^^
 var linkauth = "";
+var g;
 ///https://auth.mercadopago.com.br/authorization?3110758028081820=AlexandreMKT&response_type=code&platform_id=mp&redirect_uri=https://www.lojasfacil.com
 class dashboard extends React.Component {
  
@@ -26,9 +28,10 @@ class dashboard extends React.Component {
     this.state = {
       isLoading: true,
       Dados: {},
+      Restaurante: {}
     };
-    this.linkauth =
-    "https://auth.mercadopago.com.br/authorization?client_id=" +client_id +
+    this.now = Date.now();
+    this.linkauth =    "https://auth.mercadopago.com.br/authorization?client_id=" +client_id +
     "&response_type=code&platform_id=mp&state=id=" +
     this.props.id +
     "=redirect_uri=" +
@@ -48,23 +51,25 @@ class dashboard extends React.Component {
         });
       })
       .catch((err) => console.log(err));
+      axios.get('http://localhost:5000/api/restaurante/'+this.props.id).then((dt)=>{
+        this.setState({
+          Restaurante: dt.data
+        })
+      })
   }
 
   checkExpire(){
-    if(!this.state.expires){
-      return <div><span style={{color: "red"}}>EXPIRADA</span><a style={{marginLeft:"10px"}} className="btn-danger btn" href="/Planos">RENOVAR ASSINATURA</a></div>
-
-    }
-    else{
-      if(this.state.expires <= Date.now()){
+    console.log(this.now)
+    console.log(this.state.Restaurante.expires)
+    g= new Date(this.state.Restaurante.expires);
+      if(g.getTime()<=this.now){
         return <div><span style={{color: "red"}}>EXPIRADA</span><a style={{marginLeft:"10px"}} className="btn-danger btn" href="/Planos">RENOVAR ASSINATURA</a></div>
       }
       else{
         return <span style={{color: "green"}}>ATIVA</span>
 
-      }
-    }
-  }
+      
+  }}
 
   render() {
     return (

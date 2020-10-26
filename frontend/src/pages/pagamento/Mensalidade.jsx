@@ -39,7 +39,7 @@ class Mensalidade extends Component {
 
   componentDidMount() {
 
-    window.Mercadopago.setPublishableKey('APP_USR-8428c02d-0812-47b2-9d26-2d3a1ea5d891');
+    window.Mercadopago.setPublishableKey('TEST-617672f4-1157-4b20-84f4-01d9cb535e5a');
     window.Mercadopago.getIdentificationTypes();
     
 
@@ -102,6 +102,7 @@ class Mensalidade extends Component {
       const form = document.getElementsByTagName('form')[0];
       window.Mercadopago.createToken(form, this.sdkResponseHandler);
     }
+    window.location.href= '/dashboard'
   }
 
   /**

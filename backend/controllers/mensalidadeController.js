@@ -126,7 +126,8 @@ app.post('/pay', function (req, res) {
   )
     
     console.log('Payment done!');
-    res.send(payment);
+    res.send('Pagamento concluido com sucesso! clique aqui! <br> <a href="http://localhost:3000/dashboard"> Feito</a>')
+  
   }).catch(function (error) {
     console.log(`There was an error making the payment ${error.message}`);
     res.status(500).send({
@@ -138,5 +139,5 @@ app.post('/pay', function (req, res) {
 
 
 }
-
+//4235647728025682	
 // }curl -X POST  -H "Content-Type: application/json"  -H 'Authorization: Bearer TEST-1922384788759927-100402-4002afcffda4c9a735b8b62869240180-443219219'  "https://api.mercadopago.com/users/test_user"  -d '{"http://localhost:5000/pay":"MLB"}'
