@@ -48,7 +48,7 @@ class SignIn extends React.Component {
             }
             else{
               const object = await res.json()
-              Cookies.set('name', object.session, { expires: 864000 })
+              Cookies.set('session', object.session, { expires: 864000 })
               window.location.href='/dashboard'
             }
           }

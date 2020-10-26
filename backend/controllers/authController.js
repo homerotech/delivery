@@ -25,10 +25,16 @@ const Cadastro = require('../schema/cadastroSchema');
             if(!session){
                 return res.send("false")
             }
-        res.send(
-            {id: session.id,
-            isAuth: true}
-        )
+            else if(session.session===req.body.session){
+                res.send(
+                    {id: session.id,
+                    isAuth: true,
+                    other: req.body}
+                )
+            }
+            else{
+                return res.send("false")
+            }
         
     })
 }
@@ -51,10 +57,21 @@ const Cadastro = require('../schema/cadastroSchema');
             }
 
             if(req.body.senha == cliente.senha) {
-                Auth.create({
-                    _id: cliente.id,
-                    session: id
-                })
+                if (Auth.findOne({_id: cliente.id})){
+                    Auth.findOneAndRemove({_id: cliente.id}).then(
+                        Auth.create({
+                            _id: cliente.id,
+                            session: id
+                        })
+                    )
+
+                }
+                else{
+                    Auth.create({
+                        _id: cliente.id,
+                        session: id
+                    })
+                }
                 return res.send({
                     "session": id
                 })

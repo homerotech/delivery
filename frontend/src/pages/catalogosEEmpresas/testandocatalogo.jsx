@@ -17,7 +17,7 @@ import RoomIcon from '@material-ui/icons/Room';
 import Pagamento from './pagamentosNaHora';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
-export default (props)=>{
+export default (props)=>{ 
 
   const {produtos, setProdutos} = useCount()
 
@@ -98,7 +98,7 @@ var pago = produtos.map((elistop)=>{
   });
 
   //tem token?
-const fff=dados.map((i1)=>i1.token)[0] 
+  const fff=dados.map((i1)=>i1.token)[0]
   const temToken = Object.keys(fff).length !== 0;
   console.log(temToken)
   console.log(dados.map((i2)=>i2.telefone)[0]);

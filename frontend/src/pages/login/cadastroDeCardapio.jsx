@@ -17,7 +17,6 @@ class cadastroCardapio extends React.Component {
         else{
           res.json().then(
           dados => {
-            console.log(dados)
             this.setState({
             _id:this.props.id,
             isLoading: false,
@@ -80,7 +79,7 @@ handleChange(event){
     const target = event.target;
     const value = target.value;
     const name = target.name;
-
+    console.log(typeof value)
     this.setState({
         [name]:value
     });
@@ -164,7 +163,7 @@ handleChange(event){
       <div className="" style={{backgroundColor:"#f3f3f3", color: "black"}} >
           <Header/>
           <br/>
-          <h3>Cadastrar ou alterar cardapio</h3>
+          <h3>Cadastrar ou alterar catálogo de Produtos</h3>
           <form className="container">
           <div class="form-row">
   <div class="form-group col-md-6">
@@ -200,11 +199,11 @@ handleChange(event){
 <div class="form-row">
 <div class="form-group col-md-6">
     <label for="inputCity"><h5>Abertura</h5></label>
-    <input name="abertura" type="number" placeholder="Hora a qual abre seu comércio" class="form-control" onChange={this.handleChange} value={this.state.abertura} />
+    <input name="abertura" type="time" placeholder="Hora a qual abre seu comércio" class="form-control" onChange={this.handleChange} value={this.state.abertura} />
   </div>
   <div class="form-group col-md-6">
     <label for="inputCity"><h5>Fechamento</h5></label>
-    <input name="fechamen" type="number" class="form-control" placeholder="Hora a qual fecha seu comércio" id="fechamen" onChange={this.handleChange} value={this.state.fechamen}/>
+    <input name="fechamen" type="time" class="form-control" placeholder="Hora a qual fecha seu comércio" id="fechamen" onChange={this.handleChange} value={this.state.fechamen}/>
   </div>
 <div class="form-group col-md-6">
     <label for="inputCity"><h5>Preço do Frete</h5></label>

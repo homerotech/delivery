@@ -5,8 +5,8 @@ const restauranteSchema = mongoose.Schema(
     _id: Number,
     nome: String,
     telefone: Number,
-    abertura: Number,
-    fechamen: Number,
+    abertura: String,
+    fechamen: String,
     endereco: String,
     valeRefeicao: Boolean,
     desc: String,
@@ -20,6 +20,7 @@ const restauranteSchema = mongoose.Schema(
     frete: Number,
     expires: String,
     url:String,
+    token:String
     // expire_at: {type: Date, default: Date.now, expires: 144000},
 }, {
   

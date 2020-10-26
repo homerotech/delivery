@@ -40,7 +40,7 @@ export default function Checkout(props) {
 
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
-    var resposta2;
+    let resposta2 = "";
     var resposta = response.json();
     Vtoken = resposta.access_token;
     Vkey = resposta.public_key;
@@ -67,7 +67,7 @@ export default function Checkout(props) {
   return (
     <div>
       <div className="card">
-        <h2 style={{ color: "black" }}> {resposta2} </h2>
+        <h2 style={{ color: "black" }}> {this.resposta2} </h2>
         <a className="btn btn-info">Voltar para pagina inicial</a>
       </div>
     </div>
