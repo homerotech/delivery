@@ -15,7 +15,7 @@ exports.create = (req,res) => {
 }
 //Achar todos produtos
 exports.findAll = (req,res) => {
-    Produto.find({"cardapio": "teste"})
+    Produto.find({"cardapio": req.params.url})
 .then(produto => {
         res.send(produto);
     })

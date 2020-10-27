@@ -13,7 +13,7 @@ app.post('/api/upload/:id',
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './frontend/public/uploads')
+        cb(null, '/var/www/html/uploads')
     },
     filename: function (req, file, cb) {
         cb(null, req.params.id+'.png');
@@ -35,7 +35,7 @@ app.post('/api/upload/produtos/:id:url',
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './frontend/public/uploads/produtos')
+        cb(null, '/var/www/html/uploads')
     },
     filename: function (req, file, cb) {
         cb(null, req.params.id+req.params.url+'.png');
@@ -58,7 +58,7 @@ const storage = multer.diskStorage({
 const fs= require('fs')
 
 app.delete('/api/upload/del/:id', (req,res)=>{
-    fs.unlinkSync("./frontend/public/uploads/"+req.params.id+".png")
+    fs.unlinkSync("/var/www/html/uploads"+req.params.id+".png")
     res.send("Arquivo deletado").catch(err => res.send(err))}
 )
 
