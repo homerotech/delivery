@@ -67,10 +67,6 @@ var temporizante = g.getTime() >= Date.now()
 
 console.log(t)
 
-
-
-
-
  
 var pago = produtos.map((elistop)=>{
   return(
@@ -97,14 +93,7 @@ var pago = produtos.map((elistop)=>{
     );
   });
 
-  //tem token?
-  const fff=dados.map((i1)=>i1.token)[0]
-  if(!fff){
-    const temToken=false
-  }
-  else{
-  const temToken = Object.keys(fff).length !== 0;
-  }
+
   //pagamento na hora
 
   const pag = () => {
@@ -179,7 +168,6 @@ if(temporizante === true){
           {pago}
         </ul>
         <br />
-        {this.temToken ? (
           <Link
             to={{
               pathname: "/Checkout/" + props.match.params.id,
@@ -198,12 +186,6 @@ if(temporizante === true){
               }}> Realizar pedido</a>
             </button>
           </Link>
-        ) : (
-          <button type="button" class="btn btn-info btn-lg btn-block">
-            Este restaurante não oferece pagamento online
-          </button>
-        )}
-        <br />
         <div className>
           <p style={{ color: "black" }}>
             <br></br>

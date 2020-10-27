@@ -23,7 +23,7 @@ import testandocatalogo from "./pages/catalogosEEmpresas/testandocatalogo";
 import Planos from './pages/pagamento/Planos'
 import Mensalidade from './pages/pagamento/Mensalidade'
 import DeletarProdutos from "./pages/dashboard/deletarProdutos";
-
+import pagarPlanos from "./pages/pagamento/pagarPlanos"
 function Routes() {
   return (
     <BrowserRouter>
@@ -54,6 +54,7 @@ function Routes() {
         <Route path="/pgempresas" component={pgempresas} />
         <PrivateRoute path="/Planos" component={Planos}/> 
         <PrivateRoute path="/Mensalidade" component={Mensalidade}/>
+        <PrivateRoute path="/pagarPlanos" component={pagarPlanos}/>
         <Route path="/pgempresas" component={pgempresas}/>     
         <PrivateRoute path="/deletarProdutos" component={DeletarProdutos}/>
         <Route path="/cardapio" component={catalogo} />

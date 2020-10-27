@@ -80,111 +80,40 @@ handleChange(event){
     });
 
 }
-    dadosCadastro;
-    cadastrarProduto(){
+cadastrarProduto(){ 
+  var ID = Date.now() + Math.round(Math.random());     
+  var data = { 
+    _id:ID,
+    nome:this.state.nome,
+    descricao:this.state.descricao,
+    preco:this.state.preco,
+    img: this.state.cardapio+"_"+ID,
+    cardapio: this.state.cardapio
+  }
 
-      var now = new Date().getTime();  
-      console.log(data)
-      var data = { 
-        _id: this.state._id,
-        nome:this.state.nome,
-        preco: this.state.preco,
-        descricao: this.state.descricao,
-        categoria: this.state.categoria,
-        opcionais: this.state.opcionais,
-        cardapio: this.state.cardapio,
-        img: this.state._id
-      }
-    
-    //     _id: Number,
-    //     nome: String,
-    //     preco: Number,
-    //     img: String,
-    //     descricao: String,
-    //     cardapio: String
-    
-    // }, {
-    //     timestamps: true,
-    //     collection: 'Produto'
-    // });
-    
-    
-    data = JSON.stringify(data)
-    
+
+  data = JSON.stringify(data)
+
     const files = this.state.img;
-    if(files !== null){
-    const formData = new FormData()
-    formData.append('file',files)
-    console.log(data)
-    
-    
-    
-    if(!this.state.isUpdate){
-    
+  
     if(files !== null){
       const formData = new FormData()
       formData.append('file',files)
-      fetch('http://localhost:5000/api/upload/'+this.state._id,{
+      fetch('http://localhost:5000/api/upload/'+this.state.cardapio +"_"+ID,{
           method:"POST",
           body:formData
-      }).then(alert(this.state.id + now)).catch((err)=>{alert(err)});
-    }
-    
-    fetch('http://localhost:5000/api/produto/'+this.state.cardapio,{
+      });
+  }
+
+    fetch('http://localhost:5000/api/produto',{
       method:"POST",
       headers: {'Content-Type': 'application/json'},
       body:data
-    }).then(alert('Catálogo Cadastrado com sucesso'+this.state.cardapio))
-    .catch(err => alert(err))
-    window.location.href='/Planos'
-    }
-    else{
-      const formData = new FormData()
-      formData.append('file',files)
-      fetch('http://191.252.177.239//api/upload/del/'+this.state.id,{
-        method:"DELETE"
-        });
-      fetch('http://localhost:5000/api/upload/'+this.props.id,{
-        method:"POST",
-        body:formData
-        });
-      fetch('http://localhost:5000/api/restaurante/'+this.props.id,{
-        method:"PUT",
-        headers: {'Content-Type': 'application/json'},
-        body:data
-      }).then(alert('Catálogo alterado com sucesso'))
-      .catch(err => alert(err))
-      window.location.href='/dashboard'
-    }
-    }}
-    
-    
-    
-    
-    
-    
-  
+  }).then(alert('Produto Cadastrado com sucesso'))
+  .catch(err => alert(err))
+  window.location.href='/dashboard'
+  }
 
-    handleSubmit = (e) => {
-        
-        console.log(JSON.stringify(this.state))
-        axios.post('http://localhost:5000/api/produto/'+this.state.catalogo, JSON.stringify(this.state),{
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-          .then(function (response) {
-              console.log(response)
-          })
-          .catch(function (error) {
-              console.log("caraio" +error)
-          }) 
-          window.location.href='/dashboard'
-
-
-
-        }
-       
 
  
      
@@ -204,7 +133,7 @@ render(){
             <h2 style={{color:"black"}}><strong>Cadastro de produtos</strong></h2>
           
            {    console.log(this.state)}
-            <form style={{color:"black"}} className="container" method='POST' onSubmit={this.handleSubmit}>
+            <form style={{color:"black"}} className="container" >
             <div class="form-group">
     
                 
@@ -227,8 +156,7 @@ render(){
                 <label for="inputAddress"><strong>Preço</strong></label>
                 <input type="number" name="preco" value={this.state.preco} onChange={this.handleChange} required class="form-control" id="inputAddress" placeholder="2.55"/>
                 <div className="botoesfinais">
-                <button href="/cadastroDeProdutos" onClick={this.cadastrarProduto} type="send" class="btn btn-primary"><a href="/cadastroDeProdutos" style={{color: "white"}}>Cadastrar outro produto</a></button>
-                <Button class="btn btn-primary" onClick={this.handleSubmit}><a href="/dashboard" style={{color: "white"}}>Finalizar</a></Button>
+                <button href="/cadastroDeProdutos" onClick={this.cadastrarProduto} class="btn btn-primary">Cadastrar Produto</button>
                 </div>
                 </div>
               <br/>  

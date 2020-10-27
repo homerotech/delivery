@@ -73,7 +73,7 @@ function passadados(dados){
     pathname: "/Mensalidade",
     data: produtos // your data array of objects
   }}
-><a class="btn btn-primary" onClick={()=>{setProdutos([['Plano Anual', 169.9, '12']])}} style={{backgroundColor: "#B8860B", border:"none",color: "white"}}>Anual</a>
+><a class="btn btn-primary" onClick={()=>{setProdutos([['Plano Anual', 2, '12']])}} style={{backgroundColor: "#B8860B", border:"none",color: "white"}}>Anual</a>
 </Link>            </div>
                 
             </li></a>

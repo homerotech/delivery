@@ -1,30 +1,14 @@
 import React, { Component } from 'react';
 import './Mensalidade.css';
-import Header from '../../components/header'
-import { CountProvider, useCount } from "../../Context/Context";
+import Header from '../../components/header';
+import {handlePayment} from "./handlePayment" 
+import {ScriptTag} from "react-script-tag"
 
-
-
-class Mensalidade extends Component {
-
-  
-
-   
-    
-  
-
-  
-
-
+class pagarPlanos extends Component {
 
   constructor(props){
     super(props);
 
-    this.setPaymentMethodInfo = this.setPaymentMethodInfo.bind(this);
-    this.guessingPaymentMethod = this.guessingPaymentMethod.bind(this);
-    this.sdkResponseHandler = this.sdkResponseHandler.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    
     this.state = {
       submit: false,
       id: this.props.id,
@@ -32,115 +16,47 @@ class Mensalidade extends Component {
     };
   }
 
-  /**
-   * Set credentials and call initial methods
-   */
+  
 
+  componentDidMount(){
+    const mercadopago = require("mercadopago")
 
-  componentDidMount() {
+    let preference ={
+        items:[
+            {
+                title: 'Plano Trimestral',
+                unit_price:49.90,
+                quantity:1,
+            }
+        ]
+    }
 
-    window.Mercadopago.setPublishableKey('APP_USR-1c3d9795-4032-4ff8-b61b-8d37c53fa639');
-    window.Mercadopago.getIdentificationTypes();
-    
+    mercadopago.configure({
+        access_token: "TEST-2745994227570117-090419-a1649a09cc2897951cf090fc28a08502-166811747",
+        sandbox:true
+    });
+
+    mercadopago.preferences.create(preference)
+    .then(function(response){
+        global.id = response.body.id;
+        const script = document.createElement("script");
+        script.src = "https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js";
+        script.setAttribute('data-preference-id', global.id);
+        script.id = "checkout-button";
+        script.async = true;
+        document.body.appendChild(script);
+    }).catch(function(error){
+    console.log(error);
+    });
 
   }
-
-  /**
-   * This method is executed when credit card input has more than 6 characters
-   * Then calls getPaymentMethod function of the MercadoPago SDK
-   *
-   * @param {Object} event HTML event
-   */
-  guessingPaymentMethod(event) {
-    const bin = event.currentTarget.value;
-
-    if (bin.length >= 6) {
-      window.Mercadopago.getPaymentMethod({
-        "bin": bin.substring(0, 6),
-      }, this.setPaymentMethodInfo);
-    }
-  }
-
-  /**
-   * This method is going to be the callback one from getPaymentMethod of the MercadoPago Javascript SDK
-   * Is going to be creating a hidden input with the paymentMethodId obtain from the SDK
-   *
-   * @param {Number} status HTTP status code
-   * @param {Object} response API Call response
-   */
-  setPaymentMethodInfo(status, response) {
-    if (status === 200) {
-      const paymentMethodElement = document.querySelector('input[name=paymentMethodId]');
-
-      if (paymentMethodElement) {
-        paymentMethodElement.value = response[0].id;
-      } else {
-        const form = document.querySelector('#pay');
-        const input = document.createElement('input');
-
-        input.setattribute('name', 'paymentMethodId');
-        input.setAttribute('type', 'hidden');
-        input.setAttribute('value', response[0].id);
-
-        form.appendChild(input);
-      }
-    } else {
-      alert(`Payment Method not Found`);
-    }
-  };
-
-  /**
-   * This method is going to be called when the form is submited
-   * Is going to create the card token using the MercadoPago SDK
-   *
-   * @param {object} event React event
-   */
-  onSubmit(event) {
-    event.preventDefault();
-
-    if (!this.state.submit) {
-      const form = document.getElementsByTagName('form')[0];
-      window.Mercadopago.createToken(form, this.sdkResponseHandler);
-    }
-  }
-
-  /**
-   * This method is going to handle the createToken call made by the SDK
-   * If it is successful is going to add a hidden input with the card token value
-   *
-   * @param {Number} status HTTP status code
-   * @param {Object} response The response from SDK
-   */
-  sdkResponseHandler(status, response) {
-    if (status !== 200 && status !== 201) {
-      alert("verify filled data" +status);
-      console.log(response)
-      this.setState({
-        submit: false,
-      });
-    } else {
-      this.setState({
-        submit: true,
-      });
-
-      const form = document.querySelector('#pay');
-      const card = document.createElement('input');
-
-      card.setAttribute('name', 'token');
-      card.setAttribute('type', 'hidden');
-      card.setAttribute('value', response.id);
-
-      form.appendChild(card);
-      form.submit();
-    }
-  };
 
   render() {
     return (
       <div className="App">
         <Header/>
         <h1 style={{color: 'black'}}>Checkout</h1>
-        <form action="http://localhost:5000/pay" method="post" id="pay" name="pay" onSubmit={this.onSubmit}>
+        <form method="post" id="pay" name="pay">
           <ul>
           <select    id="plano"
                   name="plano" class="form-control form-control-lg" value={this.state.plano} onChange={(e) => this.setState({plano: e.target.value})}>
@@ -259,7 +175,6 @@ class Mensalidade extends Component {
               type="hidden"
               name="paymentMethodId"
             />
-           <a href="/dashboard"> <input type="submit" value="Realizar o pagamento" /></a>
           </fieldset>
         </form>
       </div>
@@ -269,4 +184,4 @@ class Mensalidade extends Component {
  
 }
 
-export default Mensalidade;
+export default pagarPlanos;

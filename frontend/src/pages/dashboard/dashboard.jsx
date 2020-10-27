@@ -59,10 +59,11 @@ class dashboard extends React.Component {
   }
 
   checkExpire(){
-    console.log(this.now)
-    console.log(this.state.Restaurante.expires)
     g= new Date(this.state.Restaurante.expires);
-      if(g.getTime()<=this.now){
+      if(!this.state.Restaurante.expires){
+        return <div><span style={{color: "red"}}>EXPIRADA</span><a style={{marginLeft:"10px"}} className="btn-danger btn" href="/Planos">RENOVAR ASSINATURA</a></div>
+      }
+      else if(g.getTime()<=this.now){
         return <div><span style={{color: "red"}}>EXPIRADA</span><a style={{marginLeft:"10px"}} className="btn-danger btn" href="/Planos">RENOVAR ASSINATURA</a></div>
       }
       else{
@@ -85,7 +86,7 @@ class dashboard extends React.Component {
           </a>
           <br />
           <a className="btn-success btn" href="/cadastroDeProdutos">
-            Cadastrar ou alterar produto
+            Cadastrar produto
           </a>
           <br />
           <a className="btn-success btn" href="/cadastroRestaurante">

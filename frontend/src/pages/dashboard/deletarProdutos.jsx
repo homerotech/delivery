@@ -1,41 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../components/header'
-
-import axios from 'axios';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+import ProdutoComponent from "./ProdutoComponent"
 import { Button } from '@material-ui/core';
+import {Table} from 'reactstrap'
+import Header from '../../components/header'
 var cat={};
 class cadastroDeProdutos extends React.Component {
     // const [value, setValue] = React.useState('cadastro');
 
     
-    componentDidMount(){
-        fetch('http://localhost:5000/api/restaurante/'+this.props.id).then(
-            res=>{
-              if (res.status===404) {
-                this.catalogo({
-                  isUpdate: false
-                })
-              }
-              else{
-                res.json().then(
-                dados => {
-                  console.log(dados)
-                  this.setState({
-                  
-                  cardapio: dados.url,
-     
-                  isUpdate: true
-                })}
-                )
-              }
-            }
-          )
-        }
 
   
 
@@ -43,80 +15,94 @@ class cadastroDeProdutos extends React.Component {
     super(props)
 
     this.state={
-
         id: '',
-        catalogo: ''
+        cardapio: '',
+        ProdutoData: []
     }
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event){
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
 
-    this.setState({
-        [name]:value
-    });
+componentDidMount(){
+  fetch('http://localhost:5000/api/restaurante/'+this.props.id).then(
+    res=>{
+      if (res.status===404) {
+        this.catalogo({
+          isUpdate: false
+        })
+      }
+      else{
+        res.json().then(
+        dados => {
+          console.log(dados)
+          this.setState({
+          
+          cardapio: dados.url,
+
+          isUpdate: true
+        })}
+        )
+      }
+    }
+  )
+
+  fetch('http://localhost:5000/api/restaurante/'+this.props.id).then(
+    res=>{
+      if (res.status===404) {
+        this.catalogo({
+          isUpdate: false
+        })
+      }
+      else{
+        res.json().then(
+        dados => {
+          this.setState({
+          _id: dados._id,
+          cardapio: dados.url,
+            
+        })
+        fetch("http://localhost:5000/api/produto/find/"+dados.url).then(
+        produtos => produtos.json()
+        )
+    .then(data => {
+        this.setState({
+            ProdutoData: data,
+            isLoading: false
+        })
+    })
+    .catch(err => console.log(err))  
+        }
+        )
+      }
+    }
+  )
 
 }
 
-
-
-  
-
-    handleSubmit = (e) => {
-        
-        console.log(JSON.stringify(this.state))
-        axios.delete('http://localhost:5000/api/produto/'+this.state.id)
-          .then(function (response) {
-            axios.delete('http://localhost:5000/api/upload/del/'+this.state.id)
-            .then(function (response) {
-                console.log(response)
-            })
-          })
-          .catch(function (error) {
-              console.log("caraio" +error)
-          }) 
-          window.location.href='/dashboard'
-
-
-
-        }
-       
-
- 
-     
-
 render(){
 
-
-
-
-
-
-    return(
-        <div >
+  
+  const produtoComponents = (this.state.ProdutoData && this.state.ProdutoData.length) ? this.state.ProdutoData.map(produto => <ProdutoComponent  key = {produto._id} nome={produto.nome} id = {produto._id} valor= {produto.preco} />) : <h2 style={{textAlign:"center"}}>A lista de produtos está vazia</h2>;
+  const loading = this.state.isLoading ? <h5>Carregando...</h5> : produtoComponents 
+      return(
+          <div>
             <Header/>
-            <br/>
-            <div className="container" style={{backgroundColor:"#f3f3f3"}}>
-            <h2 style={{color:"black"}}><strong>Deletar de produtos</strong></h2>
-          
-           {    console.log(this.state)}
-            <form style={{color:"black"}} className="container" method='POST' onSubmit={this.handleSubmit}>
-            <div class="form-group">
-                <label for="inputAddress"><strong>Código do produto que deseja deletar</strong></label>
-                <input type="number" name="id" class="form-control" id="inputAddress" value={this.state.id} onChange={this.handleChange} placeholder=""/>
-                
-                </div>
-               
-                <Button class="btn btn-danger" onClick={this.handleSubmit}><a href="/dashboard" style={{color: "white"}}>Deletar</a></Button>
-</form>
-                </div>
-              <br/>  
-
-
-        </div>
+          <div className="container">
+          <h1 style={{color:"black"}}>Produtos</h1>
+          <Table>
+              <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Nome</th>
+                      <th>Valor</th>
+                      <th>Deletar?</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {loading}
+              </tbody>
+          </Table>
+      
+      </div></div>
     )
  
 }
