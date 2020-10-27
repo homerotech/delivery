@@ -202,19 +202,20 @@ console.log(total);
 export default function Checkout(props) {
   // KEY AQUI \/\/\/\/\/
   window.Mercadopago.setPublishableKey(
-    "APP_USR-8428c02d-0812-47b2-9d26-2d3a1ea5d891"
+    "APP_USR-97d40b6d-ed21-4473-a888-266870cd79af"
   );
   var tokenclient = "Ws2sz21ktym0o8z2VEAnkFSYOcaIaORn";
 
   window.Mercadopago.getIdentificationTypes();
   var tokenV = "";
   var refreshV = "";
-
+  var Vkey = "";
   axios
     .get("http://localhost:5000/api/restaurante/" + props.match.params.id)
     .then((res) => {
-      tokenV = res.data.token;
-      refreshV = res.data.refresh;
+      tokenV = res.data.dataV.token;
+      refreshV = res.data.dataV.refresh;
+      Vkey = res.data.dataV.chave
     })
     .catch((err) => {
       console.log(err.message);
@@ -223,7 +224,7 @@ export default function Checkout(props) {
   document.getElementById("tokenV").value = tokenV;
 
   var Vtoken = "";
-  var Vkey = "";
+
   var Vrefresh = "";
 
   var data = {
@@ -245,7 +246,7 @@ export default function Checkout(props) {
 
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
-    return response.json();
+
     var resposta = response.json();
     Vtoken = resposta.access_token;
     Vkey = resposta.public_key;

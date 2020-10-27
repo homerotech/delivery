@@ -3,7 +3,7 @@ import './Mensalidade.css';
 import Header from '../../components/header'
 import { CountProvider, useCount } from "../../Context/Context";
 
-
+import Mercadopago from 'mercadopago'
 
 class Mensalidade extends Component {
 
@@ -39,7 +39,7 @@ class Mensalidade extends Component {
 
   componentDidMount() {
 
-    window.Mercadopago.setPublishableKey('APP_USR-1c3d9795-4032-4ff8-b61b-8d37c53fa639');
+    window.Mercadopago.setPublishableKey('APP_USR-8428c02d-0812-47b2-9d26-2d3a1ea5d891');
     window.Mercadopago.getIdentificationTypes();
     
 
@@ -173,7 +173,7 @@ class Mensalidade extends Component {
                 <input
                   id="email"
                   name="email"
-                  defaultValue="test_user_71425066@testuser.com"
+                
                   type="email"
                   placeholder="your email"
                 />
@@ -186,8 +186,7 @@ class Mensalidade extends Component {
                   type="text"
                   id="cardNumber"
                   data-checkout="cardNumber"
-                  placeholder="4509953566233704"
-                  autoComplete="off"
+                 
                   onChange={this.guessingPaymentMethod}
                   maxLength={16}
                 />
@@ -200,7 +199,7 @@ class Mensalidade extends Component {
                   type="text"
                   id="securityCode"
                   data-checkout="securityCode"
-                  placeholder="123"
+              
                   autoComplete="off"
                 />
               </li>
@@ -212,7 +211,7 @@ class Mensalidade extends Component {
                   type="text"
                   id="cardExpirationMonth"
                   data-checkout="cardExpirationMonth"
-                  placeholder="12"
+          
                   autoComplete="off" />
               </li>
               <li>
@@ -251,7 +250,7 @@ class Mensalidade extends Component {
                   type="text"
                   id="docNumber"
                   data-checkout="docNumber"
-                  placeholder="12345678"
+                
                 />
               </li>
             </ul>

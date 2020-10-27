@@ -27,7 +27,7 @@ var parcelas = 1;
 
 
 // Set the mercadopago credentials
-mercadopago.configurations.setAccessToken('TEST-3110758028081820-101500-30fdfef1eb4c635b43b6651b70d1d24e-443219219');
+mercadopago.configurations.setAccessToken('APP_USR-3110758028081820-101500-a7c58c7fde98410946a32629021c47f2-443219219');
 
 // Attach the body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -128,7 +128,7 @@ app.post('/pay', function (req, res) {
     console.log('Payment done!');
     res.send('Pagamento concluido com sucesso! clique aqui! <br> <a href="http://localhost:3000/dashboard"> Feito</a>')
   
-  }).catch(function (error) {
+  }).cat.ch(function (error) {
     console.log(`There was an error making the payment ${error.message}`);
     res.status(500).send({
       message: error.message
