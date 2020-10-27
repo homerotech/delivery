@@ -1,6 +1,5 @@
 module.exports = (app) => {
 
-<<<<<<< HEAD
   const axios = require('axios')
   const bodyParser = require('body-parser');
   const mercadopago = require('mercadopago');
@@ -28,7 +27,7 @@ module.exports = (app) => {
   
   
   // Set the mercadopago credentials
-  mercadopago.configurations.setAccessToken('APP_USR-3110758028081820-102716-b35afc7ae3e2c0776cd1679cb48fd99e-443219219');
+  mercadopago.configurations.setAccessToken('APP_USR-3110758028081820-101500-a7c58c7fde98410946a32629021c47f2-443219219');
   
   // Attach the body-parser
   app.use(bodyParser.urlencoded({ extended: false }));
@@ -40,7 +39,7 @@ module.exports = (app) => {
   
   
   
-    axios.get(axios.get('https://lojfascil.com:5000/api/restaurante/'+ req.body.id)
+    axios.get(axios.get('https://lojasfacil.com:5000/api/restaurante/'+ req.body.id)
     .then(res => {
         console.log(res.data);
         catalogo = res.data;
@@ -127,23 +126,13 @@ module.exports = (app) => {
     )
       
       console.log('Payment done!');
-      res.send('Pagamento concluido com sucesso! clique aqui! <br> <a href="https://lojasfacil.com/dashboard"> Feito</a>')
+      res.send('Pagamento concluido com sucesso! clique aqui! <br> <a href="https://lojasfacil.com:3000/dashboard"> Feito</a>')
     
-<<<<<<< HEAD
-    }).catch(function (error) {
+    }).cat.ch(function (error) {
       console.log(`There was an error making the payment ${error.message}`);
       res.status(500).send({
         message: error.message
       });
-=======
-    console.log('Payment done!');
-    res.send('Pagamento concluido com sucesso! clique aqui! <br> <a href="http://localhost:3000/dashboard"> Feito</a>')
-  
-  }).cat.ch(function (error) {
-    console.log(`There was an error making the payment ${error.message}`);
-    res.status(500).send({
-      message: error.message
->>>>>>> c4638d0752bda405e8b7f66904839ceaebfd4a20
     });
     res.location='/dashboard'
   });
@@ -151,5 +140,5 @@ module.exports = (app) => {
   
   }
   //4235647728025682	
-  // }curl -X POST  -H "Content-Type: application/json"  -H 'Authorization: Bearer TEST-1922384788759927-100402-4002afcffda4c9a735b8b62869240180-443219219'  "https://api.mercadopago.com/users/test_user"  -d '{"http://localhost:5000/pay":"MLB"}'
+  // }curl -X POST  -H "Content-Type: application/json"  -H 'Authorization: Bearer TEST-1922384788759927-100402-4002afcffda4c9a735b8b62869240180-443219219'  "https://api.mercadopago.com/users/test_user"  -d '{"https://lojasfacil.com:5000/pay":"MLB"}'
   
