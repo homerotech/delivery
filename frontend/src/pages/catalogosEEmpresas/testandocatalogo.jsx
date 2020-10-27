@@ -170,7 +170,7 @@ if(temporizante === true){
         <br />
           <Link
             to={{
-              pathname: "/Checkout/" + props.match.params.id,
+              pathname: "/Checkout/" + date._id,
               data: produtos, // your data array of objects
             }}
           >

@@ -1,5 +1,6 @@
 module.exports = (app) => {
 
+<<<<<<< HEAD
   const axios = require('axios')
   const bodyParser = require('body-parser');
   const mercadopago = require('mercadopago');
@@ -128,11 +129,21 @@ module.exports = (app) => {
       console.log('Payment done!');
       res.send('Pagamento concluido com sucesso! clique aqui! <br> <a href="https://lojasfacil.com/dashboard"> Feito</a>')
     
+<<<<<<< HEAD
     }).catch(function (error) {
       console.log(`There was an error making the payment ${error.message}`);
       res.status(500).send({
         message: error.message
       });
+=======
+    console.log('Payment done!');
+    res.send('Pagamento concluido com sucesso! clique aqui! <br> <a href="http://localhost:3000/dashboard"> Feito</a>')
+  
+  }).cat.ch(function (error) {
+    console.log(`There was an error making the payment ${error.message}`);
+    res.status(500).send({
+      message: error.message
+>>>>>>> c4638d0752bda405e8b7f66904839ceaebfd4a20
     });
     res.location='/dashboard'
   });

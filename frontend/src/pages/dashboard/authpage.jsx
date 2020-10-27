@@ -2,6 +2,24 @@ import React from "react";
 import axios from "axios";
 
 export default function Checkout(props) {
+  catalogo={
+    _id: '',
+    nome: '',
+    telefone: '',
+    endereco: '',
+    valeRefeicao: '',
+    abertura: '',
+    fechamen: '',
+    desc:'',
+    cidade:'',
+    frete:'',
+    estado:'',
+    CEP:'',
+    url:'',
+    dataV: '',
+    img: '',
+    expires: ''
+  }
   var code = new URLSearchParams(props.location.search).get("code");
   var id = new URLSearchParams(props.location.search).get("id");
   console.log(code);
@@ -12,7 +30,7 @@ export default function Checkout(props) {
 
   
   var token = "colocar token aqui";
-  var uri = "http://localhost:3000/authpage";
+  var uri = "https://lojasfacil.com/authpage";
   //
   var Vtoken = "";
   var Vkey = "";

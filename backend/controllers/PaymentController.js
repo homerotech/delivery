@@ -5,8 +5,8 @@ module.exports = (app) => {
   //REPLACE WITH YOUR ACCESS TOKEN AVAILABLE IN: https://developers.mercadopago.com/panel/credentials
 
   // TULIO
-  const accountSid = "AC5b647eca9f12e86d325c40263a689677";
-  const authToken = "[AuthToken]";
+  const accountSid = "AC0820abbfdb3a76575a4cf2636871175d";
+  const authToken = "52a8836a4accc0b430a80661aa69e19f";
   const client = require("twilio")(accountSid, authToken);
 
   number = "";
@@ -20,7 +20,7 @@ module.exports = (app) => {
   });
 
   app.post("/process_payment", (req, res) => {
-    mercadopago.configurations.setAccessToken('TEST-3110758028081820-101500-30fdfef1eb4c635b43b6651b70d1d24e-443219219');
+    mercadopago.configurations.setAccessToken('APP_USR-3110758028081820-102716-b35afc7ae3e2c0776cd1679cb48fd99e-443219219');
     var payment_data = {
       transaction_amount: Number(req.body.transactionAmount),
       token: req.body.token,
