@@ -67,12 +67,14 @@ var temporizante = g.getTime() >= Date.now()
 
 console.log(t)
 
- 
+const handleDelete = (chipToDelete) => () => {
+  setProdutos((produtos) => produtos.filter((produtos) => produtos !== chipToDelete));
+};
 var pago = produtos.map((elistop)=>{
   return(
     <li class="list-group-item d-flex justify-content-between align-items-center" key={elistop}>
     {elistop[0]}
-  <span class="badge badge-primary badge-pill">R$ {elistop[1]}</span></li>
+  <span class="badge badge-primary badge-pill align-items-left">R$ {elistop[1]} <a style={{color: 'black'}} onClick={handleDelete(elistop)}>x</a></span>  </li>
   )
 })
 
@@ -140,7 +142,7 @@ var pago = produtos.map((elistop)=>{
           dados.map((i2)=>i2.telefone) +
           "&text=%20PEDIDO%20LOJAS%20FACIL%0a" +
           produtos.map((elis) => {
-            return ` ${elis[1]} %20 ${elis[0]},%0a`;
+            return `  %20 ${elis[0]}%20 R$ ${elis[1]},%0a`;
           })
         }
       >
@@ -148,6 +150,7 @@ var pago = produtos.map((elistop)=>{
       </a>
     );
   };
+
 if(temporizante === true){
   return (
     <CountProvider>
@@ -205,24 +208,7 @@ if(temporizante === true){
     {  WhatsApp1(dados, produtos)}
 </a>
   </div>
-          <Link
-            to={{
-              pathname: "/Checkout/" +dados.map((gluglu)=>gluglu._id),
-              data: produtos, // your data array of objects
-            }}
-          >
-            <button
-              type="button"
-              class="btn btn-success btn-lg btn-block"
-              onClick={() => {
-                setProdutos([...produtos]);
-              }}
-            >
-             <a onClick={() => {
-                setProdutos([...produtos,['frete', dados.map((i3)=>i3.frete), '456']]);
-              }}> Realizar pedido</a>
-            </button>
-          </Link>
+         
         <div className>
           <p style={{ color: "black" }}>
             <br></br>
