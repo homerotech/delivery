@@ -26,17 +26,13 @@
     height: 50px;
 }
 .imagemdoproduto{
-    margin: auto; 
-    max-height: 100px;
- 
 
-    /* For the following settings we set 100%, but it can be higher if needed 
-    See the answer's update */
-    left: -100%;
-    right: -100%;
-    top: -100%;
-    bottom: -100%;
-   
+    max-height: 100px;
+    max-width: 100px;
+
+    top: 50%;
+    bottom: 50%;
+   display: block;
 }
 .naoexiste{
     display:none

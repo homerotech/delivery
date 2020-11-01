@@ -198,7 +198,7 @@ function testeNullInput(step) {
   return returnStatement;
 }
 var total;
-console.log(total);
+
 export default function Checkout(props) {
   // KEY AQUI \/\/\/\/\/
   window.Mercadopago.setPublishableKey(
@@ -281,7 +281,7 @@ export default function Checkout(props) {
   console.log(myTotal);
 
   total = myTotal;
-
+  console.log(total);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [activeStep, setActiveStep] = React.useState(0);
@@ -461,7 +461,9 @@ export default function Checkout(props) {
       <CssBaseline />
 
       <main className={classes.layout}>
+
         <Paper className={classes.paper}>
+        <img style={{maxWidth: '100px', left:''}} src={require('./logoMP.png')}/>  
           <Typography component="h1" variant="h4" align="center">
             Checkout
           </Typography>

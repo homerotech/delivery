@@ -65,7 +65,7 @@ export default function TemporaryDrawer() {
             <a href="/contato"><ListItem button >
       <ListItemIcon><RecentActorsIcon/> </ListItemIcon>
             <ListItemText  primary="Contato" style={{color: "#022235"}}/></ListItem></a>
-      <a href="/"><ListItem button >
+      <a href="/quemsomos"><ListItem button >
       <ListItemIcon><InfoIcon/> </ListItemIcon>
             <ListItemText  primary="Quem somos nós" style={{color: "#022235"}}/></ListItem></a>
           

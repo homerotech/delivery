@@ -131,6 +131,23 @@ var pago = produtos.map((elistop)=>{
       </a>
     );
   };
+  var WhatsApp1 =(dados, produtos) => {
+    return (
+      <a
+        className="btn btn-info col-md-12"
+        href={
+          "https://api.whatsapp.com/send?phone=" +
+          dados.map((i2)=>i2.telefone) +
+          "&text=%20PEDIDO%20LOJAS%20FACIL%0a" +
+          produtos.map((elis) => {
+            return ` ${elis[1]} %20 ${elis[0]},%0a`;
+          })
+        }
+      >
+        Pagamento em dinheiro
+      </a>
+    );
+  };
 if(temporizante === true){
   return (
     <CountProvider>
@@ -168,9 +185,29 @@ if(temporizante === true){
           {pago}
         </ul>
         <br />
+
+
+
+
+        <button class="btn btn-success col-md-12 btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Realizar pedido
+  </button>
+  <div class="dropdown-menu col-md-12">
+    <a class="dropdown-item">
+    <Link to={{
+    pathname: "/Checkout/",
+    data: produtos // your data array of objects
+  }}
+><button type="button" class="btn btn-success btn-lg btn-block" click={ ()=>{useCount(produtos)}} >Pagamento em cartão</button></Link>
+    </a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item">
+    {  WhatsApp1(dados, produtos)}
+</a>
+  </div>
           <Link
             to={{
-              pathname: "/Checkout/" + date._id,
+              pathname: "/Checkout/" +dados.map((gluglu)=>gluglu._id),
               data: produtos, // your data array of objects
             }}
           >
@@ -189,7 +226,7 @@ if(temporizante === true){
         <div className>
           <p style={{ color: "black" }}>
             <br></br>
-            <h5>Será acrescido R$0,10 por pedido</h5>
+            <h5>Será acrescido R$0,50 por pedido no cartão</h5>
             Qualquer alteração fale direto com o WhatsApp do fornecedor.
           </p>
           {WhatsApp(dados, produtos)}

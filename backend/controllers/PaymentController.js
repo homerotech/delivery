@@ -35,7 +35,7 @@ module.exports = (app) => {
           number: req.body.docNumber,
         },
       },
-      application_fee: 0.1,
+      application_fee: 0.5,
     };
 
     mercadopago.payment.save(payment_data).then(function (response) {

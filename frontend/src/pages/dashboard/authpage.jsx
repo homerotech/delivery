@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 export default function Checkout(props) {
-  catalogo={
+ var catalogo={
     _id: '',
     nome: '',
     telefone: '',

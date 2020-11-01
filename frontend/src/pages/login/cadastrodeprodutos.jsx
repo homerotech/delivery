@@ -81,6 +81,30 @@ handleChange(event){
 
 }
 cadastrarProduto(){ 
+
+
+    const files = this.state.img;
+  
+    if(files !== null){
+      var ID = Date.now() + Math.round(Math.random());     
+      var data = { 
+        _id:ID,
+        nome:this.state.nome,
+        descricao:this.state.descricao,
+        preco:this.state.preco,
+        img: this.state.cardapio+"_"+ID,
+        cardapio: this.state.cardapio
+      }
+    
+    
+      data = JSON.stringify(data)
+      const formData = new FormData()
+      formData.append('file',files)
+      fetch('http://localhost:5000/api/upload/'+this.state.cardapio +"_"+ID,{
+          method:"POST",
+          body:formData
+      });
+  }
   var ID = Date.now() + Math.round(Math.random());     
   var data = { 
     _id:ID,
@@ -93,18 +117,6 @@ cadastrarProduto(){
 
 
   data = JSON.stringify(data)
-
-    const files = this.state.img;
-  
-    if(files !== null){
-      const formData = new FormData()
-      formData.append('file',files)
-      fetch('http://localhost:5000/api/upload/'+this.state.cardapio +"_"+ID,{
-          method:"POST",
-          body:formData
-      });
-  }
-
     fetch('http://localhost:5000/api/produto',{
       method:"POST",
       headers: {'Content-Type': 'application/json'},

@@ -137,15 +137,35 @@ function passadados(dados){
   {pago}
 </ul>
 <br/>
-<Link to={{
-    pathname: "/Checkout",
+<button class="btn btn-success col-md-12 btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Realizar pedido
+  </button>
+  <div class="dropdown-menu col-md-12">
+    <a class="dropdown-item">
+    <Link to={{
+    pathname: "/Checkout/123",
     data: produtos // your data array of objects
   }}
-><button type="button" class="btn btn-success btn-lg btn-block" click={ ()=>{useCount(produtos)}} >Realizar pedido</button></Link>
+><button type="button" class="btn btn-success btn-lg btn-block" click={ ()=>{useCount(produtos)}} >Pagamento em cartão</button></Link>
+    </a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item">
+{  dateStore.map((zap)=>{
+  return(
+   <a className="btn btn-info col-md-12" href={"https://api.whatsapp.com/send?phone="+ zap.num +"&text=%20PEDIDO%20LOJAS%20FACIL"+produtos.map((elis)=>{
+    return(
+     ` ${elis[1]} %20 ${elis[0]}%0a`
+    )})  
+    }>Pagamento em dinheiro</a>
+   
+  )
+})}</a>
+  </div>
+
 <br/>
     <div className><p style={{color:"black"}}>
       <br></br>
-      <h5>Será acrescido R$0,10 por pedido</h5>
+      <h5>Será acrescido R$0,50 por pedido</h5>
       
       Qualquer alteração fale direto com o WhatsApp do fornecedor.</p>{WhatsApp}</div>
 <br/>

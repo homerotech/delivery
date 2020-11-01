@@ -36,11 +36,19 @@ export default function Review(props) {
   ];
   const classes = useStyles();
   const addresses = [props.name, props.endereco, props.teln];
+  
+  function Total(){
+    let myTotal = 0;
+  for (var i = 0, len = produtos.length; i < len; i++) {
+    myTotal += parseFloat(produtos[i][1]); // Iterate over your first array and then grab the second element add the values up
+  }
+  return myTotal
+}
   return (
     <CountProvider>
       <React.Fragment>
         <Typography variant="h6" gutterBottom>
-          Order summary
+          Pedidos
         </Typography>
         <List disablePadding>
           {produtos.map((product) => (
@@ -52,7 +60,7 @@ export default function Review(props) {
           <ListItem className={classes.listItem}>
             <ListItemText primary="Total" />
             <Typography variant="subtitle1" className={classes.total}>
-              R$34.06
+              R${Total()}
             </Typography>
           </ListItem>
         </List>
