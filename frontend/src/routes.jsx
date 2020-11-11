@@ -9,7 +9,7 @@ import pgempresas from "./pages/catalogosEEmpresas/pgEmpresas";
 import catalogo from "./pages/catalogosEEmpresas/catalogo";
 import loginPag from "./pages/pagamento/loginPag";
 import cadastropag from "./pages/pagamento/cadastropag";
-import Checkout from "./pages/pagamento/checkoutPagamento/Checkout";
+import PagamentoFinal from "./pages/pagamento/checkout/Checkout";
 import PrivateRoute from "./PrivateRoute";
 import dashboard from "./pages/dashboard/dashboard";
 import urlRetorno from "./pages/dashboard/urlRetorno";
@@ -55,14 +55,14 @@ function Routes() {
         <Route path="/pgempresas" component={pgempresas} />
         <PrivateRoute path="/Planos" component={Planos}/> 
         <PrivateRoute path="/Mensalidade" component={Mensalidade}/>
-    <Route path="/quemsomos" component={quemsomos}/>
+        <Route path="/quemsomos" component={quemsomos}/>
         <Route path="/pgempresas" component={pgempresas}/>     
         <PrivateRoute path="/deletarProdutos" component={DeletarProdutos}/>
         <Route path="/cardapio" component={catalogo} />
         <Route path="/t/:url" component={testandocatalogo} />
         <Route path="/loginpag" component={loginPag} />
         <Route path="/cadastropag" component={cadastropag} />
-        <Route path="/Checkout/:id" component={Checkout} />
+        <Route path="/Checkout/:id" component={PagamentoFinal} />
         <PrivateRoute path="/acessarCatalogo" component={acessarCatalogo}/>
         <Route path="/termos" component={Termo} />
         <Route exact path="/dashadmin" component={Dash} />
