@@ -114,6 +114,7 @@ function getStepContent(step) {
 function testeNullInput(step) {
   var returnStatement = true;
   if (step == 0) {
+
     nome = document.getElementById("firstName").value;
     sobrenome = document.getElementById("lastName").value;
     adres = document.getElementById("address1").value;
@@ -140,6 +141,7 @@ function testeNullInput(step) {
     }
   }
   if (step == 1) {
+    email = document.getElementById("email1").value;
     nome_c = document.getElementById("cardName").value;
     numcard = document.getElementById("cardNumber1").value;
     expmes = document.getElementById("expmes").value;
@@ -183,6 +185,7 @@ export default function Checkout() {
   for (var i = 0, len = produtos.length; i < len; i++) {
     myTotal += parseFloat(produtos[i][1]); // Iterate over your first array and then grab the second element add the values up
   }
+  total =myTotal;
   console.log(myTotal);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -211,7 +214,7 @@ export default function Checkout() {
 
 
 
-
+var token;
 
 
 
@@ -222,9 +225,14 @@ export default function Checkout() {
   // \/\/\/\/\/\/\/PAGAMENTO/\/\/\/\/\/\/\//\
 function Pagar(){
  var dados={
-    
-  }
-  axios.post()
+    total:total,
+    docty1:docty1,
+    doc:doc,
+    email:email,
+    token:token
+  };
+  axios.post("http://localhost:5000/payment_process", {dados});
+
 }
 
 
@@ -297,7 +305,7 @@ function Pagar(){
                     }}
                     className={classes.button}
                   >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                    {activeStep === steps.length - 1 ? 'Realizar pedido' : 'Próximo'}
                   </Button>
                 </div>
               </React.Fragment>
