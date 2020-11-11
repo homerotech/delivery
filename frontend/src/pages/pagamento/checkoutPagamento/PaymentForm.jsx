@@ -4,8 +4,9 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-
+import Mercadopago from 'mercadopago'
 export default function PaymentForm() {
+  window.Mercadopago.getIdentificationTypes();
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -25,13 +26,12 @@ export default function PaymentForm() {
 
         <Grid item xs={10} md={2}>
           <select
-            id="docType1"
+            id="docType"
             name="docType1"
             data-checkout="docType1"
             type="text"
           >
-            <option value="cpf">CPF</option>
-            <option value="cnpj">CNPJ</option>
+           
           </select>
         </Grid>
 
