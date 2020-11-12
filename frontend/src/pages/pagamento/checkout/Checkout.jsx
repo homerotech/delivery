@@ -141,35 +141,35 @@ function testeNullInput(step) {
     }
   }
   if (step == 1) {
-    email = document.getElementById("email1").value;
+    email = document.getElementById("email").value;
     nome_c = document.getElementById("cardName").value;
-    numcard = document.getElementById("cardNumber1").value;
-    expmes = document.getElementById("expmes").value;
-    expano = document.getElementById("expano").value;
-    CVV = document.getElementById("cvv").value;
+    numcard = document.getElementById("cardNumber").value;
+    expmes = document.getElementById("cardExpirationMonth").value;
+    expano = document.getElementById("cardExpirationYear").value;
+    CVV = document.getElementById("securityCode").value;
      
-    docty1 = document.getElementById("docType1");
-    doc = document.getElementById("doc").value;
+    docty1 = document.getElementById("docType");
+    doc = document.getElementById("docNumber").value;
 
     if (document.getElementById("cardName").value.length == 0) {
       returnStatement = false;
     }
-    if (document.getElementById("cardNumber1").value.length == 0) {
+    if (document.getElementById("cardNumber").value.length == 0) {
       returnStatement = false;
     }
-    if (document.getElementById("expmes").value.length == 0) {
+    if (document.getElementById("cardExpirationMonth").value.length == 0) {
       returnStatement = false;
     }
-    if (document.getElementById("expano").value.length == 0) {
+    if (document.getElementById("cardExpirationYear").value.length == 0) {
       returnStatement = false;
     }
-    if (document.getElementById("email1").value.length == 0) {
+    if (document.getElementById("email").value.length == 0) {
       returnStatement = false;
     }
-    if (document.getElementById("doc").value.length == 0) {
+    if (document.getElementById("docNumber").value.length == 0) {
       returnStatement = false;
     }
-    if (document.getElementById("cvv").value.length == 0) {
+    if (document.getElementById("securityCode").value.length == 0) {
       returnStatement = false;
     }
   }
