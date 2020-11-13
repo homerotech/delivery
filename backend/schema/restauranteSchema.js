@@ -20,7 +20,9 @@ const restauranteSchema = mongoose.Schema(
     frete: Number,
     expires: String,
     url:String,
-    token:String
+    token:String,
+    refresh:String,
+    publicK:String
     // expire_at: {type: Date, default: Date.now, expires: 144000},
 }, {
   

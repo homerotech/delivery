@@ -1,32 +1,27 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
-
+var url = 'https://api.mercadopago.com/oauth/token';
+var url_api = 'https://lojasfacil.com:5000'
 export default function Checkout(props) {
- var catalogo={
-    _id: '',
-    nome: '',
-    telefone: '',
-    endereco: '',
-    valeRefeicao: '',
-    abertura: '',
-    fechamen: '',
-    desc:'',
-    cidade:'',
-    frete:'',
-    estado:'',
-    CEP:'',
-    url:'',
-    dataV: '',
-    img: '',
-    expires: ''
-  }
+ const [catalogo, setCatalogo]=useState({})
   var code = new URLSearchParams(props.location.search).get("code");
   var id = new URLSearchParams(props.location.search).get("id");
   console.log(code);
   console.log(id);
   //
 
-
+  useEffect(() => {
+    axios.get(url_api+ '/api/restaurante'+ props.id)
+        .then(res => {
+            console.log(res.data);
+            setCatalogo(res.data);
+           
+        })
+        .catch(err => {
+           window.alert=("to cagado")
+            
+        })
+}, []);
 
   
   var token = "colocar token aqui";
@@ -44,7 +39,7 @@ export default function Checkout(props) {
     code: code,
     redirect_uri: uri,
   };
-  async function postData(url = "", data = {}) {
+  async function postData(url , data ) {
     // Default options are marked with *
     const response = await fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -53,7 +48,7 @@ export default function Checkout(props) {
       credentials: "same-origin", // include, *same-origin, omit
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        accept: "application/json",
+        'accept': 'application/json'
       },
 
       body: JSON.stringify(data), // body data type must match "Content-Type" header
@@ -64,11 +59,27 @@ export default function Checkout(props) {
     Vkey = resposta.public_key;
     Vrefresh = resposta.refresh_token;
     var dataV = {
-      token: Vtoken,
-      chave: Vkey,
-      refresh: Vrefresh,
+      
+        _id: catalogo._id,
+        nome: catalogo.nome,
+        telefone: catalogo.telefone,
+        endereco: catalogo.endereco,
+        valeRefeicao: catalogo.valeRefeicao,
+        abertura: catalogo.abertura,
+        fechamen: catalogo.fechamen,
+        desc: catalogo.desc,
+        cidade: catalogo.cidade,
+        frete: catalogo.frete,
+        estado: catalogo.estado,
+        CEP: catalogo.CEP,
+        url: catalogo.url,
+        img: catalogo.img,
+        expires: catalogo.expires,
+        token: Vtoken,
+        chave: Vkey,
+        refresh: Vrefresh,
     };
-    axios.put("http://localhost:5000/api/restaurante/" + id, {
+    axios.put(url_api+  "/api/restaurante/" + props.id, {
       
       body: JSON.stringify(dataV),
     })
