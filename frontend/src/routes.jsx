@@ -54,7 +54,7 @@ function Routes() {
         <PrivateRoute path="/authpage" component={authpage} />
         <Route path="/pgempresas" component={pgempresas} />
         <PrivateRoute path="/Planos" component={Planos}/> 
-        <PrivateRoute path="/Mensalidade" component={Mensalidade}/>
+        <Route path="/Mensalidade" component={Mensalidade}/>
         <Route path="/quemsomos" component={quemsomos}/>
         <Route path="/pgempresas" component={pgempresas}/>     
         <PrivateRoute path="/deletarProdutos" component={DeletarProdutos}/>
